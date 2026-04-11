@@ -4,10 +4,38 @@
     box-sizing: border-box !important ;
     font-family: "Poppins", sans-serif;
 }
+.myNav{
+    padding: 10px 50px !important;
+    background-color: white;
+}
 .logo p{
     font-size: 20px;
     font-weight: 600;
 }
 .logo p span{
     color: #006A63;
+}
+.myNav ul{
+    font-size: 14px;
+    color: #006A63;
+}
+.myNav li{
+    cursor: pointer;
+}
+.downloadBtn{
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    padding: 10px 20px !important;
+    background-color: #091426;
+    color: white;
+}
+
+@media (max-width:768px) {
+    .myNav{
+        padding:10px 20px !important;
+    }
+    .myNav ul{
+        display: none !important;
+    }
 }
