@@ -30,6 +30,29 @@
     background-color: #091426;
     color: white;
 }
+.sec1{
+    padding: 100px 50px !important;
+    background-image: linear-gradient(40deg, white 50%, #bef4ed );
+}
+.available{
+    background-color: #99EFE5;
+    display: inline;
+    font-size: 12px;
+    font-weight: 500;
+    padding:5px 15px !important;
+    border-radius: 20px;
+}
+.myName h1{
+    font-weight: bold;
+    margin: 30px 0 !important;
+    font-size: 72px;
+}
+.myName h2{
+    font-size: 37px;
+}
+.myName h1 span{
+    color: #006A63;
+}
 
 @media (max-width:768px) {
     .myNav{
