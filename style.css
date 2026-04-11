@@ -3,6 +3,7 @@
     margin: 0 !important;
     box-sizing: border-box !important ;
     font-family: "Poppins", sans-serif;
+    /* outline: solid 1px skyblue; */
 }
 .myNav{
     padding: 10px 50px !important;
@@ -30,7 +31,7 @@
     background-color: #091426;
     color: white;
     font-weight: 500;
-    transition: .5s ease;
+    transition: .3s ease;
 }
 .downloadBtn:hover{
     background-color: #006A63;
@@ -38,6 +39,8 @@
 .sec1{
     padding: 100px 50px !important;
     background-image: linear-gradient(40deg, white 50%, #bef4ed );
+    display: flex;
+    justify-content: space-between;
 }
 .subsec1{
     width: 50%;
@@ -75,8 +78,25 @@
     background-color: #E6E8EA;
     font-weight: 500;
     color: black;
-    transition: .5s ease;
+    transition: .3s ease;
 }
+.hireMeBtn:hover{
+    background-color: #99EFE5;
+}
+.myProfile{
+    background-color: black;
+    height: 100%;
+    width: 28vw;
+    border-radius: 20px;
+    background-image: url(./media/mypic.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+
+
 
 @media (max-width:768px) {
     .myNav{
