@@ -41,6 +41,7 @@
     background-image: linear-gradient(40deg, white 50%, #bef4ed );
     display: flex;
     justify-content: space-between;
+    gap: 70px;
 }
 .subsec1{
     width: 50%;
@@ -66,7 +67,7 @@
 .myName h1 span{
     color: #006A63;
 }
-.subsec1 p{
+.aboutMe{
     font-size: 18px;
     margin: 20px 0 !important;
 }
@@ -86,12 +87,32 @@
 .myProfile{
     background-color: black;
     height: 100%;
-    width: 28vw;
+    width: 100%;
+    max-width: 420px ;
     border-radius: 20px;
     background-image: url(./media/mypic.png);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+    margin: 0 auto !important;
+    position: relative;
+}
+.expYears{
+    background-color: #006A63;
+    color: white;
+    display: inline-block;
+    padding: 30px !important;
+    border-radius: 20px;
+    position: absolute;
+    bottom: -7%;
+    left: -7%;
+}
+.expYears h3{
+    font-size: 30px ;
+}
+.expYears p{
+    font-size: 12px;
+    letter-spacing: 3px;
 }
 
 
@@ -105,4 +126,23 @@
     .myNav ul{
         display: none !important;
     }
+    .sec1{
+        flex-direction: column;
+        padding: 20px !important;
+    }
+    .subsec1{
+        width: 100%;
+    }
+    .myName h1{
+        font-size: 48px;
+    }
+    .myProfile{
+        /* width: ; */
+        height: 500px;
+    }
+    .expYears{
+        padding: 0 I!important;
+        display: none;
+    }
+    
 }
