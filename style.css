@@ -8,6 +8,7 @@
 .myNav{
     padding: 10px 50px !important;
     background-color: white;
+    z-index: 10;
 }
 .logo p{
     font-size: 20px;
@@ -36,12 +37,19 @@
 .downloadBtn:hover{
     background-color: #006A63;
 }
+
+
+
+/* ------------Anim Button----------- */
+
 .sec1{
     padding: 100px 50px !important;
     background-image: linear-gradient(40deg, white 50%, #bef4ed );
     display: flex;
     justify-content: space-between;
     gap: 70px;
+    overflow: hidden;
+    position: relative;
 }
 .subsec1{
     width: 50%;
