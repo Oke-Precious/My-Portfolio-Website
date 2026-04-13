@@ -212,6 +212,7 @@
 .expertise{
     border-radius: 10px;
     padding: 40px !important;
+    width: 50%;
 }
 .expertiseIcon{
     color: #006A63;
@@ -223,8 +224,17 @@
 }
 .tools button{
     border: none;
+    width: 100%;
     font-size: 12px;
     font-weight: 600;
+    padding:20px !important;
+    border-radius: 5px;
+    text-align: center;
+}
+.tools{
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1fr 1fr 1fr !important;
 }
 
 
@@ -263,6 +273,20 @@
     }
     .sec3{
         padding:70px 20px !important;
+    }
+    .expertise{
+        width: 100%;
+        padding: 20px !important;
+    }
+    .tools{
+        gap: 10px;
+    }
+    .expertise h5{
+    font-size: 20px;
+    font-weight: 600;
+    }
+    .tools button{
+        padding: 10px !important;
     }
     
 }
