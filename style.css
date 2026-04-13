@@ -158,8 +158,9 @@
 .subsec2{
     width: 50%;
 }
-.subsec2 h3{
+.secTitle{
     font-weight: 600;
+    font-size: 36px;
 }
 .buttomLine{
     width: 70px;
@@ -200,7 +201,14 @@
     text-decoration: underline;
     transition: .4s ease;
 }
-
+.sec3{
+    padding: 100px 50px !important;
+}
+.sec3 header{
+    color: #006A63;
+    font-weight: 600;
+    letter-spacing: 4px;
+}
 
 
 @media (max-width:768px) {
@@ -230,7 +238,7 @@
     }
     .sec2{
         flex-direction: column;
-        padding:50px 20px !important;
+        padding:70px 20px !important;
     }
     .subsec2{
         width: 100%;
