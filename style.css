@@ -203,6 +203,7 @@
 }
 .sec3{
     padding: 100px 50px !important;
+    overflow: hidden;
 }
 .sec3 header{
     color: #006A63;
@@ -230,13 +231,27 @@
     padding:20px !important;
     border-radius: 5px;
     text-align: center;
+    transition: .8s ease;
+}
+.tools button:hover{
+    animation: a 1s  1 linear;
 }
 .tools{
     display: grid;
     gap: 20px;
-    grid-template-columns: 1fr 1fr 1fr !important;
+    grid-template-columns: 1fr 1fr !important;
 }
-
+.bgBlue{
+    background-color: #091426;
+    color: white;
+}
+.bgBlue button{
+    background-color: #1E293B;
+    color: white;
+}
+.bgBlue i{
+    color: white;
+}
 
 
 @media (max-width:768px) {
