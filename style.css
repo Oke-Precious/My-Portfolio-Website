@@ -153,6 +153,7 @@
 .sec2{
     padding: 100px 50px !important;
     background-color: #F2F4F6;
+    overflow: hidden;
 }
 .subsec2{
     width: 50%;
@@ -176,6 +177,28 @@
 }
 .subsec2 p{
     line-height: 1.7;
+}
+.projectNum{
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+    transition: .4s;
+}
+.projectNum h4{
+    font-weight: bold;
+    font-size: 24px;
+}
+.projectNum p{
+    letter-spacing: 3px !important;
+    font-size: 14px;
+    transition: .4s ease;
+}
+.projectNum:hover{
+    color: #006A63;
+}
+.projectNum:hover p{
+    text-decoration: underline;
+    transition: .4s ease;
 }
 
 
@@ -208,6 +231,9 @@
     .sec2{
         flex-direction: column;
         padding:50px 20px !important;
+    }
+    .subsec2{
+        width: 100%;
     }
     
 }
