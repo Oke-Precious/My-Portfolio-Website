@@ -213,7 +213,8 @@
 .expertise{
     border-radius: 10px;
     padding: 40px !important;
-    width: 50%;
+    width: 45%;
+    /* margin: 0 auto !important; */
 }
 .expertiseIcon{
     color: #006A63;
@@ -252,7 +253,17 @@
 .bgBlue i{
     color: white;
 }
-
+.bgGreen{
+    background-color: #013733;
+    color: white;
+}
+.bgGreen button{
+    background-color: #122b29;
+    color: white;
+}
+.bgGreen i{
+    color: white;
+}
 
 @media (max-width:768px) {
     .myNav{
@@ -292,6 +303,7 @@
     .expertise{
         width: 100%;
         padding: 20px !important;
+        margin: 0 auto !important;
     }
     .tools{
         gap: 10px;
