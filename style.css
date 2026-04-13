@@ -209,6 +209,24 @@
     font-weight: 600;
     letter-spacing: 4px;
 }
+.expertise{
+    border-radius: 10px;
+    padding: 40px !important;
+}
+.expertiseIcon{
+    color: #006A63;
+    font-size: 20px;
+}
+.expertise h5{
+    font-size: 24px;
+    font-weight: 600;
+}
+.tools button{
+    border: none;
+    font-size: 12px;
+    font-weight: 600;
+}
+
 
 
 @media (max-width:768px) {
@@ -242,6 +260,9 @@
     }
     .subsec2{
         width: 100%;
+    }
+    .sec3{
+        padding:70px 20px !important;
     }
     
 }
