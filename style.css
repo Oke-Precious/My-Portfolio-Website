@@ -295,6 +295,17 @@
 .bgGray i{
     color: black;
 }
+.bgGrey{
+    background-color: rgb(96, 117, 129);
+    color: white;
+}
+.bgGrey button{
+    background-color: rgb(75, 100, 113);
+    color: white;
+}
+.bgGrey i{
+    color: white;
+}
 
 
 
