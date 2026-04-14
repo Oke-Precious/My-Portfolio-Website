@@ -353,7 +353,7 @@
     .expertise{
         width: 100%;
         padding: 20px !important;
-        margin: 0 auto !important;
+        margin: 50px auto !important;
     }
     .tools{
         gap: 10px;
@@ -366,10 +366,5 @@
         padding: 10px !important;
     }
     
-}
-@media (max-width:500px){
-    .expertise{
-        margin: 50px 0 !important;
-    }
 }
 
