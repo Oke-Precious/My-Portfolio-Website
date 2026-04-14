@@ -245,15 +245,16 @@
     padding:20px !important;
     border-radius: 5px;
     text-align: center;
-    transition: .8s ease;
     display: flex; 
     align-items: center;
     justify-content: space-between;
     gap: 20px;
-    transition: .4s linear;
+    
+    /* animation-duration: .3s !important; */
 }
 .tools button:hover{
-    transform: skew(10deg, 5deg);
+    transform: skew(10deg, 5deg) !important;
+    transition: .4s  linear !important;
     box-shadow: 0px 3px 15px rgba(128, 128, 128, 0.558);
 }
 
