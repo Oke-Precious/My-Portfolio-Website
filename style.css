@@ -367,4 +367,9 @@
     }
     
 }
+@media (max-width:500px){
+    .expertise{
+        margin: 50px 0 !important;
+    }
+}
 
