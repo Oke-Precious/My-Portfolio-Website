@@ -240,7 +240,7 @@
 .tools button{
     border: none;
     width: 100%;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 600;
     padding:20px !important;
     border-radius: 5px;
@@ -248,7 +248,7 @@
     transition: .8s ease;
     display: flex; 
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     gap: 20px;
     transition: .4s linear;
 }
@@ -303,7 +303,7 @@
 
 
 /* -------RESPONSIVENESS----- */
-@media (max-width:768px) {
+@media (max-width:978px) {
     .myNav{
         padding:10px 20px !important;
     }
