@@ -219,6 +219,7 @@ body{
 /* ----------SECTION 3---------- */
 .sec3{
     padding: 100px 50px !important;
+    overflow-x: hidden;
 }
 .secHeader{
     color: #006A63;
