@@ -5,6 +5,9 @@
     font-family: "Poppins", sans-serif;
     /* outline: solid 1px skyblue; */
 }
+body{
+    overflow-x: hidden;
+}
 .myNav{
     padding: 10px 50px !important;
     background-color: white;
@@ -216,9 +219,8 @@
 /* ----------SECTION 3---------- */
 .sec3{
     padding: 100px 50px !important;
-    overflow: hidden;
 }
-.sec3 header{
+.secHeader{
     color: #006A63;
     font-weight: 600;
     letter-spacing: 4px;
@@ -307,6 +309,10 @@
 .bgGrey i{
     color: white;
 }
+.sec4{
+     background-color: #F2F4F6;
+    padding: 100px 50px !important;
+}
 
 
 
@@ -365,6 +371,9 @@
     .tools button{
         padding: 10px !important;
     }
-    
+    .sec4{
+            padding: 100px 20px !important;
+
+    }
 }
 
