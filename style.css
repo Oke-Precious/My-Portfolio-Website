@@ -313,10 +313,31 @@ body{
      background-color: #F2F4F6;
     padding: 100px 50px !important;
 }
-
-
-
-
+.projectCon1{
+    width: 100%;
+    overflow: hidden;
+    max-width: 781px;
+    background-color: white;
+    border-radius: 10px;
+}
+.projectCon1 img{
+    width: 100%;
+}
+.projectCon1 h4{
+    font-size: 24px;
+    margin: 10px 0 !important;
+    font-weight: 600;
+}
+.projectCon1 article{
+    font-size: 16px;
+}
+.viewProject{
+    color: black;
+    text-decoration:underline dotted;
+    text-underline-offset: 3px;
+    display: flex;
+    gap: 20px;
+}
 
 
 
@@ -372,7 +393,7 @@ body{
         padding: 10px !important;
     }
     .sec4{
-            padding: 100px 20px !important;
+            padding: 50px 20px !important;
 
     }
 }
