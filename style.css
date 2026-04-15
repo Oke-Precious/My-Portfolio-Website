@@ -187,7 +187,7 @@ body{
 }
 .description{
     font-size: 16px;
-
+    text-align: justify;
 }
 .subsec2 p{
     line-height: 1.7;
@@ -320,8 +320,16 @@ body{
     background-color: white;
     border-radius: 10px;
 }
-.projectCon1 img{
+.projectCon:hover img{
+    transform: scale(1.1);
+}
+.projectImgCon img{
     width: 100%;
+    transition: .4s linear;
+}
+.projectImgCon{
+    height: fit-content;
+    overflow: hidden;
 }
 .projectCon1 h4{
     font-size: 24px;
@@ -330,6 +338,7 @@ body{
 }
 .projectCon1 article{
     font-size: 16px;
+    text-align: justify;
 }
 .viewProject{
     color: black;
@@ -342,7 +351,7 @@ body{
     font-size: 14px;
     font-weight: 600;
 }
-.viewProject span{
+.viewProject span, .viewGit span{
     text-decoration:underline dotted;
 }
 .viewProject i{
@@ -353,6 +362,25 @@ body{
 }
 .viewProject:hover i{
     transform: translateX(10px);
+}
+.viewGit{
+    color: black;
+    transition: .3s linear;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+.viewGit i{
+    transition: .3s linear;
+}
+.viewGit:hover{
+    color: #158079;;
+}
+.viewGit:hover i{
+    transform: translateX(-10px);
 }
 
 
