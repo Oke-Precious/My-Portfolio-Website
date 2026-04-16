@@ -317,9 +317,10 @@ body{
 .projectCon1{
     width: 100%;
     overflow: hidden;
-    max-width: 781px;
+    max-width: 430px;
     background-color: white;
     border-radius: 10px;
+
 }
 .projectCon:hover img{
     transform: scale(1.1);
