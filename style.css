@@ -314,19 +314,26 @@ body{
      background-color: #F2F4F6;
     padding: 100px 50px !important;
 }
+.projectCon{
+    border-radius: 10px;
+    background-color: white;
+    overflow: hidden;
+}
 .projectCon1{
     width: 100%;
-    overflow: hidden;
-    max-width: 430px;
-    background-color: white;
-    border-radius: 10px;
-
+    max-width:65%;
+}
+.projectCon2{
+    max-width: 30%;
+    width: 100%;
 }
 .projectCon:hover img{
     transform: scale(1.1);
 }
 .projectImgCon img{
     width: 100%;
+    max-height: 300px;
+    height: 100%;
     transition: .4s linear;
 }
 .projectImgCon{
@@ -440,7 +447,10 @@ body{
     }
     .sec4{
             padding: 50px 20px !important;
-
     }
+    .projectCon{
+        width: 100% !important;
+    }
+  
 }
 
