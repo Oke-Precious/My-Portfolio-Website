@@ -412,6 +412,10 @@ body{
 .viewGit:hover i{
     transform: translateX(-10px);
 }
+.seeMoreCon{
+    background-color: #091426;
+    color: white;
+}
 .seeMore h5{
     font-size: 30px;
     font-weight: 500;
@@ -420,6 +424,32 @@ body{
     color: #CED0D4;
     line-height: 1.5;
 }
+.seeMore button{
+    padding: 15px 30px !important;
+    border-radius: 5px;
+    /* background-color: #158079 ; */
+    color: white;
+    font-weight: 500;
+    font-size: 16px;
+    transition: .4s linear;
+}
+.dribble{
+    border: none;
+    background-color: #158079;
+}
+.dribble:hover{
+    transform: scale(1.1);
+    background-color: #013733;
+}
+.github{
+    background-color: #1E293B;
+    border: solid 1px #495261;
+}
+.github:hover{
+    transform: scale(1.1);
+    background-color: #141d2b;
+}
+
 
 
 /* -------RESPONSIVENESS----- */
