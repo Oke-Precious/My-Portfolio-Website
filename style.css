@@ -415,6 +415,7 @@ body{
 .seeMoreCon{
     background-color: #091426;
     color: white;
+    padding:50px !important;
 }
 .seeMore h5{
     font-size: 30px;
@@ -425,7 +426,7 @@ body{
     line-height: 1.5;
 }
 .seeMore button{
-    padding: 15px 30px !important;
+    padding: 12px 30px !important;
     border-radius: 5px;
     /* background-color: #158079 ; */
     color: white;
@@ -514,7 +515,12 @@ body{
     .projectCon{
         width: 100%;
     }
-    
+    .seeMoreCon{
+        padding:20px !important;
+    }
+    .seeMore h5{
+        font-size:27px;
+    }
   
 }
 
