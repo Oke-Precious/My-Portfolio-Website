@@ -262,7 +262,6 @@ body{
     transition: .4s  linear !important;
     box-shadow: 0px 3px 15px rgba(128, 128, 128, 0.558);
 }
-
 .tools{
     display: grid;
     gap: 15px;
@@ -273,7 +272,7 @@ body{
     color: white;
 }
 .bgBlue{
-    background-color: #091426;
+    background-color: #091426 !important;
     color: white;
 }
 .bgBlue button{
@@ -313,8 +312,6 @@ body{
     background-color: #006A63;
     color: white;
 }
-
-
 .bgGrey{
     background-color: rgb(59, 75, 85);
     color: white;
@@ -334,25 +331,30 @@ body{
      background-color: #F2F4F6;
     padding: 100px 150px !important;
 }
+.mainProjectContainer{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px !important;
+    flex-wrap: wrap;
+    gap: 50px;
+}
 .projectCon{
     border-radius: 10px;
     background-color: white;
     overflow: hidden;
+    box-shadow: 0px 0px 20px white;
 }
 .projectCon1{
-    width: 100%;
-    max-width:65%;
+    width:65%;
 }
 .projectCon2{
-    max-width: 30%;
-    width: 100%;
+    width: 31%;
 }
 .projectCon:hover img{
     transform: scale(1.1);
 }
 .projectImgCon img{
     width: 100%;
-    max-height: 300px;
     height: 100%;
     transition: .4s linear;
 }
@@ -360,12 +362,12 @@ body{
     height: fit-content;
     overflow: hidden;
 }
-.projectCon1 h4{
+.projectCon h4{
     font-size: 24px;
     margin: 10px 0 !important;
     font-weight: 600;
 }
-.projectCon1 article{
+.projectCon article{
     font-size: 15px;
 }
 .viewProject{
@@ -413,17 +415,18 @@ body{
 
 
 
+
 /* -------RESPONSIVENESS----- */
 @media (max-width:1024px) {
     .myNav{
-        padding:10px 20px !important;
+        padding:10px 30px !important;
     }
     .myNav ul{
         display: none !important;
     }
     .sec1{
         flex-direction: column;
-        padding:50px 20px !important;
+        padding:50px 30px !important;
     }
     .subsec1{
         width: 100%;
@@ -441,13 +444,13 @@ body{
     }
     .sec2{
         flex-direction: column;
-        padding:70px 20px !important;
+        padding:70px 30px !important;
     }
     .subsec2{
         width: 100%;
     }
     .sec3{
-        padding:70px 20px !important;
+        padding:70px 30px !important;
     }
     .expertise{
         width: 100%;
@@ -465,11 +468,17 @@ body{
         padding: 10px !important;
     }
     .sec4{
-            padding: 50px 20px !important;
+        padding: 50px 30px !important;
+
+    }
+    .mainProjectContainer{
+        gap: 50px !important;
+        flex-direction: column;
     }
     .projectCon{
-        width: 100% !important;
+        width: 100%;
     }
+    
   
 }
 
