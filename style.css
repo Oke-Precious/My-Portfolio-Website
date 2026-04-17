@@ -9,8 +9,8 @@ body{
     overflow-x: hidden;
 }
 .myNav{
-    padding: 10px 150px !important;
-    background-color: rgba(255, 255, 255, 0.479);
+    padding: 10px 90px !important;
+    background-color: rgba(255, 255, 255, 0.555);
     z-index: 10;
     position: fixed !important;
     top: 1.5%;
@@ -465,20 +465,49 @@ body{
     padding: 100px 150px !important;
     background-color: #F7F9FB;
 }
+.servicesContainer{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+.eachService{
+    background-color:white;
+    padding: 40px !important;
+    border-radius: 5px;
+    width: 500px;
+}
+.serviceIcon{
+    background-color: #091426;
+    color: white;
+    border: none;
+    height: 60px;
+    width: 60px;
+    border-radius: 7px;
+}
+.eachService h5{
+    font-size: 20px;
+    font-weight: 600;
+    margin: 30px 0 !important;
+}
+
+
+
+
 
 
 
 /* -------RESPONSIVENESS----- */
 @media (max-width:1024px) {
     .myNav{
-        padding:10px 30px !important;
+        padding:10px 20px !important;
     }
     .myNav ul{
         display: none !important;
     }
     .sec1{
         flex-direction: column;
-        padding:50px 30px !important;
+        padding:100px 30px !important;
     }
     .subsec1{
         width: 100%;
@@ -536,6 +565,22 @@ body{
     .seeMore h5{
         font-size:27px;
     }
-  
+    .sec5{
+        padding: 50px 30px !important;
+    }
+    .servicesContainer{
+        flex-direction: column;
+    }
+    .eachService{
+        width: 100%;
+        padding: 20px !important;
+    }
+    .serviceIcon{
+        height: 50px;
+        width: 50px;
+    }
+
+
+
 }
 
