@@ -220,7 +220,7 @@ body{
 
 /* ----------SECTION 3---------- */
 .sec3{
-    padding: 100px 50px !important;
+    padding: 100px 150px !important;
     overflow-x: hidden;
 }
 .secHeader{
@@ -247,7 +247,7 @@ body{
     width: 100%;
     font-size: 14px;
     font-weight: 600;
-    padding:20px !important;
+    padding:15px 20px !important;
     border-radius: 5px;
     text-align: center;
     display: flex; 
@@ -265,8 +265,12 @@ body{
 
 .tools{
     display: grid;
-    gap: 20px;
+    gap: 15px;
     grid-template-columns: 1fr 1fr !important;
+}
+.bgWhite button:hover{
+    background-color: #091426;
+    color: white;
 }
 .bgBlue{
     background-color: #091426;
@@ -275,6 +279,9 @@ body{
 .bgBlue button{
     background-color: #1E293B;
     color: white;
+}
+.bgBlue button:hover{
+    background-color: #006A63;
 }
 .bgBlue i{
     color: white;
@@ -287,7 +294,11 @@ body{
     background-color: #122b29;
     color: white;
 }
-.bgGreen i{
+.bgGreen button:hover{
+    background-color:#F0F0F0 ;
+    color: black;
+}
+.bgGreen .expertiseIcon{
     color: white;
 }
 .bgGray{
@@ -298,23 +309,30 @@ body{
     background-color: white;
     color: black;
 }
-.bgGray i{
-    color: black;
+.bgGray button:hover{
+    background-color: #006A63;
+    color: white;
 }
+
+
 .bgGrey{
-    background-color: rgb(96, 117, 129);
+    background-color: rgb(59, 75, 85);
     color: white;
 }
 .bgGrey button{
-    background-color: rgb(75, 100, 113);
+    background-color: rgb(46, 56, 61);
     color: white;
 }
-.bgGrey i{
+.bgGrey button:hover{
+    background-color: white;
+    color: black;
+}
+.bgGrey .expertiseIcon{
     color: white;
 }
 .sec4{
      background-color: #F2F4F6;
-    padding: 100px 50px !important;
+    padding: 100px 150px !important;
 }
 .projectCon{
     border-radius: 10px;
@@ -396,7 +414,7 @@ body{
 
 
 /* -------RESPONSIVENESS----- */
-@media (max-width:978px) {
+@media (max-width:1024px) {
     .myNav{
         padding:10px 20px !important;
     }
