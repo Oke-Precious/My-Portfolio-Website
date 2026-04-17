@@ -9,7 +9,7 @@ body{
     overflow-x: hidden;
 }
 .myNav{
-    padding: 10px 50px !important;
+    padding: 10px 150px !important;
     background-color: white;
     z-index: 10;
 }
@@ -53,9 +53,10 @@ body{
 /* ------------SECTION 1----------- */
 
 .sec1{
-    padding: 100px 50px !important;
+    padding: 50px 150px 100px 150px !important;
     background-image: linear-gradient(40deg, white 50%, #bef4ed );
     display: flex;
+    align-items: center;
     justify-content: space-between;
     gap: 70px;
     overflow: hidden;
@@ -71,6 +72,7 @@ body{
     font-weight: 500;
     padding:5px 15px !important;
     border-radius: 20px;
+    letter-spacing: 3px;
 }
 .fullName{
     overflow: hidden;
@@ -130,9 +132,9 @@ body{
 }
 .myProfile{
     background-color: black;
-    height: 100%;
+    height: 750px;
     width: 100%;
-    max-width: 420px ;
+    max-width: 580px ;
     border-radius: 20px;
     background-image: url(./media/mypic.png);
     background-position: center;
@@ -164,7 +166,7 @@ body{
 /* ---------------SECTION 2-------------- */
 
 .sec2{
-    padding: 100px 50px !important;
+    padding: 100px 150px !important;
     background-color: #F2F4F6;
     overflow: hidden;
 }
@@ -346,8 +348,7 @@ body{
     font-weight: 600;
 }
 .projectCon1 article{
-    font-size: 16px;
-    text-align: justify;
+    font-size: 15px;
 }
 .viewProject{
     color: black;
