@@ -147,7 +147,7 @@ body{
     width: 100%;
     max-width: 580px ;
     border-radius: 20px;
-    background-image: url(./media/mypic.png);
+    background-image: url(./media/specialdev.png);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -484,17 +484,20 @@ body{
     height: 60px;
     width: 60px;
     border-radius: 7px;
-    animation: danceIcon 3s linear infinite;
+    animation: danceIcon 5s linear infinite;
 }
 @keyframes danceIcon {
     0%{
-        transform: rotate(30deg);
+        transform: rotate(45deg);
     }
-    50%{
+    25%{
         transform: rotate(0);
     }
+    50%{
+        transform: rotate(-45deg);
+    }
     100%{
-        transform: rotate(30deg);
+        transform: rotate(45deg);
     }
 }
 
