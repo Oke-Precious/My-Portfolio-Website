@@ -412,8 +412,14 @@ body{
 .viewGit:hover i{
     transform: translateX(-10px);
 }
-
-
+.seeMore h5{
+    font-size: 30px;
+    font-weight: 500;
+}
+.seeMore p{
+    color: #CED0D4;
+    line-height: 1.5;
+}
 
 
 /* -------RESPONSIVENESS----- */
