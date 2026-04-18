@@ -536,6 +536,21 @@ body{
     font-size: 12px;
     font-weight: 600;
 }
+.socialMedia{
+    transition: all 0.3s ease;
+}
+.socialMedia a{
+    color: white;
+    background-color: #091426;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 18px;
+    height: 40px;
+    width: 40px;
+    border-radius: 10px;
+}
 
 
 
