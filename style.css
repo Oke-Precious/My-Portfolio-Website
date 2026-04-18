@@ -506,10 +506,35 @@ body{
     font-weight: 600;
     margin: 30px 0 !important;
 }
-
-
-
-
+.sec6{
+    background-color: #F2F4F6;
+    padding: 100px 150px !important;
+}
+.getinTouch h2{
+    font-size: 48px;
+    font-weight: 600;
+}
+.getinTouch h2 i{
+    color: #158079;
+}
+.currently{
+    font-size: 18px;
+}
+.contact-icon{
+    /* border: solid 1px red; */
+    height: 50px;
+    width: 50px;
+    border-radius: 5px;
+    display: flex;
+    font-size: 20px;
+    align-items: center;
+    justify-content: center;
+    background-color: #eaecee;
+    border-radius: 10px;
+}
+.emailMe{
+    font-size: 12px;
+}
 
 
 
