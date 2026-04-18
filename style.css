@@ -646,6 +646,13 @@ body{
     transform: scale(0.95);
     box-shadow: rgba(133, 215, 197, 0.878) 0px 15px 10px -10px;
 }
+footer{
+    background-color: #F2F4F6;
+    color: #64748B;
+    text-align: center;
+    padding: 50px !important;
+    font-size: 14px;
+}
 
 
 
