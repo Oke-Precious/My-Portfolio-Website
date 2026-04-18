@@ -464,12 +464,16 @@ body{
 .sec5{
     padding: 100px 150px !important;
     background-color: #F7F9FB;
+    margin: 0 auto !important;
 }
 .servicesContainer{
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 30px;
+    margin: 0 auto !important;
+    /* width: 50%; */
+    align-items: center;
 }
 .eachService{
     background-color:white;
@@ -510,10 +514,14 @@ body{
     background-color: #F2F4F6;
     display: flex;
     padding: 100px 150px !important;
+    flex-wrap: wrap;
+    gap: 50px;
+    justify-content: space-between;
 }
 
-.getinTouch, .seeMoreCon{
-    width: 50%;
+.getinTouch, .sendMessageCon{
+    width: 100% !important;
+    max-width: 500px;
 }
 .getinTouch h2{
     font-size: 48px;
@@ -568,7 +576,6 @@ body{
     padding: 25px 35px !important;
     border: 5px solid rgb(255, 255, 255);
     box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 30px 30px -20px;
-    margin: 20px !important;
 }
 
 .heading {
@@ -730,8 +737,8 @@ body{
         padding: 50px 30px !important;
         flex-direction: column;
     }
-    .getinTouch, .seeMoreCon{
-    width: 100%;
+    .getinTouch, .sendMessageCon{
+        width: 100%;
     }
 
 }
