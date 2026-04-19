@@ -339,8 +339,9 @@ body{
     color: white;
 }
 .sec4{
-     background-color: #F2F4F6;
+    background-color: #F2F4F6;
     padding: 100px 150px !important;
+    overflow:hidden;
 }
 .mainProjectContainer{
     display: flex;
@@ -461,7 +462,8 @@ body{
     transform: scale(1.1);
     background-color: #141d2b;
 }
-.sec5{
+.sec5{   
+    overflow:hidden;
     padding: 100px 150px !important;
     background-color: #F7F9FB;
     margin: 0 auto !important;
@@ -510,7 +512,8 @@ body{
     font-weight: 600;
     margin: 30px 0 !important;
 }
-.sec6{
+.sec6{    
+    overflow:hidden;
     background-color: #F2F4F6;
     display: flex;
     padding: 100px 150px !important;
@@ -649,6 +652,7 @@ body{
 footer{
     background-color: #F2F4F6;
     color: #64748B;
+    overflow:hidden;
     text-align: center;
     padding: 50px !important;
     font-size: 14px;
