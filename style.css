@@ -486,6 +486,7 @@ body{
 }
 .projectCon article{
     font-size: 15px;
+    color: var(--text-primary);
 }
 .viewProject{
     color: var(--text-primary);
