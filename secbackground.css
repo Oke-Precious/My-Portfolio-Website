@@ -2094,3 +2094,46 @@
     transform: translateY(0);
   }
 }
+
+.cursor-star {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  pointer-events: none;
+  z-index: 10;
+  transition: opacity 0.3s ease;
+}
+
+#star-0 { background: gold; opacity: 1; }
+#star-1 { background: #ff6b6b; opacity: 0.9; }
+#star-2 { background: #4ecdc4; opacity: 0.8; }
+#star-3 { background: #9b59b6; opacity: 0.7; }
+#star-4 { background: silver; opacity: 0.6; }
+#star-5 { background: #f39c12; opacity: 0.5; }
+#star-6 { background: #e74c3c; opacity: 0.4; }
+#star-7 { background: #1abc9c; opacity: 0.3; }
+#star-8 { background: #3498db; opacity: 0.2; }
+#star-9 { background: #9b59b6; opacity: 0.1; }
+
+.code-symbol {
+  position: absolute;
+  font-size: 14px;
+  font-weight: bold;
+  color: #00ff88;
+  pointer-events: none;
+  z-index: 10;
+  transition: opacity 0.3s ease;
+}
+
+#code-0 { opacity: 0.8; }
+#code-1 { opacity: 0.6; }
+#code-2 { opacity: 0.4; }
+#code-3 { opacity: 0.5; }
+#code-4 { opacity: 0.3; }
+#code-5 { opacity: 0.2; }
+#code-6 { opacity: 0.1; }
+
+.code-symbol::before {
+  content: "</>";
+}
