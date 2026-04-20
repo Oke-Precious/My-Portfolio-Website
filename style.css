@@ -41,34 +41,34 @@
 
 /* Dark Theme Overrides */
 .dark-theme {
-    --bg-primary: #0E1B39;
-    --bg-secondary: #152847;
-    --bg-tertiary: #1a2f4f;
-    --bg-gradient: linear-gradient(40deg, #0E1B39 50%, #0d4a42);
-    --bg-navbar: rgba(14, 27, 57, 0.9);
-    --bg-card: #1a2f4f;
+    --bg-primary: #0A1428;
+    --bg-secondary: #0F1F35;
+    --bg-tertiary: #132540;
+    --bg-gradient: linear-gradient(40deg, #0A1428 50%, #0a3a32);
+    --bg-navbar: rgba(10, 20, 40, 0.95);
+    --bg-card: #132540;
     --bg-button: #006A63;
     --bg-button-hover: #004d47;
-    --bg-accent: #0d4a42;
-    --bg-dark: #0a1225;
-    --bg-dark-alt: #152847;
+    --bg-accent: #0a3a32;
+    --bg-dark: #050A15;
+    --bg-dark-alt: #0F1F35;
     --bg-green: #004d47;
-    --bg-green-alt: #0a2a26;
-    --bg-gray: #1e3555;
-    --bg-grey: #1a2f4f;
-    --bg-grey-alt: #152847;
-    --bg-form: linear-gradient(0deg, #1a2f4f 0%, #1e3555 100%);
+    --bg-green-alt: #082220;
+    --bg-gray: #152A40;
+    --bg-grey: #132540;
+    --bg-grey-alt: #0F1F35;
+    --bg-form: linear-gradient(0deg, #132540 0%, #152A40 100%);
     --text-primary: white;
     --text-secondary: #4ade80;
     --text-accent: #6ee7b7;
     --text-light: white;
     --text-muted: #b0b0b0;
     --text-footer: #d1d5db;
-    --border-color: #404040;
-    --shadow-color: rgba(255, 255, 255, 0.1);
-    --box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.05);
-    --input-shadow: rgba(0, 0, 0, 0.3);
-    --button-shadow: rgba(0, 0, 0, 0.4);
+    --border-color: #1a2a40;
+    --shadow-color: rgba(255, 255, 255, 0.08);
+    --box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.03);
+    --input-shadow: rgba(0, 0, 0, 0.4);
+    --button-shadow: rgba(0, 0, 0, 0.5);
 }
 
 /* Smooth transitions for theme changes */
@@ -103,7 +103,6 @@ body{
     right: 3%;
     margin: 0 auto !important;
     display: block;
-    border: solid 2px var(--border-color);
     border-radius: 50px;
 }
 .logo p{
@@ -189,6 +188,10 @@ body{
     border-radius: 20px;
     letter-spacing: 3px;
     color: black;
+}
+
+.dark-theme .available {
+    color: white;
 }
 .fullName{
     overflow: hidden;
