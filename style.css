@@ -41,23 +41,23 @@
 
 /* Dark Theme Overrides */
 .dark-theme {
-    --bg-primary: #1a1a1a;
-    --bg-secondary: #2a2a2a;
-    --bg-tertiary: #333333;
-    --bg-gradient: linear-gradient(40deg, #1a1a1a 50%, #0d4a42);
-    --bg-navbar: rgba(26, 26, 26, 0.8);
-    --bg-card: #2d2d2d;
+    --bg-primary: #0E1B39;
+    --bg-secondary: #152847;
+    --bg-tertiary: #1a2f4f;
+    --bg-gradient: linear-gradient(40deg, #0E1B39 50%, #0d4a42);
+    --bg-navbar: rgba(14, 27, 57, 0.9);
+    --bg-card: #1a2f4f;
     --bg-button: #006A63;
     --bg-button-hover: #004d47;
     --bg-accent: #0d4a42;
-    --bg-dark: #0a0a0a;
-    --bg-dark-alt: #1a1a1a;
+    --bg-dark: #0a1225;
+    --bg-dark-alt: #152847;
     --bg-green: #004d47;
     --bg-green-alt: #0a2a26;
-    --bg-gray: #3a3a3a;
-    --bg-grey: #2a2a2a;
-    --bg-grey-alt: #1a1a1a;
-    --bg-form: linear-gradient(0deg, #2d2d2d 0%, #333333 100%);
+    --bg-gray: #1e3555;
+    --bg-grey: #1a2f4f;
+    --bg-grey-alt: #152847;
+    --bg-form: linear-gradient(0deg, #1a2f4f 0%, #1e3555 100%);
     --text-primary: white;
     --text-secondary: #4ade80;
     --text-accent: #6ee7b7;
@@ -188,7 +188,7 @@ body{
     padding:5px 15px !important;
     border-radius: 20px;
     letter-spacing: 3px;
-    color: white;
+    color: black;
 }
 .fullName{
     overflow: hidden;
@@ -780,6 +780,10 @@ footer{
     }
     .theme-toggle {
         margin-left: auto;
+    }
+    .downloadBtn{
+        padding: 10px 15px !important;
+        font-size: 12px;
     }
     .sec1{
         flex-direction: column;
