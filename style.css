@@ -755,6 +755,11 @@ body{
     background-color: #eaecee;
     border-radius: 10px;
 }
+
+.dark-theme .contact-icon {
+    background-color: #0A1529;
+    color: white;
+}
 .emailMe{
     font-size: 12px;
     font-weight: 600;
