@@ -121,11 +121,14 @@ body{
 }
 .myNav a{
     text-decoration: none;
-    color: var(--text-secondary);
+    color: white;
+    transition: all 0.3s ease;
 }
 .myNav a:hover{
+    color: var(--text-secondary);
     text-decoration: underline;
     text-underline-offset: 5px;
+    transform: scale(1.05);
 }
 .downloadBtn{
     border: none;
@@ -440,13 +443,34 @@ body{
     background-color: var(--bg-gray);
     color: var(--text-primary);
 }
+.dark-theme .bgGray{
+    background-color: #F0F0F0;
+    color: black;
+}
+.dark-theme .bgGray h5{
+    color: black;
+}
+.bgGray .expertiseIcon{
+    color: #006A63;
+}
+.dark-theme .bgGray .expertiseIcon{
+    color: #006A63;
+}
 .bgGray button{
     background-color: var(--bg-card);
     color: var(--text-primary);
 }
+.dark-theme .bgGray button{
+    background-color: white;
+    color: black;
+}
 .bgGray button:hover{
     background-color: var(--text-secondary);
     color: var(--text-light);
+}
+.dark-theme .bgGray button:hover{
+    background-color: #4ade80;
+    color: white;
 }
 .bgGrey{
     background-color: var(--bg-grey);
@@ -608,6 +632,10 @@ body{
     padding: 40px !important;
     border-radius: 5px;
     width: 500px;
+}
+
+.dark-theme .eachService {
+    box-shadow: 0px 8px 24px rgba(31, 181, 132, 0.2);
 }
 .serviceIcon{
     background-color: var(--bg-dark);
