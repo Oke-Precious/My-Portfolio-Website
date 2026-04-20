@@ -347,6 +347,10 @@ body{
     font-weight: 600;
     letter-spacing: 4px;
 }
+
+.dark-theme .secHeader {
+    color: #1fb584;
+}
 .expertise{
     border-radius: 10px;
     padding: 40px !important;
@@ -360,6 +364,19 @@ body{
 .expertise h5{
     font-size: 24px;
     font-weight: 600;
+    color: white;
+}
+
+.dark-theme .expertise h5 {
+    color: white;
+}
+
+.bgWhite h5 {
+    color: black;
+}
+
+.bgGray h5 {
+    color: black;
 }
 .tools button{
     border: none;
@@ -660,6 +677,10 @@ body{
 .emailMe{
     font-size: 12px;
     font-weight: 600;
+    color: black;
+}
+
+.dark-theme .emailMe {
     color: white;
 }
 
