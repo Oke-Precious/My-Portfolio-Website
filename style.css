@@ -377,6 +377,38 @@ body{
 .bgWhite h5 {
     color: black;
 }
+.bgWhite button {
+    background-color: transparent !important;
+    color: black;
+    border: none !important;
+    box-shadow: 0px 3px 15px rgba(128, 128, 128, 0.2) !important;
+    transition: all 0.3s ease !important;
+}
+.bgWhite button:hover {
+    background-color: var(--bg-dark) !important;
+    color: white !important;
+    transform: skew(10deg, 5deg) !important;
+    transition: .4s linear !important;
+    box-shadow: 0px 3px 15px rgba(128, 128, 128, 0.558) !important;
+}
+.dark-theme .bgWhite button {
+    background-color: transparent !important;
+    color: black;
+    border: none !important;
+    box-shadow: 0px 3px 15px rgba(128, 128, 128, 0.2) !important;
+    transition: all 0.3s ease !important;
+}
+.dark-theme .bgWhite button:hover {
+    background-color: var(--bg-dark) !important;
+    color: white !important;
+    transform: skew(10deg, 5deg) !important;
+    transition: .4s linear !important;
+    box-shadow: 0px 3px 15px rgba(128, 128, 128, 0.558) !important;
+}
+}
+.dark-theme .bgWhite .expertiseIcon {
+    color: black;
+}
 
 .bgGray h5 {
     color: black;
@@ -598,11 +630,11 @@ body{
 }
 .dribble{
     border: none;
-    background-color: var(--text-accent);
+    background-color: #013733;
 }
 .dribble:hover{
     transform: scale(1.1);
-    background-color: var(--bg-green);
+    background-color: #0a5a3f;
 }
 .github{
     background-color: var(--bg-dark-alt);
