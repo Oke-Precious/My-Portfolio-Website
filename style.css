@@ -124,6 +124,9 @@ body{
     color: white;
     transition: all 0.3s ease;
 }
+.light-theme .myNav a{
+    color: black;
+}
 .myNav a:hover{
     color: var(--text-secondary);
     text-decoration: underline;
