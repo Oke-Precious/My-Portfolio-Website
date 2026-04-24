@@ -73,20 +73,13 @@
 
 /* Smooth transitions for theme changes */
 * {
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 body{
     overflow-x: hidden;
     background-color: var(--bg-primary);
     color: var(--text-primary);
-}
-
-/* Dark theme star color */
-.dark-theme #stars,
-.dark-theme #stars2,
-.dark-theme #stars3 {
-    filter: brightness(0) invert(1);
 }
 
 /* Dark mode text color overrides */
@@ -128,11 +121,8 @@ body{
 }
 .myNav a{
     text-decoration: none;
-    color: black;
-    transition: all 0.3s ease;
-}
-.dark-theme .myNav a{
     color: white;
+    transition: all 0.3s ease;
 }
 .myNav a:hover{
     color: var(--text-secondary);
@@ -309,14 +299,6 @@ body{
     font-weight: 600;
     font-size: 36px;
 }
-
-.coreCompetencies {
-    color: black;
-}
-
-.dark-theme .coreCompetencies {
-    color: black;
-}
 .buttomLine{
     width: 70px;
     height: 3px;
@@ -395,9 +377,6 @@ body{
 .bgWhite h5 {
     color: black;
 }
-.dark-theme .bgWhite h5 {
-    color: black;
-}
 .bgWhite button {
     background-color: transparent !important;
     color: black;
@@ -425,7 +404,6 @@ body{
     transform: skew(10deg, 5deg) !important;
     transition: .4s linear !important;
     box-shadow: 0px 3px 15px rgba(128, 128, 128, 0.558) !important;
-}
 }
 .dark-theme .bgWhite .expertiseIcon {
     color: black;
@@ -755,11 +733,6 @@ body{
     background-color: #eaecee;
     border-radius: 10px;
 }
-
-.dark-theme .contact-icon {
-    background-color: #0A1529;
-    color: white;
-}
 .emailMe{
     font-size: 12px;
     font-weight: 600;
@@ -781,12 +754,11 @@ body{
     height: 40px;
     width: 40px;
     border-radius: 10px;
-    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease !important;
+    transition: all 0.3s linear;
 }
 .socialMedia a:hover {
-    transform: translateY(-15px) scale(1.25) !important;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4) !important;
-    filter: brightness(1.1);
+    transform: translateY(-15px) scale(1.2);
+    box-shadow: 0 10px 25px var(--shadow-color);
 }
 
 /* ===============SEND MASSAGE FORM=============== */

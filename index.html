@@ -420,7 +420,7 @@
             <div class="sendMessageCon" data-aos="fade-left" data-aos-delay="600">
                 <div class="form-container">
                     <div class="heading">Contact Me</div>
-                    <form action="" class="form">
+                    <form id="contactForm" class="form">
                         <div class="d-flex flex-md-wrap flex-lg-nowrap gap-3">
                             <div class="w-100">
                                 <label for="fullName" class="emailMe">FULL NAME</label>
@@ -443,7 +443,7 @@
                         </div>
                         
         
-                        <input class="login-button" type="submit" value="Send Message">
+                        <input id="submitBtn" class="login-button" type="submit" value="Send Message">
         
                     </form>
         
@@ -474,66 +474,6 @@
 
         <script src="./bootstrap.bundle.js"></script>
         <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-        <script>
-    AOS.init({
-        duration: 800,
-        easing: "ease-in-out",
-        once: true
-    });
-
-//     window.addEventListener("load", () => {
-//     window.scrollTo({
-//       top: 0,
-//     });
-//   });
-
-    const cursorElements = document.querySelectorAll('.cursor-star, .code-symbol');
-    const positions = Array(cursorElements.length).fill().map(() => ({ x: 0, y: 0 }));
-
-    document.addEventListener('mousemove', (e) => {
-        positions[0].x = e.clientX;
-        positions[0].y = e.clientY;
-
-        for (let i = 1; i < positions.length; i++) {
-            positions[i].x += (positions[i-1].x - positions[i].x) * 0.1;
-            positions[i].y += (positions[i-1].y - positions[i].y) * 0.1;
-        }
-
-        cursorElements.forEach((el, i) => {
-            el.style.left = positions[i].x - 6 + 'px';
-            el.style.top = positions[i].y - 7 + 'px';
-        });
-    });
-        </script>
-        <script>
-            // Theme toggle functionality
-            const themeToggle = document.getElementById('theme-toggle');
-            const body = document.body;
-            const icon = themeToggle.querySelector('i');
-
-            // Check for saved theme preference or default to light
-            const currentTheme = localStorage.getItem('theme') || 'light';
-            body.classList.add(currentTheme + '-theme');
-            updateIcon(currentTheme);
-
-            themeToggle.addEventListener('click', () => {
-                const isLight = body.classList.contains('light-theme');
-                const newTheme = isLight ? 'dark' : 'light';
-                
-                body.classList.remove(isLight ? 'light-theme' : 'dark-theme');
-                body.classList.add(newTheme + '-theme');
-                
-                localStorage.setItem('theme', newTheme);
-                updateIcon(newTheme);
-            });
-
-            function updateIcon(theme) {
-                if (theme === 'dark') {
-                    icon.className = 'fas fa-moon';
-                } else {
-                    icon.className = 'fas fa-sun';
-                }
-            }
-        </script>
+        <script src="./main.js"></script>
     </body>
 </html>
