@@ -302,20 +302,13 @@ function initContactForm() {
     if (!form) return;
     
     form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const formData = new FormData(form);
-        const data = {
-            name: formData.get('fullName'),
-            email: formData.get('email'),
-            subject: formData.get('subject'),
-            message: formData.get('aboutProject')
-        };
+        // Let FormSubmit handle the submission
+        // Just show a brief message
+        const submitBtn = document.getElementById('submitBtn');
+        submitBtn.value = 'Sending...';
+        submitBtn.disabled = true;
         
-        // For demo - shows the submitted data
-        // In production, integrate with Formspree, EmailJS, or backend
-        console.log('Form submitted:', data);
-        alert(`Thank you, ${data.name}! Your message has been received. I'll get back to you at ${data.email} soon.`);
-        form.reset();
+        // Form will redirect to FormSubmit success page automatically
     });
 }
 

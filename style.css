@@ -137,6 +137,9 @@ body{
 .light-theme .myNav a{
     color: black;
 }
+.dark-theme .myNav a{
+    color: white;
+}
 .myNav a:hover{
     color: var(--text-secondary);
     text-decoration: underline;
@@ -176,6 +179,16 @@ body{
 .theme-toggle:hover {
     background-color: var(--bg-button-hover);
     transform: rotate(180deg);
+}
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+@media (max-width: 480px) {
+    .nav-actions .downloadBtn {
+        display: none !important;
+    }
 }
 
 
@@ -371,13 +384,13 @@ body{
 .statNumber{
     font-size: 48px;
     font-weight: 700;
-    color: var(--text-secondary);
+    color: var(--text-light);
     margin-bottom: 10px !important;
 }
 .statLabel{
     font-size: 16px;
     letter-spacing: 2px;
-    color: var(--text-muted);
+    color: var(--text-light);
 }
 @media (max-width:768px){
     .statsSection{
@@ -400,7 +413,7 @@ body{
 }
 
 .dark-theme .secHeader {
-    color: #1fb584;
+    color: var(--accent-primary);
 }
 .expertise{
     border-radius: 10px;
@@ -833,6 +846,9 @@ body{
 .dark-theme .emailMe {
     color: white;
 }
+.dark-theme .hamburger span {
+    background-color: white;
+}
 
 .socialMedia a{
     color: var(--text-light);
@@ -977,6 +993,9 @@ footer{
     display: flex;
     gap: 30px;
     align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 .nav-links a {
@@ -1002,14 +1021,30 @@ footer{
 @media (max-width:1024px) {
     .myNav{
         padding:10px 20px !important;
-    }
-    .hamburger {
-        display: flex;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
     }
     .nav-links {
+        display: none !important;
+    }
+    .nav-actions {
+        display: flex !important;
+        align-items: center !important;
+        gap: 10px !important;
+    }
+    .nav-actions .downloadBtn,
+    .nav-actions .theme-toggle {
+        display: none !important;
+    }
+    .hamburger {
+        display: flex !important;
+    }
+    .nav-links.active {
+        display: flex !important;
         position: fixed;
         top: 0;
-        right: -100%;
+        right: 0;
         width: 70%;
         height: 100vh;
         background-color: var(--bg-navbar);
@@ -1019,16 +1054,11 @@ footer{
         transition: right 0.4s ease;
         box-shadow: -5px 0 20px rgba(0,0,0,0.2);
         z-index: 1000;
-    }
-    .nav-links.active {
         right: 0;
     }
     .nav-links a {
         font-size: 20px;
         padding: 15px 0;
-    }
-    .theme-toggle {
-        margin-left: auto;
     }
     .downloadBtn{
         padding: 10px 15px !important;
