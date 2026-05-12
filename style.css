@@ -6,69 +6,79 @@
     /* outline: solid 1px skyblue; */
 }
 
-/* CSS Variables for Theming */
+/* CSS Variables for Theming - Modern Professional Palette */
 :root {
-    /* Light Theme */
-    --bg-primary: white;
-    --bg-secondary: #F2F4F6;
-    --bg-tertiary: #F7F9FB;
-    --bg-gradient: linear-gradient(40deg, white 50%, #bef4ed);
-    --bg-navbar: rgba(255, 255, 255, 0.555);
-    --bg-card: white;
-    --bg-button: #091426;
-    --bg-button-hover: #006A63;
-    --bg-accent: #99EFE5;
-    --bg-dark: #091426;
+    /* Light Theme - Clean & Professional */
+    --bg-primary: #FAFBFC;
+    --bg-secondary: #F0F2F5;
+    --bg-tertiary: #E8EAED;
+    --bg-gradient: linear-gradient(135deg, #FAFBFC 0%, #E8EAED 100%);
+    --bg-navbar: rgba(250, 251, 252, 0.85);
+    --bg-card: #FFFFFF;
+    --bg-button: #1E293B;
+    --bg-button-hover: #0F766E;
+    --bg-accent: #CCFBF1;
+    --bg-dark: #0F172A;
     --bg-dark-alt: #1E293B;
-    --bg-green: #013733;
-    --bg-green-alt: #122b29;
-    --bg-gray: #F0F0F0;
-    --bg-grey: rgb(59, 75, 85);
-    --bg-grey-alt: rgb(46, 56, 61);
-    --bg-form: linear-gradient(0deg, rgb(255, 255, 255) 0%, rgb(244, 247, 251) 100%);
-    --text-primary: black;
-    --text-secondary: #006A63;
-    --text-accent: #158079;
-    --text-light: white;
-    --text-muted: #CED0D4;
+    --bg-green: #134E4A;
+    --bg-green-alt: #1E3A3A;
+    --bg-gray: #F1F5F9;
+    --bg-grey: #475569;
+    --bg-grey-alt: #334155;
+    --bg-form: linear-gradient(0deg, #FFFFFF 0%, #F8FAFC 100%);
+    --text-primary: #0F172A;
+    --text-secondary: #0D9488;
+    --text-accent: #14B8A6;
+    --text-light: #FFFFFF;
+    --text-muted: #64748B;
     --text-footer: #64748B;
-    --border-color: #09142618;
-    --shadow-color: rgba(128, 128, 128, 0.558);
-    --box-shadow: 0px 0px 20px white;
-    --input-shadow: #cff0ff;
-    --button-shadow: #75c7c1ad;
+    --border-color: #E2E8F0;
+    --shadow-color: rgba(15, 23, 42, 0.08);
+    --box-shadow: 0px 4px 20px rgba(15, 23, 42, 0.06);
+    --input-shadow: rgba(15, 23, 42, 0.05);
+    --button-shadow: rgba(13, 148, 136, 0.25);
+    
+    /* Accent Colors */
+    --accent-primary: #0D9488;
+    --accent-light: #14B8A6;
+    --accent-glow: rgba(13, 148, 136, 0.3);
 }
 
-/* Dark Theme Overrides */
+/* Dark Theme Overrides - Premium Deep Blue */
 .dark-theme {
-    --bg-primary: #0A1428;
-    --bg-secondary: #0F1F35;
-    --bg-tertiary: #132540;
-    --bg-gradient: linear-gradient(40deg, #0A1428 50%, #0a3a32);
-    --bg-navbar: rgba(10, 20, 40, 0.95);
-    --bg-card: #132540;
-    --bg-button: #006A63;
-    --bg-button-hover: #004d47;
-    --bg-accent: #0a3a32;
-    --bg-dark: #050A15;
-    --bg-dark-alt: #0F1F35;
-    --bg-green: #004d47;
-    --bg-green-alt: #082220;
-    --bg-gray: #152A40;
-    --bg-grey: #132540;
-    --bg-grey-alt: #0F1F35;
-    --bg-form: linear-gradient(0deg, #132540 0%, #152A40 100%);
-    --text-primary: white;
-    --text-secondary: #4ade80;
-    --text-accent: #6ee7b7;
-    --text-light: white;
-    --text-muted: #b0b0b0;
-    --text-footer: #d1d5db;
-    --border-color: #1a2a40;
-    --shadow-color: rgba(255, 255, 255, 0.08);
-    --box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.03);
-    --input-shadow: rgba(0, 0, 0, 0.4);
-    --button-shadow: rgba(0, 0, 0, 0.5);
+    --bg-primary: #0B1120;
+    --bg-secondary: #111827;
+    --bg-tertiary: #1E293B;
+    --bg-gradient: linear-gradient(135deg, #0B1120 0%, #0F172A 50%, #134E4A 100%);
+    --bg-navbar: rgba(11, 17, 32, 0.9);
+    --bg-card: #151D2E;
+    --bg-button: #0D9488;
+    --bg-button-hover: #14B8A6;
+    --bg-accent: #134E4A;
+    --bg-dark: #060B14;
+    --bg-dark-alt: #111827;
+    --bg-green: #0F2926;
+    --bg-green-alt: #0A1F1C;
+    --bg-gray: #1E293B;
+    --bg-grey: #334155;
+    --bg-grey-alt: #1E293B;
+    --bg-form: linear-gradient(0deg, #151D2E 0%, #1E293B 100%);
+    --text-primary: #F1F5F9;
+    --text-secondary: #2DD4BF;
+    --text-accent: #5EEAD4;
+    --text-light: #F8FAFC;
+    --text-muted: #94A3B8;
+    --text-footer: #94A3B8;
+    --border-color: #1E293B;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.3);
+    --input-shadow: rgba(0, 0, 0, 0.3);
+    --button-shadow: rgba(13, 148, 136, 0.3);
+    
+    /* Dark Accent Colors */
+    --accent-primary: #2DD4BF;
+    --accent-light: #5EEAD4;
+    --accent-glow: rgba(45, 212, 191, 0.4);
 }
 
 /* Smooth transitions for theme changes */
