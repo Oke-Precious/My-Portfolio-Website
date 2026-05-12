@@ -22,14 +22,19 @@
                     <span>Dev</span>
                 </p>
             </div>
-            <ul class="list-unstyled gap-lg-4 gap-md-4 gap-sm-4 d-flex">
-                <a href="#hero"><li>Home</li></a>
-                <a href="#about"><li>ABOUT</li></a>
-                <a href="#skills"><li>SKILLS</li></a>
-                <a href="#projects"><li>PROJECTS</li></a>
-                <a href="#services"><li>SERVICES</li></a>
-                <a href="#contact"><li>CONTACT</li></a>
+            <ul class="nav-links" id="navLinks">
+                <a href="#hero" class="nav-link"><li>Home</li></a>
+                <a href="#about" class="nav-link"><li>ABOUT</li></a>
+                <a href="#skills" class="nav-link"><li>SKILLS</li></a>
+                <a href="#projects" class="nav-link"><li>PROJECTS</li></a>
+                <a href="#services" class="nav-link"><li>SERVICES</li></a>
+                <a href="#contact" class="nav-link"><li>CONTACT</li></a>
             </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
             <div class="d-flex gap-3">
                 <button class="downloadBtn">Download CV</button>
                 <button id="theme-toggle" class="theme-toggle">
@@ -64,8 +69,7 @@
                     <h1 data-aos="zoom-in">
                         <span class="fullName">Oke Precious.</span>
                         <br>
-                        <span class="profession">Full Stack</span>
-                        <br> Developer,
+                        <span class="profession"><span id="typedText"></span></span>
                     </h1>
                     <h2 data-aos="zoom-in" data-aos-delay="200">Graphics, UI & UX Designer</h2>
                 </div>
@@ -101,6 +105,27 @@
                         <h4 data-aos="fade-up" data-aos-delay="300">10+</h4>
                         <p data-aos="fade-up" data-aos-delay="500">PROJECTS COMPLETED</p>
                     </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="statsSection">
+            <div class="statsContainer">
+                <div class="statItem" data-aos="fade-up">
+                    <div class="statNumber" data-count="10">0</div>
+                    <div class="statLabel">Projects Completed</div>
+                </div>
+                <div class="statItem" data-aos="fade-up" data-aos-delay="200">
+                    <div class="statNumber" data-count="8">0</div>
+                    <div class="statLabel">Happy Clients</div>
+                </div>
+                <div class="statItem" data-aos="fade-up" data-aos-delay="400">
+                    <div class="statNumber" data-count="2">0</div>
+                    <div class="statLabel">Years Experience</div>
+                </div>
+                <div class="statItem" data-aos="fade-up" data-aos-delay="600">
+                    <div class="statNumber" data-count="5">0</div>
+                    <div class="statLabel">Awards Won</div>
                 </div>
             </div>
         </section>
@@ -238,6 +263,11 @@
                 <div class="projectCon1 projectCon" data-aos="fade-up">
                     <div class="projectImgCon">
                         <img src="./media/preciousbank.png" alt="">
+                        <div class="techBadges">
+                            <span class="techBadge">HTML</span>
+                            <span class="techBadge">CSS</span>
+                            <span class="techBadge">JavaScript</span>
+                        </div>
                     </div>
                     <div class="p-4">
                         <header class="secHeader" data-aos="fade-right" data-aos-delay="200"><i class="fa fab fa-html5 text-danger"></i> + <i class="fab fab fa-css3 text-primary"></i> + <i class="fab fab fa-js text-light"></i></header>
@@ -261,6 +291,10 @@
                 <div class=" projectCon projectCon2" data-aos="fade-up" data-aos-delay="200">
                     <div class="projectImgCon">
                         <img src="./media/beanscene.png" alt="">
+                        <div class="techBadges">
+                            <span class="techBadge">HTML</span>
+                            <span class="techBadge">CSS</span>
+                        </div>
                     </div>
                     <div class=" p-4">
                         <header class="secHeader" data-aos="fade-right" data-aos-delay="200"><i class="fa fab fa-html5 text-danger"></i> + <i class="fab fab fa-css3 text-primary"></i></header>
@@ -284,6 +318,10 @@
                 <div class=" projectCon projectCon2" data-aos="fade-up" data-aos-delay="300">
                     <div class="projectImgCon">
                         <img src="./media/specialhotel.png" alt="">
+                        <div class="techBadges">
+                            <span class="techBadge">HTML</span>
+                            <span class="techBadge">CSS</span>
+                        </div>
                     </div>
                     <div class=" p-4">
                         <header class="secHeader" data-aos="fade-right" data-aos-delay="200"><i class="fa fab fa-html5 text-danger"></i> + <i class="fab fab fa-css3 text-primary"></i></header>
@@ -338,7 +376,7 @@
                 <div class="eachService" data-aos="fade-up">
                     <button class="serviceIcon"><i class="fas fa-terminal"></i></button>
                     <h5>Full Stack Web Development</h5>
-                    <p>Scalable, secure, and lightning-fastweb applications built with modern frameworks and best practices.</p>
+                    <p>Scalable, secure, and lightning-fast web applications built with modern frameworks and best practices.</p>
                 </div>
 
                 <div class="eachService" data-aos="fade-up" data-aos-delay="200">
@@ -407,7 +445,7 @@
                 </div>
         
                 <div class="d-flex gap-3 flex-wrap socialMedia">
-                    <a href="#" data-aos="zoom-in"><i class="fab- fas fa-share-alt"></i></a>
+                    <a href="mailto:okeprecido@gmail.com" data-aos="zoom-in"><i class="fas fa-envelope"></i></a>
                     <a href="https://www.linkedin.com/in/oke-precious-581ba5402/" target="_blank" data-aos="zoom-in" data-aos-delay="200" style="background-color: #0a66c2;" ><i class="fab fa-linkedin-in"></i></a>
                     <a href="https://x.com/specrpt" target="_blank" data-aos="zoom-in" data-aos-delay="300" style="background-color: #000000;"><i class="fab fa-x-twitter"></i></a>
                     <a href="https://wa.me/+2348101238416" target="_blank" data-aos="zoom-in" data-aos-delay="400" style="background-color: #25d366;"><i class="fab fa-whatsapp"></i></a>
