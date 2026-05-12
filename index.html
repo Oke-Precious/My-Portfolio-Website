@@ -1,506 +1,638 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Dev Precious | FullStack Developer</title>
-        <link rel="stylesheet" href="./style.css">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-        <link rel="stylesheet" href="./secbackground.css">
-        <link rel="icon" href="./media/mypic.png">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
-        <link rel="preload" as="image" href="./media/specialdev.png">
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-        <style>
-            @font-face { font-family: 'Poppins'; font-display: swap; }
-        </style>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-        <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-    </head>
-    
-    <body class="light-theme">
-        <nav data-aos="fade-down" class="navbar myNav  shadow shadow-lg">
-            <div class="logo">
-                <p>Special
-                    <span>Dev</span>
-                </p>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Oke Precious - FullStack Developer specializing in MERN stack, UI/UX design, and web development. Building scalable, modern web applications.">
+    <meta name="keywords"
+        content="FullStack Developer, MERN Stack, React, Node.js, UI/UX Designer, Web Developer, Nigeria">
+    <meta name="author" content="Oke Precious">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="Dev Precious | FullStack Developer">
+    <meta property="og:description"
+        content="Building scalable, modern web applications with clean code and stunning design.">
+    <meta property="og:image" content="./media/mypic.png">
+    <meta property="og:url" content="https://yourwebsite.com">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Dev Precious | FullStack Developer">
+    <meta name="twitter:description"
+        content="Building scalable, modern web applications with clean code and stunning design.">
+
+    <title>Dev Precious | FullStack Developer</title>
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="./secbackground.css">
+    <link rel="icon" href="./media/mypic.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preload" as="style"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+    <link rel="preload" as="image" href="./media/specialdev.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'Poppins';
+            font-display: swap;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+</head>
+
+<body class="light-theme">
+    <nav data-aos="fade-down" class="navbar myNav  shadow shadow-lg">
+        <div class="logo">
+            <p>Special
+                <span>Dev</span>
+            </p>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <a href="#hero" class="nav-link">
+                <li>Home</li>
+            </a>
+            <a href="#about" class="nav-link">
+                <li>ABOUT</li>
+            </a>
+            <a href="#skills" class="nav-link">
+                <li>SKILLS</li>
+            </a>
+            <a href="#projects" class="nav-link">
+                <li>PROJECTS</li>
+            </a>
+            <a href="#services" class="nav-link">
+                <li>SERVICES</li>
+            </a>
+            <a href="#contact" class="nav-link">
+                <li>CONTACT</li>
+            </a>
+        </ul>
+        <div class="nav-actions">
+            <button class="downloadBtn">Download CV</button>
+            <button id="theme-toggle" class="theme-toggle">
+                <i class="fas fa-sun"></i>
+            </button>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
-            <ul class="nav-links" id="navLinks">
-                <a href="#hero" class="nav-link"><li>Home</li></a>
-                <a href="#about" class="nav-link"><li>ABOUT</li></a>
-                <a href="#skills" class="nav-link"><li>SKILLS</li></a>
-                <a href="#projects" class="nav-link"><li>PROJECTS</li></a>
-                <a href="#services" class="nav-link"><li>SERVICES</li></a>
-                <a href="#contact" class="nav-link"><li>CONTACT</li></a>
-            </ul>
-            <div class="nav-actions">
+        </div>
+    </nav>
+    <section class="sec1" id="hero">
+        <div class="bgStars" id="stars"></div>
+        <div class="bgStars" id="stars2"></div>
+        <div class="bgStars" id="stars3"></div>
+        <div class="cursor-star" id="star-0"></div>
+        <div class="cursor-star" id="star-1"></div>
+        <div class="cursor-star" id="star-2"></div>
+        <div class="code-symbol" id="code-3"></div>
+        <div class="cursor-star" id="star-3"></div>
+        <div class="cursor-star" id="star-4"></div>
+        <div class="code-symbol" id="code-4"></div>
+        <div class="cursor-star" id="star-5"></div>
+        <div class="cursor-star" id="star-6"></div>
+        <div class="code-symbol" id="code-0"></div>
+        <div class="code-symbol" id="code-1"></div>
+        <div class="code-symbol" id="code-2"></div>
+        <div class="cursor-star" id="star-7"></div>
+        <div class="code-symbol" id="code-5"></div>
+        <div class="cursor-star" id="star-8"></div>
+        <div class="code-symbol" id="code-6"></div>
+        <div class="cursor-star" id="star-9"></div>
+        <div class="subsec1">
+            <div class="available" data-aos="fade-up">AVAILABLE FOR PROJECTS</div>
+            <div class="myName">
+                <h1 data-aos="zoom-in">
+                    <span class="fullName">Oke Precious.</span>
+                    <br>
+                    <span class="profession"><span id="typedText"></span></span>
+                </h1>
+            </div>
+            <p class="aboutMe" data-aos="fade-up" data-aos-delay="400">I design digital experiences that blend
+                high-performance code with clean, polished visuals making complex ideas feel simple, engaging, and easy
+                to understand.</p>
+            <div data-aos="fade-up" data-aos-delay="600" class="sec1BtnCon d-flex gap-3 ">
                 <button class="downloadBtn">Download CV</button>
-                <button id="theme-toggle" class="theme-toggle">
-                    <i class="fas fa-sun"></i>
-                </button>
-                <div class="hamburger" id="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                <a href="https://wa.me/+2348101238416" target="_blank"><button class="hireMeBtn">Hire Me</button></a>
+
+            </div>
+        </div>
+        <div class="subsec1">
+            <div class="myProfile" data-aos="zoom-in" data-aos-delay="300">
+                <div class="expYears" data-aos="zoom-in" data-aos-delay="700">
+                    <h3>1+ Years</h3>
+                    <p>Experience</p>
                 </div>
             </div>
-        </nav>
-        <section class="sec1" id="hero">
-            <div class="bgStars" id="stars"></div>
-            <div class="bgStars" id="stars2"></div>
-            <div class="bgStars" id="stars3"></div>
-            <div class="cursor-star" id="star-0"></div>
-            <div class="cursor-star" id="star-1"></div>
-            <div class="cursor-star" id="star-2"></div>
-            <div class="code-symbol" id="code-3"></div>
-            <div class="cursor-star" id="star-3"></div>
-            <div class="cursor-star" id="star-4"></div>
-            <div class="code-symbol" id="code-4"></div>
-            <div class="cursor-star" id="star-5"></div>
-            <div class="cursor-star" id="star-6"></div>
-            <div class="code-symbol" id="code-0"></div>
-            <div class="code-symbol" id="code-1"></div>
-            <div class="code-symbol" id="code-2"></div>
-            <div class="cursor-star" id="star-7"></div>
-            <div class="code-symbol" id="code-5"></div>
-            <div class="cursor-star" id="star-8"></div>
-            <div class="code-symbol" id="code-6"></div>
-            <div class="cursor-star" id="star-9"></div>
-            <div class="subsec1">
-                <div class="available" data-aos="fade-up">AVAILABLE FOR PROJECTS</div>
-                <div class="myName">
-                    <h1 data-aos="zoom-in">
-                        <span class="fullName">Oke Precious.</span>
-                        <br>
-                        <span class="profession"><span id="typedText"></span></span>
-                    </h1>
+        </div>
+    </section>
+
+    <section id="about" class="sec2 d-flex justify-content-between">
+        <div class="subsec2" data-aos="fade-right">
+            <h3 class="secTitle">The Digital
+                <br>Curator
+            </h3>
+            <div class="buttomLine mb-5"></div>
+        </div>
+        <div class="subsec2">
+            <p class="specialize" data-aos="fade-left" data-aos-delay="200">I specialize in building robust, scalable
+                web applications that don't just function. they inspire. My journey began in the world of print and
+                branding, giving me a unique perspective on user interface hierarchy and visual balance.</p>
+            <p class="description my-4" data-aos="fade-left" data-aos-delay="300">As a Full Stack Developer, I treat my
+                code like a design composition: clean, efficient, and intentional. From architecting complex backend
+                systems to fine-tuning the kerning of a hero headline, I ensure every pixel and every line of code
+                serves a purpose.</p>
+            <div class="d-flex mt-5">
+                <a href="https://github.com/Oke-Precious" class="projectNum" target="_blank">
+                    <h4 data-aos="fade-up" data-aos-delay="300">10+</h4>
+                    <p data-aos="fade-up" data-aos-delay="500">PROJECTS COMPLETED</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="statsSection">
+        <div class="statsContainer">
+            <div class="statItem" data-aos="fade-up">
+                <div class="statNumber" data-count="10">0</div>
+                <div class="statLabel">Projects Completed</div>
+            </div>
+            <div class="statItem" data-aos="fade-up" data-aos-delay="200">
+                <div class="statNumber" data-count="8">0</div>
+                <div class="statLabel">Happy Clients</div>
+            </div>
+            <div class="statItem" data-aos="fade-up" data-aos-delay="400">
+                <div class="statNumber" data-count="2">0</div>
+                <div class="statLabel">Years Experience</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="sec3">
+        <header class="secHeader" data-aos="fade-right">EXPERTISE</header>
+        <h3 class="secTitle coreCompetencies my-3 mb-5" data-aos="fade-right" data-aos-delay="200">Core Competencies
+        </h3>
+        <div class="d-lg-flex d-md-flex d-sm-flex gap-lg-5 gap-md-3 gap-sm-5 flex-wrap justify-content-lg-between">
+            <div class="expertise shadow  mt-3 bgWhite" data-aos="fade-right">
+                <div class="d-flex align-items-center gap-4 mb-lg-5 mb-md-5 mb-5">
+                    <i class="fas fa-code expertiseIcon "></i>
+                    <h5>Frontend Development</h5>
                 </div>
-                <p class="aboutMe" data-aos="fade-up" data-aos-delay="400">I design digital experiences that blend high-performance code with clean, polished visuals making complex ideas feel simple, engaging, and easy to understand.</p>
-                <div data-aos="fade-up" data-aos-delay="600" class="sec1BtnCon d-flex gap-3 ">
-                    <button class="downloadBtn">Download CV</button>
-                    <a href="https://wa.me/+2348101238416" target="_blank"><button class="hireMeBtn">Hire Me</button></a>
-                    
+                <div class="tools">
+                    <button data-aos="fade-up">
+                        <i class="fab fa-html5"></i> HTML5
+                    </button>
+                    <button data-aos="fade-up" data-aos-delay="200">
+                        <i class="fab fa-css3-alt"></i> CSS
+                    </button>
+                    <button data-aos="fade-up" data-aos-delay="400">
+                        <i class="fab fa-js"></i> JavaScript ES6+
+                    </button>
+                    <button data-aos="fade-up" data-aos-delay="600">
+                        <i class="fab fa-react"></i> REACT
+                    </button>
+                    <button data-aos="fade-up" data-aos-delay="800">
+                        <i class="fab fa-bootstrap"></i>Bootstrap
+                    </button>
+                    <button data-aos="fade-up" data-aos-delay="1000">
+                        <i class="fas fa-wind"></i>Tailwind CSS
+                    </button>
                 </div>
             </div>
-            <div class="subsec1">
-                <div class="myProfile" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="expYears" data-aos="zoom-in" data-aos-delay="700">
-                        <h3>1+ Years</h3>
-                        <p>Experience</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="about" class="sec2 d-flex justify-content-between">
-            <div class="subsec2" data-aos="fade-right">
-                <h3 class="secTitle">The Digital
-                    <br>Curator
-                </h3>
-                <div class="buttomLine mb-5"></div>
-            </div>
-            <div class="subsec2">
-                <p class="specialize" data-aos="fade-left" data-aos-delay="200">I specialize in building robust, scalable web applications that don't just function. they inspire. My journey began in the world of print and branding, giving me a unique perspective on user interface hierarchy and visual balance.</p>
-                <p class="description my-4" data-aos="fade-left" data-aos-delay="300">As a Full Stack Developer, I treat my code like a design composition: clean, efficient, and intentional. From architecting complex backend systems to fine-tuning the kerning of a hero headline, I ensure every pixel and every line of code serves a purpose.</p>
-                <div class="d-flex mt-5">
-                    <a href="https://github.com/Oke-Precious" class="projectNum" target="_blank">
-                        <h4 data-aos="fade-up" data-aos-delay="300">10+</h4>
-                        <p data-aos="fade-up" data-aos-delay="500">PROJECTS COMPLETED</p>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <section class="statsSection">
-            <div class="statsContainer">
-                <div class="statItem" data-aos="fade-up">
-                    <div class="statNumber" data-count="10">0</div>
-                    <div class="statLabel">Projects Completed</div>
-                </div>
-                <div class="statItem" data-aos="fade-up" data-aos-delay="200">
-                    <div class="statNumber" data-count="8">0</div>
-                    <div class="statLabel">Happy Clients</div>
-                </div>
-                <div class="statItem" data-aos="fade-up" data-aos-delay="400">
-                    <div class="statNumber" data-count="2">0</div>
-                    <div class="statLabel">Years Experience</div>
-                </div>
-                </div>
-        </section>
-
-        <section id="skills" class="sec3" >
-            <header class="secHeader" data-aos="fade-right">EXPERTISE</header>
-            <h3 class="secTitle coreCompetencies my-3 mb-5" data-aos="fade-right" data-aos-delay="200">Core Competencies</h3>
-            <div class="d-lg-flex d-md-flex d-sm-flex gap-lg-5 gap-md-3 gap-sm-5 flex-wrap justify-content-lg-between">
-                <div class="expertise shadow  mt-3 bgWhite"  data-aos="fade-right">
-                    <div class="d-flex align-items-center gap-4 mb-lg-5 mb-md-5 mb-5">
-                        <i class="fas fa-code expertiseIcon " ></i>
-                        <h5>Frontend Development</h5>
-                    </div>
-                    <div class="tools">
-                        <button data-aos="fade-up">
-                            <i class="fab fa-html5"></i> HTML5
-                        </button>
-                        <button data-aos="fade-up" data-aos-delay="200">
-                            <i class="fab fa-css3-alt"></i> CSS
-                        </button>
-                        <button data-aos="fade-up" data-aos-delay="400">
-                            <i class="fab fa-js"></i> JavaScript ES6+
-                        </button>
-                        <button data-aos="fade-up" data-aos-delay="600">
-                            <i class="fab fa-react"></i> REACT
-                        </button>
-                        <button data-aos="fade-up" data-aos-delay="800">
-                            <i class="fab fa-bootstrap"></i>Bootstrap
-                        </button>
-                        <button data-aos="fade-up" data-aos-delay="1000">
-                            <i class="fas fa-wind"></i>Tailwind CSS
-                        </button>
-                    </div>
-                </div>
-                <div class="expertise shadow  mt-3 bgBlue" data-aos="fade-left" data-aos-delay="300">
-                    <div class="d-flex align-items-center gap-4 mb-lg-5 mb-md-5 mb-5">
-                        <i class="fas fas fa-server expertiseIcon"></i>
-                        <h5>Backend Development</h5>
-                    </div>
-                    <div class="tools">
-                        <button data-aos="fade-up">
-                            <i class="fas fa-fire"></i> Firebase
-                        </button>
-                        <button data-aos="fade-up" data-aos-delay="200">
-                            <i class="fas fa-database"></i> MongoDB
-                        </button>
-                        <button data-aos="fade-up" data-aos-delay="400">
-                            <i class="fas fa-plug"></i> APIs
-                        </button>
-                        <button data-aos="fade-up" data-aos-delay="600">
-                            <i class="fab fa-git-alt"></i> Express.js
-                        </button>
-                        <button data-aos="fade-up" data-aos-delay="800">
-                            <i class="fab fa-node-js"></i> Node.js
-                        </button>
-                    </div>
-                </div>
-                <div class="expertise shadow  mt-3 bgGray" data-aos="fade-right" data-aos-delay="600">
-                    <div class="d-flex align-items-center gap-4 mb-lg-5 mb-md-5 mb-5">
-                        <i class=" fas fa-cogs expertiseIcon"></i>
-                        <h5>MERN Stack</h5>
-                    </div>
-                    <div class="tools">
-                        <button data-aos="fade-up">
-                            <i class="fas fa-database"></i>MongoDB
-                        </button>
-                        <button data-aos="fade-up" data-aos-delay="200">
-                            <i class="fas fa-server"></i>Express
-                        </button>
-                        <button data-aos="fade-up" data-aos-delay="400">
-                            <i class="fab fa-react"></i> React
-                        </button>
-                        <button data-aos="fade-up" data-aos-delay="600">
-                            <i class="fab fa-node-js"></i> Node.JS
-                        </button>
-                    </div>
-                </div>
-                <div class="expertise shadow  mt-3 bgGreen" data-aos="fade-left" data-aos-delay="900">
-                    <div class="d-flex align-items-center gap-4 mb-lg-5 mb-md-5 mb-5">
-                        <i class="fa fa-brush expertiseIcon"></i>
-                        <h5>Design Mastery</h5>
-                    </div>
-                    <div class="tools">
-                        <button data-aos="fade-up">
-                            <i class="fas fa-bezier-curve"></i> CorelDraw
-                        </button>
-                        <button data-aos="fade-up" data-aos-delay="200">
-                            <i class="fas fa-palette"></i> Canva
-                        </button>
-                        <button data-aos="fade-up" data-aos-delay="400">
-                            <i class="fas fa-pen-nib"></i> Photoshop
-                        </button>
-                        <button data-aos="fade-up" data-aos-delay="600">
-                            <i class="fas fa-draw-polygon"></i> PixelLab
-                        </button>
-                        <button data-aos="fade-up" data-aos-delay="800">Figma
-                            <i class="fab fa-figma"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="expertise shadow  mt-3 bgGrey" data-aos="fade-right" data-aos-delay="1200">
-                    <div class="d-flex align-items-center gap-4 mb-lg-5 mb-md-5 mb-5">
-                        <i class="fas fa-tools"></i>
-                        <h5>Tools</h5>
-                    </div>
-                    <div class="tools">
-                        <button data-aos="fade-up">
-                            <i class="fab fa-git-alt"></i> Git
-                        </button>
-                        <button data-aos="fade-up" data-aos-delay="200">
-                            <i class="fab fa-github"></i> GitHub
-                        </button>
-                        <button data-aos="fade-up" data-aos-delay="400">
-                            <i class="fas fa-paper-plane"></i> Postman
-                        </button>
-                        <button data-aos="fade-up" data-aos-delay="600">
-                            <i class="fas fa-laptop-code"></i> VS Code
-                        </button>
-                        <button data-aos="fade-up" data-aos-delay="800">
-                            <i class="fas fa-globe"></i> Deployment
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="projects" class="sec4">
-            <header class="secHeader" data-aos="fade-right">PORTFOLIO</header>
-            <div class="d-lg-flex justify-content-between align-items-center">
-                <h3 class="secTitle" data-aos="fade-up" >Selected Works</h3>
-                <p data-aos="zoom-in" data-aos-delay="200" >A showcase of technical complexity and visual refinement.</p>
-            </div>
-            <div class=" mainProjectContainer">
-                
-                <div class="projectCon1 projectCon" data-aos="fade-up">
-                    <div class="projectImgCon">
-                        <img src="./media/preciousbank.png" alt="Precious Bank Web App" loading="lazy" width="600" height="400">
-                        <div class="techBadges">
-                            <span class="techBadge">HTML</span>
-                            <span class="techBadge">CSS</span>
-                            <span class="techBadge">JavaScript</span>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <header class="secHeader" data-aos="fade-right" data-aos-delay="200"><i class="fa fab fa-html5 text-danger"></i> + <i class="fab fab fa-css3 text-primary"></i> + <i class="fab fab fa-js text-light"></i></header>
-                        <h4 data-aos="fade-right" data-aos-delay="400">Precious Bank Web App</h4>
-                        <article class="mb-3" data-aos="fade-right" data-aos-delay="600">A clean and modern <b>banking web app UI</b> that showcases user-friendly account creation and digital banking interface design.</article>
-                        <div class="d-flex justify-content-between align-items-start">
-                            <a href="https://specialbank.netlify.app/" target="_blank" class="viewProject" data-aos-delay="900" data-aos="fade-up">
-                                <span>View project</span> 
-                                <i class="fa fa-arrow-right"></i>
-                            </a>
-                            <div class="text-center">
-                                <a href="https://github.com/Oke-Precious/Special-Bank-Web-App" target="_blank" class="viewGit" data-aos="fade-up" data-aos-delay="1200">
-                                    <i class="fab fa-github"></i>
-                                    <span>View code</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class=" projectCon projectCon2" data-aos="fade-up" data-aos-delay="200">
-                    <div class="projectImgCon">
-                        <img src="./media/beanscene.png" alt="">
-                        <div class="techBadges">
-                            <span class="techBadge">HTML</span>
-                            <span class="techBadge">CSS</span>
-                        </div>
-                    </div>
-                    <div class=" p-4">
-                        <header class="secHeader" data-aos="fade-right" data-aos-delay="200"><i class="fa fab fa-html5 text-danger"></i> + <i class="fab fab fa-css3 text-primary"></i></header>
-                        <h4 data-aos="fade-right" data-aos-delay="400">Special Bean Scene</h4>
-                        <article class="mb-4" data-aos="fade-right" data-aos-delay="600">Special Bean Scene is a modern coffee website with a clean design, smooth navigation, and a premium café feel.</article>
-                        <div class="d-flex justify-content-between align-items-start">
-                            <a href="https://specialbeanscene.netlify.app/" target="_blank" class="viewProject" data-aos-delay="900" data-aos="fade-up">
-                                <span>View project</span> 
-                                <i class="fa fa-arrow-right"></i>
-                            </a>
-                            <div class="text-center">
-                                <a href="https://github.com/Oke-Precious/SPECIAL-BEAN-SCENE" target="_blank" class="viewGit" data-aos="fade-up" data-aos-delay="1200">
-                                    <i class="fab fa-github"></i>
-                                    <span>View code</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class=" projectCon projectCon2" data-aos="fade-up" data-aos-delay="300">
-                    <div class="projectImgCon">
-                        <img src="./media/specialhotel.png" alt="">
-                        <div class="techBadges">
-                            <span class="techBadge">HTML</span>
-                            <span class="techBadge">CSS</span>
-                        </div>
-                    </div>
-                    <div class=" p-4">
-                        <header class="secHeader" data-aos="fade-right" data-aos-delay="200"><i class="fa fab fa-html5 text-danger"></i> + <i class="fab fab fa-css3 text-primary"></i></header>
-                        <h4 data-aos="fade-right" data-aos-delay="400">Special Hotel Website</h4>
-                        <article class="mb-4" data-aos="fade-right" data-aos-delay="600">A modern and responsive hotel website UI design that delivers a clean booking experience with elegant layouts, smooth navigation, and a premium hospitality feel.</article>
-                        <div class="d-flex justify-content-between align-items-start">
-                            <a href="https://specialhotel.vercel.app/" target="_blank" class="viewProject" data-aos-delay="900" data-aos="fade-up">
-                                <span>View project</span> 
-                                <i class="fa fa-arrow-right"></i>
-                            </a>
-                            <div class="text-center">
-                                <a href="https://github.com/Oke-Precious/Special-Hotel" target="_blank" class="viewGit" data-aos="fade-up" data-aos-delay="1200">
-                                    <i class="fab fa-github"></i>
-                                    <span>View code</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class=" projectCon1 projectCon seeMoreCon d-flex align-items-center" data-aos="zoom-in" data-aos-delay="400">
-                    <div class="seeMore">
-                        <h5 class="">Want to see more of my creative journey?</h5>
-                        <p class="my-4">I've worked with startups and established brands across the globe. <br> Let's build your next big idea together.</p>
-
-                        <div class="d-flex gap-3 mt-3">
-                            <a href="#" target="_blank">
-                                <button class="dribble">Dribble</button>
-                            </a>
-                        
-                            <a href="https://github.com/Oke-Precious" target="_blank">
-                                <button class="github"><i class="fab fa-github"></i> GitHub</button>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                
-                
-                
-            </div>
-        </section>
-
-        <section id="services" class="sec5">
-            <div class="text-center">
-                <header class="secHeader" data-aos="fade-right ">SERVICES</header>
-                <h3 class="secTitle my-3 mb-5" data-aos="fade-right" data-aos-delay="200">How I Can Help You</h3>
-            </div>
-
-            <div class="servicesContainer">
-                
-                <div class="eachService" data-aos="fade-up">
-                    <button class="serviceIcon"><i class="fas fa-terminal"></i></button>
-                    <h5>Full Stack Web Development</h5>
-                    <p>Scalable, secure, and lightning-fast web applications built with modern frameworks and best practices.</p>
-                </div>
-
-                <div class="eachService" data-aos="fade-up" data-aos-delay="200">
-                    <button class="serviceIcon" style="background-color: #006A63;"><i class="fa-solid fa-mobile-screen"></i></button>
-                    <h5>Responsive Web Design</h5>
-                    <p>I ensure your website looks perfect and works seamlessly across all devices and screen sizes.</p>
-                </div>
-
-                <div class="eachService" data-aos="fade-up" data-aos-delay="400">
-                    <button class="serviceIcon bg-secondary"><i class="fa-solid fa-server"></i></button>
+            <div class="expertise shadow  mt-3 bgBlue" data-aos="fade-left" data-aos-delay="300">
+                <div class="d-flex align-items-center gap-4 mb-lg-5 mb-md-5 mb-5">
+                    <i class="fas fas fa-server expertiseIcon"></i>
                     <h5>Backend Development</h5>
-                    <p>I develop secure and scalable server-side systems to handle data, authentication, and application logic.</p>
                 </div>
-
-                <div class="eachService" data-aos="fade-up" data-aos-delay="600">
-                    <button class="serviceIcon bg-danger"><i class="fa-solid fa-plug"></i></button>
-                    <h5>API Development & Integration</h5>
-                    <p>I create and integrate APIs that enable seamless communication between different systems and services.</p>
+                <div class="tools">
+                    <button data-aos="fade-up">
+                        <i class="fas fa-fire"></i> Firebase
+                    </button>
+                    <button data-aos="fade-up" data-aos-delay="200">
+                        <i class="fas fa-database"></i> MongoDB
+                    </button>
+                    <button data-aos="fade-up" data-aos-delay="400">
+                        <i class="fas fa-plug"></i> APIs
+                    </button>
+                    <button data-aos="fade-up" data-aos-delay="600">
+                        <i class="fab fa-git-alt"></i> Express.js
+                    </button>
+                    <button data-aos="fade-up" data-aos-delay="800">
+                        <i class="fab fa-node-js"></i> Node.js
+                    </button>
                 </div>
-
-                <div class="eachService" data-aos="fade-up" data-aos-delay="800">
-                    <button class="serviceIcon text-black" style="background-color: #F2F4F6;"><i class="fa-solid fa-cart-shopping"></i></button>
-                    <h5>E-commerce Website</h5>
-                    <p>I develop online stores with smooth navigation and optimized user experience for better sales</p>
-                </div>
-
-                <div class="eachService" data-aos="fade-up" data-aos-delay="1000">
-                    <button class="serviceIcon bg-warning text-black"><i class="fa-solid fa-arrows-rotate"></i></button>
-                    <h5>Website Redesign</h5>
-                    <p>I transform outdated websites into modern, visually appealing, and high-performing platforms.</p>
-                </div>
-
-                <div class="eachService" data-aos="fade-up" data-aos-delay="1200">
-                    <button class="serviceIcon bg-info text-dark"><i class="fa-solid fa-building-columns"></i></button>
-                    <h5>Banking & Finance UI Design</h5>
-                    <p>I design secure, modern, and intuitive banking and financial interfaces for seamless digital transactions.</p>
-                </div>
-
             </div>
-        </section>
-
-        <section class="sec6" id="contact">
-            <div class="getinTouch">
-                <div class=" ">
-                    <header class="secHeader" data-aos="fade-right">GET IN TOUCH</header>
-                    <h2 class="my-3" data-aos="fade-right" data-aos-delay="200">Let's create something <br> <i>legendary.</i></h2>
-                    <p class="my-3 currently" data-aos="fade-right" data-aos-delay="300">Currently accepting new projects and creative collaborations. <br> I'd love to hear about your vision.</p>
+            <div class="expertise shadow  mt-3 bgGray" data-aos="fade-right" data-aos-delay="600">
+                <div class="d-flex align-items-center gap-4 mb-lg-5 mb-md-5 mb-5">
+                    <i class=" fas fa-cogs expertiseIcon"></i>
+                    <h5>MERN Stack</h5>
                 </div>
-        
-                <div class="my-5">
-                    <div class="d-flex gap-3 my-2 align-items-center" data-aos="fade-right" data-aos-delay="400">
-                        <div class="contact-icon"><i class="fa far fa-envelope"></i></div>
-                        <div>
-                            <p class="emailMe">EMAIL ME</p>
-                            <p class="fw-semibold currently">okeprecido@gmail.com</p>
+                <div class="tools">
+                    <button data-aos="fade-up">
+                        <i class="fas fa-database"></i>MongoDB
+                    </button>
+                    <button data-aos="fade-up" data-aos-delay="200">
+                        <i class="fas fa-server"></i>Express
+                    </button>
+                    <button data-aos="fade-up" data-aos-delay="400">
+                        <i class="fab fa-react"></i> React
+                    </button>
+                    <button data-aos="fade-up" data-aos-delay="600">
+                        <i class="fab fa-node-js"></i> Node.JS
+                    </button>
+                </div>
+            </div>
+            <div class="expertise shadow  mt-3 bgGreen" data-aos="fade-left" data-aos-delay="900">
+                <div class="d-flex align-items-center gap-4 mb-lg-5 mb-md-5 mb-5">
+                    <i class="fa fa-brush expertiseIcon"></i>
+                    <h5>Design Mastery</h5>
+                </div>
+                <div class="tools">
+                    <button data-aos="fade-up">
+                        <i class="fas fa-bezier-curve"></i> CorelDraw
+                    </button>
+                    <button data-aos="fade-up" data-aos-delay="200">
+                        <i class="fas fa-palette"></i> Canva
+                    </button>
+                    <button data-aos="fade-up" data-aos-delay="400">
+                        <i class="fas fa-pen-nib"></i> Photoshop
+                    </button>
+                    <button data-aos="fade-up" data-aos-delay="600">
+                        <i class="fas fa-draw-polygon"></i> PixelLab
+                    </button>
+                    <button data-aos="fade-up" data-aos-delay="800">Figma
+                        <i class="fab fa-figma"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="expertise shadow  mt-3 bgGrey" data-aos="fade-right" data-aos-delay="1200">
+                <div class="d-flex align-items-center gap-4 mb-lg-5 mb-md-5 mb-5">
+                    <i class="fas fa-tools"></i>
+                    <h5>Tools</h5>
+                </div>
+                <div class="tools">
+                    <button data-aos="fade-up">
+                        <i class="fab fa-git-alt"></i> Git
+                    </button>
+                    <button data-aos="fade-up" data-aos-delay="200">
+                        <i class="fab fa-github"></i> GitHub
+                    </button>
+                    <button data-aos="fade-up" data-aos-delay="400">
+                        <i class="fas fa-paper-plane"></i> Postman
+                    </button>
+                    <button data-aos="fade-up" data-aos-delay="600">
+                        <i class="fas fa-laptop-code"></i> VS Code
+                    </button>
+                    <button data-aos="fade-up" data-aos-delay="800">
+                        <i class="fas fa-globe"></i> Deployment
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="sec4">
+        <header class="secHeader" data-aos="fade-right">PORTFOLIO</header>
+        <div class="d-lg-flex justify-content-between align-items-center">
+            <h3 class="secTitle" data-aos="fade-up">Selected Works</h3>
+            <p data-aos="zoom-in" data-aos-delay="200">A showcase of technical complexity and visual refinement.</p>
+        </div>
+        <div class=" mainProjectContainer">
+
+            <div class="projectCon1 projectCon" data-aos="fade-up">
+                <div class="projectImgCon">
+                    <img src="./media/preciousbank.png" alt="Precious Bank Web App" loading="lazy" width="600"
+                        height="400">
+                    <div class="techBadges">
+                        <span class="techBadge">HTML</span>
+                        <span class="techBadge">CSS</span>
+                        <span class="techBadge">JavaScript</span>
+                    </div>
+                </div>
+                <div class="p-4">
+                    <header class="secHeader" data-aos="fade-right" data-aos-delay="200"><i
+                            class="fa fab fa-html5 text-danger"></i> + <i class="fab fab fa-css3 text-primary"></i> + <i
+                            class="fab fab fa-js text-light"></i></header>
+                    <h4 data-aos="fade-right" data-aos-delay="400">Precious Bank Web App</h4>
+                    <article class="mb-3" data-aos="fade-right" data-aos-delay="600">A clean and modern <b>banking web
+                            app UI</b> that showcases user-friendly account creation and digital banking interface
+                        design.</article>
+                    <div class="d-flex justify-content-between align-items-start">
+                        <a href="https://specialbank.netlify.app/" target="_blank" class="viewProject"
+                            data-aos-delay="900" data-aos="fade-up">
+                            <span>View project</span>
+                            <i class="fa fa-arrow-right"></i>
+                        </a>
+                        <div class="text-center">
+                            <a href="https://github.com/Oke-Precious/Special-Bank-Web-App" target="_blank"
+                                class="viewGit" data-aos="fade-up" data-aos-delay="1200">
+                                <i class="fab fa-github"></i>
+                                <span>View code</span>
+                            </a>
                         </div>
                     </div>
-        
-                    <div class="d-flex gap-3 my-4 align-items-center" data-aos="fade-right" data-aos-delay="500">
-                        <div class="contact-icon"><i class="fa far fa-envelope"></i></div>
-                        <div>
-                            <p class="emailMe">LOCATION</p>
-                            <p class="fw-semibold currently">Oyo State, Nigeria (GMT+1)</p>
-                        </div>
-                    </div> 
-                </div>
-        
-                <div class="d-flex gap-3 flex-wrap socialMedia">
-                    <a href="mailto:okeprecido@gmail.com" data-aos="zoom-in"><i class="fas fa-envelope"></i></a>
-                    <a href="https://www.linkedin.com/in/oke-precious-581ba5402/" target="_blank" data-aos="zoom-in" data-aos-delay="200" style="background-color: #0a66c2;" ><i class="fab fa-linkedin-in"></i></a>
-                    <a href="https://x.com/specrpt" target="_blank" data-aos="zoom-in" data-aos-delay="300" style="background-color: #000000;"><i class="fab fa-x-twitter"></i></a>
-                    <a href="https://wa.me/+2348101238416" target="_blank" data-aos="zoom-in" data-aos-delay="400" style="background-color: #25d366;"><i class="fab fa-whatsapp"></i></a>
-                    <a href="https://www.instagram.com/iam_spec1al" target="_blank" data-aos="zoom-in" data-aos-delay="500" style="background-color: #e1306c;"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.facebook.com/psspecial" target="_blank" data-aos="zoom-in" data-aos-delay="600" style="background-color: #1877f2;"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://github.com/Oke-Precious" target="_blank" data-aos="zoom-in" data-aos-delay="700" style="background-color: #333333;"><i class="fab fa-github"></i></a>
                 </div>
             </div>
-        
-            <div class="sendMessageCon" data-aos="fade-left" data-aos-delay="600">
-                <div class="form-container">
-                    <div class="heading">Contact Me</div>
-                    <form id="contactForm" class="form">
-                        <input type="hidden" name="_subject" value="New Portfolio Contact">
-                        <input type="text" name="_honey" style="display:none">
-                        <input type="hidden" name="_captcha" value="false">
-                        <div class="d-flex flex-md-wrap flex-lg-nowrap gap-3">
-                            <div class="w-100">
-                                <label for="fullName" class="emailMe">FULL NAME</label>
-                                <input required="" class="input" type="text" name="fullName" id="fullName" placeholder="Oke Precious">
-                            </div>
-                            <div class="w-100">
-                                <label for="email" class="emailMe">EMAIL</label>
-                                <input required="" class="input" type="email" name="email" id="email" placeholder="okeprecido@gmail.com">
-                            </div>
-                        </div>
 
-                        <div class="w-100 my-3">
-                            <label for="subject" class="emailMe">SUBJECT</label>
-                            <input required="" class="input" type="text" name="subject" id="subject" placeholder="Project Inquiry">
+            <div class=" projectCon projectCon2" data-aos="fade-up" data-aos-delay="200">
+                <div class="projectImgCon">
+                    <img src="./media/beanscene.png" alt="">
+                    <div class="techBadges">
+                        <span class="techBadge">HTML</span>
+                        <span class="techBadge">CSS</span>
+                    </div>
+                </div>
+                <div class=" p-4">
+                    <header class="secHeader" data-aos="fade-right" data-aos-delay="200"><i
+                            class="fa fab fa-html5 text-danger"></i> + <i class="fab fab fa-css3 text-primary"></i>
+                    </header>
+                    <h4 data-aos="fade-right" data-aos-delay="400">Special Bean Scene</h4>
+                    <article class="mb-4" data-aos="fade-right" data-aos-delay="600">Special Bean Scene is a modern
+                        coffee website with a clean design, smooth navigation, and a premium café feel.</article>
+                    <div class="d-flex justify-content-between align-items-start">
+                        <a href="https://specialbeanscene.netlify.app/" target="_blank" class="viewProject"
+                            data-aos-delay="900" data-aos="fade-up">
+                            <span>View project</span>
+                            <i class="fa fa-arrow-right"></i>
+                        </a>
+                        <div class="text-center">
+                            <a href="https://github.com/Oke-Precious/SPECIAL-BEAN-SCENE" target="_blank" class="viewGit"
+                                data-aos="fade-up" data-aos-delay="1200">
+                                <i class="fab fa-github"></i>
+                                <span>View code</span>
+                            </a>
                         </div>
-                        
-                        <div class="w-100 my-3">
-                            <label for="aboutProject" class="emailMe">ABOUT YOUR PROJECT</label>
-                            <textarea required="" class="input aboutProject" name="aboutProject" id="aboutProject" placeholder="Tell me about your project...">Hello Oke Precious...</textarea>
-                        </div>
-                        
-        
-                        <input id="submitBtn" class="login-button" type="submit" value="Send Message">
-        
-                    </form>
-        
+                    </div>
                 </div>
             </div>
-        </section>
 
-        <footer data-aos="fade-up">© 2026 Oke Precious. Logic & Aesthetic. All Rights Reserved.</footer>
+            <div class=" projectCon projectCon2" data-aos="fade-up" data-aos-delay="300">
+                <div class="projectImgCon">
+                    <img src="./media/specialhotel.png" alt="">
+                    <div class="techBadges">
+                        <span class="techBadge">HTML</span>
+                        <span class="techBadge">CSS</span>
+                    </div>
+                </div>
+                <div class=" p-4">
+                    <header class="secHeader" data-aos="fade-right" data-aos-delay="200"><i
+                            class="fa fab fa-html5 text-danger"></i> + <i class="fab fab fa-css3 text-primary"></i>
+                    </header>
+                    <h4 data-aos="fade-right" data-aos-delay="400">Special Hotel Website</h4>
+                    <article class="mb-4" data-aos="fade-right" data-aos-delay="600">A modern and responsive hotel
+                        website UI design that delivers a clean booking experience with elegant layouts, smooth
+                        navigation, and a premium hospitality feel.</article>
+                    <div class="d-flex justify-content-between align-items-start">
+                        <a href="https://specialhotel.vercel.app/" target="_blank" class="viewProject"
+                            data-aos-delay="900" data-aos="fade-up">
+                            <span>View project</span>
+                            <i class="fa fa-arrow-right"></i>
+                        </a>
+                        <div class="text-center">
+                            <a href="https://github.com/Oke-Precious/Special-Hotel" target="_blank" class="viewGit"
+                                data-aos="fade-up" data-aos-delay="1200">
+                                <i class="fab fa-github"></i>
+                                <span>View code</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class=" projectCon1 projectCon seeMoreCon d-flex align-items-center" data-aos="zoom-in"
+                data-aos-delay="400">
+                <div class="seeMore">
+                    <h5 class="">Want to see more of my creative journey?</h5>
+                    <p class="my-4">I've worked with startups and established brands across the globe. <br> Let's build
+                        your next big idea together.</p>
+
+                    <div class="d-flex gap-3 mt-3">
+                        <a href="#" target="_blank">
+                            <button class="dribble">Dribble</button>
+                        </a>
+
+                        <a href="https://github.com/Oke-Precious" target="_blank">
+                            <button class="github"><i class="fab fa-github"></i> GitHub</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </section>
+
+    <section id="services" class="sec5">
+        <div class="text-center">
+            <header class="secHeader" data-aos="fade-right ">SERVICES</header>
+            <h3 class="secTitle my-3 mb-5" data-aos="fade-right" data-aos-delay="200">How I Can Help You</h3>
+        </div>
+
+        <div class="servicesContainer">
+
+            <div class="eachService" data-aos="fade-up">
+                <button class="serviceIcon"><i class="fas fa-terminal"></i></button>
+                <h5>Full Stack Web Development</h5>
+                <p>Scalable, secure, and lightning-fast web applications built with modern frameworks and best
+                    practices.</p>
+            </div>
+
+            <div class="eachService" data-aos="fade-up" data-aos-delay="200">
+                <button class="serviceIcon" style="background-color: #006A63;"><i
+                        class="fa-solid fa-mobile-screen"></i></button>
+                <h5>Responsive Web Design</h5>
+                <p>I ensure your website looks perfect and works seamlessly across all devices and screen sizes.</p>
+            </div>
+
+            <div class="eachService" data-aos="fade-up" data-aos-delay="400">
+                <button class="serviceIcon bg-secondary"><i class="fa-solid fa-server"></i></button>
+                <h5>Backend Development</h5>
+                <p>I develop secure and scalable server-side systems to handle data, authentication, and application
+                    logic.</p>
+            </div>
+
+            <div class="eachService" data-aos="fade-up" data-aos-delay="600">
+                <button class="serviceIcon bg-danger"><i class="fa-solid fa-plug"></i></button>
+                <h5>API Development & Integration</h5>
+                <p>I create and integrate APIs that enable seamless communication between different systems and
+                    services.</p>
+            </div>
+
+            <div class="eachService" data-aos="fade-up" data-aos-delay="800">
+                <button class="serviceIcon text-black" style="background-color: #F2F4F6;"><i
+                        class="fa-solid fa-cart-shopping"></i></button>
+                <h5>E-commerce Website</h5>
+                <p>I develop online stores with smooth navigation and optimized user experience for better sales</p>
+            </div>
+
+            <div class="eachService" data-aos="fade-up" data-aos-delay="1000">
+                <button class="serviceIcon bg-warning text-black"><i class="fa-solid fa-arrows-rotate"></i></button>
+                <h5>Website Redesign</h5>
+                <p>I transform outdated websites into modern, visually appealing, and high-performing platforms.</p>
+            </div>
+
+            <div class="eachService" data-aos="fade-up" data-aos-delay="1200">
+                <button class="serviceIcon bg-info text-dark"><i class="fa-solid fa-building-columns"></i></button>
+                <h5>Banking & Finance UI Design</h5>
+                <p>I design secure, modern, and intuitive banking and financial interfaces for seamless digital
+                    transactions.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="testimonials" class="sec5">
+        <div class="text-center">
+            <header class="secHeader" data-aos="fade-right">TESTIMONIALS</header>
+            <h3 class="secTitle my-3 mb-5" data-aos="fade-right" data-aos-delay="200">What Clients Say</h3>
+        </div>
+
+        <div class="servicesContainer">
+            <div class="eachService" data-aos="fade-up">
+                <div class="testimonial-quote">
+                    <i class="fas fa-quote-left" style="font-size: 24px; color: var(--text-secondary);"></i>
+                </div>
+                <p class="testimonial-text">"Oke Precious delivered exceptional work on our e-commerce platform. The
+                    attention to detail and code quality exceeded our expectations. Highly recommended!"</p>
+                <div class="testimonial-author">
+                    <h5>Sarah Johnson</h5>
+                    <p>CEO, TechStart Nigeria</p>
+                </div>
+            </div>
+
+            <div class="eachService" data-aos="fade-up" data-aos-delay="200">
+                <div class="testimonial-quote">
+                    <i class="fas fa-quote-left" style="font-size: 24px; color: var(--text-secondary);"></i>
+                </div>
+                <p class="testimonial-text">"Working with Oke was a great experience. He understood our vision perfectly
+                    and delivered a stunning UI that our users love. Professional and timely."</p>
+                <div class="testimonial-author">
+                    <h5>Michael Adebayo</h5>
+                    <p>Founder, Bean Scene Cafe</p>
+                </div>
+            </div>
+
+            <div class="eachService" data-aos="fade-up" data-aos-delay="400">
+                <div class="testimonial-quote">
+                    <i class="fas fa-quote-left" style="font-size: 24px; color: var(--text-secondary);"></i>
+                </div>
+                <p class="testimonial-text">"The banking app interface he designed is clean, intuitive, and secure. Our
+                    customers compliment it constantly. Great attention to user experience."</p>
+                <div class="testimonial-author">
+                    <h5>Chioma Okonkwo</h5>
+                    <p>Product Manager, PreciousBank</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="sec6" id="contact">
+        <div class="getinTouch">
+            <div class=" ">
+                <header class="secHeader" data-aos="fade-right">GET IN TOUCH</header>
+                <h2 class="my-3" data-aos="fade-right" data-aos-delay="200">Let's create something <br>
+                    <i>legendary.</i></h2>
+                <p class="my-3 currently" data-aos="fade-right" data-aos-delay="300">Currently accepting new projects
+                    and creative collaborations. <br> I'd love to hear about your vision.</p>
+            </div>
+
+            <div class="my-5">
+                <div class="d-flex gap-3 my-2 align-items-center" data-aos="fade-right" data-aos-delay="400">
+                    <div class="contact-icon"><i class="fa far fa-envelope"></i></div>
+                    <div>
+                        <p class="emailMe">EMAIL ME</p>
+                        <p class="fw-semibold currently">okeprecido@gmail.com</p>
+                    </div>
+                </div>
+
+                <div class="d-flex gap-3 my-4 align-items-center" data-aos="fade-right" data-aos-delay="500">
+                    <div class="contact-icon"><i class="fa far fa-envelope"></i></div>
+                    <div>
+                        <p class="emailMe">LOCATION</p>
+                        <p class="fw-semibold currently">Oyo State, Nigeria (GMT+1)</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex gap-3 flex-wrap socialMedia">
+                <a href="mailto:okeprecido@gmail.com" data-aos="zoom-in"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/oke-precious-581ba5402/" target="_blank" data-aos="zoom-in"
+                    data-aos-delay="200" style="background-color: #0a66c2;"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://x.com/specrpt" target="_blank" data-aos="zoom-in" data-aos-delay="300"
+                    style="background-color: #000000;"><i class="fab fa-x-twitter"></i></a>
+                <a href="https://wa.me/+2348101238416" target="_blank" data-aos="zoom-in" data-aos-delay="400"
+                    style="background-color: #25d366;"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.instagram.com/iam_spec1al" target="_blank" data-aos="zoom-in" data-aos-delay="500"
+                    style="background-color: #e1306c;"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/psspecial" target="_blank" data-aos="zoom-in" data-aos-delay="600"
+                    style="background-color: #1877f2;"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://github.com/Oke-Precious" target="_blank" data-aos="zoom-in" data-aos-delay="700"
+                    style="background-color: #333333;"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+
+        <div class="sendMessageCon" data-aos="fade-left" data-aos-delay="600">
+            <div class="form-container">
+                <div class="heading">Contact Me</div>
+                <form id="contactForm" class="form">
+                    <input type="hidden" name="_subject" value="New Portfolio Contact">
+                    <input type="text" name="_honey" style="display:none">
+                    <input type="hidden" name="_captcha" value="false">
+                    <div class="d-flex flex-md-wrap flex-lg-nowrap gap-3">
+                        <div class="w-100">
+                            <label for="fullName" class="emailMe">FULL NAME</label>
+                            <input required="" class="input" type="text" name="fullName" id="fullName"
+                                placeholder="Oke Precious">
+                        </div>
+                        <div class="w-100">
+                            <label for="email" class="emailMe">EMAIL</label>
+                            <input required="" class="input" type="email" name="email" id="email"
+                                placeholder="okeprecido@gmail.com">
+                        </div>
+                    </div>
+
+                    <div class="w-100 my-3">
+                        <label for="subject" class="emailMe">SUBJECT</label>
+                        <input required="" class="input" type="text" name="subject" id="subject"
+                            placeholder="Project Inquiry">
+                    </div>
+
+                    <div class="w-100 my-3">
+                        <label for="aboutProject" class="emailMe">ABOUT YOUR PROJECT</label>
+                        <textarea required="" class="input aboutProject" name="aboutProject" id="aboutProject"
+                            placeholder="Tell me about your project...">Hello Oke Precious...</textarea>
+                    </div>
+
+
+                    <input id="submitBtn" class="login-button" type="submit" value="Send Message">
+
+                </form>
+
+            </div>
+        </div>
+    </section>
+
+    <footer data-aos="fade-up">© 2026 Oke Precious. Logic & Aesthetic. All Rights Reserved.</footer>
 
 
 
 
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-        <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-        <script src="./main.js"></script>
-    </body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script src="./main.js"></script>
+</body>
+
 </html>

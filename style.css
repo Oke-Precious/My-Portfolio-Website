@@ -768,6 +768,26 @@ body{
     transform: rotate(0deg) scale(1.1);
     box-shadow: 0 0 30px var(--text-secondary);
 }
+.testimonial-quote {
+    margin-bottom: 20px;
+}
+.testimonial-text {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--text-primary);
+    font-style: italic;
+    margin-bottom: 20px !important;
+}
+.testimonial-author h5 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 5px !important;
+}
+.testimonial-author p {
+    font-size: 14px;
+    color: var(--text-muted);
+}
 
 .dark-theme .eachService {
     box-shadow: 0px 8px 24px rgba(31, 181, 132, 0.2);

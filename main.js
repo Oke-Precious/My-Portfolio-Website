@@ -120,7 +120,7 @@ function initScrollProgress() {
 // 7. TYPING ANIMATION
 // ============================================
 function initTypingAnimation() {
-    const phrases = ['Full Stack Developer', 'Graphics Designer', 'UI/UX Designer', 'Freelancer'];
+    const phrases = ['Full Stack Developer', 'Graphics Designer', 'Freelancer'];
     let phraseIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
@@ -287,9 +287,8 @@ function initDownloadCV() {
     const downloadBtns = document.querySelectorAll('.downloadBtn');
     downloadBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
-            // Replace this with actual CV file path
-            // Example: window.location.href = './media/your-cv.pdf';
-            alert('Please add your CV PDF file to the media folder and update the download link in the code.');
+            e.preventDefault();
+            window.location.href = './media/cv.pdf';
         });
     });
 }
