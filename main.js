@@ -301,14 +301,48 @@ function initContactForm() {
     const form = document.getElementById('contactForm');
     if (!form) return;
     
-    form.addEventListener('submit', (e) => {
-        // Let FormSubmit handle the submission
-        // Just show a brief message
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
         const submitBtn = document.getElementById('submitBtn');
+        const formData = new FormData(form);
+        
         submitBtn.value = 'Sending...';
         submitBtn.disabled = true;
-        
-        // Form will redirect to FormSubmit success page automatically
+
+        try {
+            await fetch('https://formsubmit.co/okeprecido@gmail.com', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+            
+            form.reset();
+            submitBtn.value = 'Send Message';
+            submitBtn.disabled = false;
+            
+            // Show success message
+            const formContainer = form.closest('.form-container');
+            let successMsg = formContainer.querySelector('.success-message');
+            if (!successMsg) {
+                successMsg = document.createElement('div');
+                successMsg.className = 'success-message';
+                successMsg.style.cssText = 'text-align: center; color: #0D9488; font-weight: 600; margin-top: 15px; font-size: 18px;';
+                form.appendChild(successMsg);
+            }
+            successMsg.textContent = '✓ Sent! Thank you for your message.';
+            successMsg.style.display = 'block';
+            
+            setTimeout(() => {
+                successMsg.style.display = 'none';
+            }, 5000);
+            
+        } catch (error) {
+            submitBtn.value = 'Send Message';
+            submitBtn.disabled = false;
+            alert('Something went wrong. Please try again.');
+        }
     });
 }
 
