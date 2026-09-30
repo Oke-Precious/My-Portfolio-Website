@@ -54,6 +54,23 @@ Optimized assets will be generated in the `dist` directory.
 npm run preview
 ```
 
+## 🌐 Deploying to Netlify
+
+This project includes a pre-configured `netlify.toml` and `public/_redirects`.
+
+### Option A: Connected via GitHub (Recommended)
+1. Push your repository to GitHub.
+2. In Netlify, go to **Site configuration > Build & deploy > Continuous deployment**.
+3. Ensure the build settings are:
+   - **Base directory**: (leave blank or `/`)
+   - **Build command**: `npm run build`
+   - **Publish directory**: `dist`
+4. Trigger a new deploy. Netlify will run the build and publish the compiled `dist/` directory.
+
+### Option B: Manual Deploy (Drag & Drop)
+1. Run `npm run build` locally in your terminal.
+2. Drag and drop the generated **`dist`** folder (NOT the root project folder) into Netlify.
+
 ## ⚙️ Configuration & Environment
 
 Refer to `.env.example` for environment variable options:
