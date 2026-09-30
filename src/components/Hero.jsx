@@ -193,13 +193,17 @@ export default function Hero({ onDownloadCV }) {
               <i className="fas fa-arrow-right" style={{ fontSize: '12px' }}></i>
             </button>
 
-            <button
-              onClick={onDownloadCV}
+            <a
+              href={personalInfo.cvDownloadUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="glass-btn-secondary"
+              style={{ textDecoration: 'none' }}
+              title="Download CV as PDF (Live from Google Docs)"
             >
               <i className="fas fa-file-arrow-down"></i>
               <span>Download CV</span>
-            </button>
+            </a>
 
             <button
               onClick={() => scrollTo('contact')}

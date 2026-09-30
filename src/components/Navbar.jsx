@@ -181,18 +181,22 @@ export default function Navbar({ onDownloadCV }) {
 
           {/* Zone 3: Actions (CTA & Mobile Menu) */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-            <button
-              onClick={onDownloadCV}
+            <a
+              href={personalInfo.cvDownloadUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="glass-btn-primary nav-cv-btn"
               style={{
                 padding: '8px 18px',
                 fontSize: '13px',
                 borderRadius: '9999px',
+                textDecoration: 'none',
               }}
+              title="Download CV as PDF (Live from Google Docs)"
             >
               <i className="fas fa-file-arrow-down" style={{ fontSize: '12px' }}></i>
               <span>CV</span>
-            </button>
+            </a>
 
             {/* Mobile Hamburger Button */}
             <button
@@ -317,17 +321,18 @@ export default function Navbar({ onDownloadCV }) {
         </div>
 
         <div style={{ paddingTop: '20px', borderTop: '1px solid var(--glass-border)' }}>
-          <button
-            onClick={(e) => {
-              setIsMenuOpen(false);
-              onDownloadCV(e);
-            }}
+          <a
+            href={personalInfo.cvDownloadUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="glass-btn-primary"
-            style={{ width: '100%', marginBottom: '12px' }}
+            style={{ width: '100%', marginBottom: '12px', textDecoration: 'none' }}
+            onClick={() => setIsMenuOpen(false)}
+            title="Download CV as PDF (Live from Google Docs)"
           >
-            <i className="fas fa-download"></i>
-            <span>Download CV</span>
-          </button>
+            <i className="fas fa-file-arrow-down"></i>
+            <span>Download CV (Live PDF)</span>
+          </a>
 
           <a
             href={personalInfo.whatsappUrl}

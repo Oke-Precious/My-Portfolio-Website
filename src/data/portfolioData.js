@@ -30,6 +30,8 @@ export const personalInfo = {
   twitterUrl: "https://x.com/specrpt",
   instagramUrl: "https://www.instagram.com/iam_spec1al",
   facebookUrl: "https://www.facebook.com/psspecial",
+  cvGoogleDocsUrl: "https://docs.google.com/document/d/1N8M7FYW6SRuLUIko54GP6XQCL00b4c9a4JAcDbY_QcI/edit?usp=drivesdk",
+  cvDownloadUrl: "https://docs.google.com/document/d/1N8M7FYW6SRuLUIko54GP6XQCL00b4c9a4JAcDbY_QcI/export?format=pdf",
   cvPath: "/media/cv.pdf",
   profileImage: "/media/specialdev.png",
   avatarImage: "/media/mypic.png",
