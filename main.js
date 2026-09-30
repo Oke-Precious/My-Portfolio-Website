@@ -340,7 +340,19 @@ function initContactForm() {
         } catch (error) {
             submitBtn.value = 'Send Message';
             submitBtn.disabled = false;
-            alert('Something went wrong. Please try again.');
+            const formContainer = form.closest('.form-container');
+            let errorMsg = formContainer ? formContainer.querySelector('.error-message') : null;
+            if (!errorMsg) {
+                errorMsg = document.createElement('div');
+                errorMsg.className = 'error-message';
+                errorMsg.style.cssText = 'text-align: center; color: #ef4444; font-weight: 600; margin-top: 15px; font-size: 16px;';
+                form.appendChild(errorMsg);
+            }
+            errorMsg.textContent = 'Something went wrong. Please try again.';
+            errorMsg.style.display = 'block';
+            setTimeout(() => {
+                errorMsg.style.display = 'none';
+            }, 5000);
         }
     });
 }
