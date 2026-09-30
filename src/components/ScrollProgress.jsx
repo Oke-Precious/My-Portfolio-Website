@@ -18,15 +18,18 @@ export default function ScrollProgress() {
   return (
     <div
       id="scrollProgress"
+      aria-hidden="true"
       style={{
         position: 'fixed',
         top: 0,
         left: 0,
-        height: '4px',
+        height: '3px',
         width: `${scrollWidth}%`,
-        background: 'linear-gradient(90deg, #006A63, #4ade80)',
+        background: 'linear-gradient(90deg, #00F2FE 0%, #6366F1 50%, #8B5CF6 100%)',
+        boxShadow: '0 0 10px rgba(0, 242, 254, 0.7)',
         zIndex: 9999,
-        transition: 'width 0.1s ease',
+        transition: 'width 0.1s linear',
+        pointerEvents: 'none',
       }}
     />
   );

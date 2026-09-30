@@ -1,0 +1,305 @@
+/**
+ * Futuristic Glassmorphism Design System
+ * Developer Portfolio Architecture for Oke Precious Abioye
+ */
+
+:root {
+  /* Dark-First Palette (Primary Experience) */
+  --glass-bg-base: #060913;
+  --glass-bg-surface: #0a0f1d;
+  --glass-panel: rgba(13, 20, 38, 0.7);
+  --glass-panel-hover: rgba(19, 29, 54, 0.85);
+  --glass-panel-active: rgba(24, 37, 68, 0.95);
+  --glass-nav: rgba(8, 12, 24, 0.82);
+  --glass-card-inner: rgba(255, 255, 255, 0.02);
+  
+  /* Luminous Borders & Highlights */
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-border-hover: rgba(0, 242, 254, 0.35);
+  --glass-border-focus: rgba(99, 102, 241, 0.5);
+  --glass-inner-highlight: inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
+  --glass-inner-subtle: inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+
+  /* Shadows & Glows */
+  --glass-shadow-sm: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
+  --glass-shadow-md: 0 12px 32px -4px rgba(0, 0, 0, 0.5);
+  --glass-shadow-lg: 0 24px 48px -12px rgba(0, 0, 0, 0.65);
+  --accent-cyan-glow: 0 0 25px rgba(0, 242, 254, 0.25);
+  --accent-purple-glow: 0 0 25px rgba(139, 92, 246, 0.25);
+
+  /* Controlled Accent Hierarchy */
+  --cyan-primary: #00F2FE;
+  --cyan-muted: #38BDF8;
+  --cyan-glow: rgba(0, 242, 254, 0.15);
+  --indigo-primary: #6366F1;
+  --violet-primary: #8B5CF6;
+  --teal-primary: #14B8A6;
+  --emerald-live: #10B981;
+
+  /* Typography Colors */
+  --text-head: #F8FAFC;
+  --text-body: #CBD5E1;
+  --text-muted: #94A3B8;
+  --text-dim: #64748B;
+
+  /* Blur Presets */
+  --blur-nav: 18px;
+  --blur-panel: 20px;
+  --blur-card: 16px;
+
+  /* Spacing & Radii */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 250ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 400ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Light Theme Overrides (Intentional, High-Contrast Frosted Glass) */
+.light-theme {
+  --glass-bg-base: #F8FAFC;
+  --glass-bg-surface: #EEF2F6;
+  --glass-panel: rgba(255, 255, 255, 0.78);
+  --glass-panel-hover: rgba(255, 255, 255, 0.95);
+  --glass-panel-active: #FFFFFF;
+  --glass-nav: rgba(248, 250, 252, 0.88);
+  --glass-card-inner: rgba(0, 0, 0, 0.01);
+
+  --glass-border: rgba(15, 23, 42, 0.08);
+  --glass-border-hover: rgba(13, 148, 136, 0.35);
+  --glass-border-focus: rgba(99, 102, 241, 0.4);
+  --glass-inner-highlight: inset 0 1px 0 0 rgba(255, 255, 255, 0.8);
+  --glass-inner-subtle: inset 0 1px 0 0 rgba(0, 0, 0, 0.02);
+
+  --glass-shadow-sm: 0 4px 16px -2px rgba(15, 23, 42, 0.05);
+  --glass-shadow-md: 0 12px 28px -4px rgba(15, 23, 42, 0.08);
+  --glass-shadow-lg: 0 20px 40px -10px rgba(15, 23, 42, 0.12);
+  --accent-cyan-glow: 0 0 20px rgba(13, 148, 136, 0.15);
+  --accent-purple-glow: 0 0 20px rgba(99, 102, 241, 0.15);
+
+  --cyan-primary: #0D9488;
+  --cyan-muted: #0284C7;
+  --cyan-glow: rgba(13, 148, 136, 0.1);
+  --indigo-primary: #4F46E5;
+  --violet-primary: #7C3AED;
+  --teal-primary: #0F766E;
+
+  --text-head: #0F172A;
+  --text-body: #334155;
+  --text-muted: #64748B;
+  --text-dim: #94A3B8;
+}
+
+/* Global Foundation */
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark light;
+}
+
+body {
+  background-color: var(--glass-bg-base);
+  color: var(--text-body);
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Glass Surface Utilities */
+.glass-panel {
+  background: var(--glass-panel);
+  backdrop-filter: blur(var(--blur-panel));
+  -webkit-backdrop-filter: blur(var(--blur-panel));
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-inner-highlight), var(--glass-shadow-md);
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-normal);
+  position: relative;
+}
+
+.glass-panel:hover {
+  border-color: var(--glass-border-hover);
+  box-shadow: var(--glass-inner-highlight), var(--glass-shadow-lg), var(--accent-cyan-glow);
+}
+
+.glass-card {
+  background: var(--glass-panel);
+  backdrop-filter: blur(var(--blur-card));
+  -webkit-backdrop-filter: blur(var(--blur-card));
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-inner-highlight), var(--glass-shadow-sm);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-card:hover {
+  background: var(--glass-panel-hover);
+  border-color: var(--glass-border-hover);
+  box-shadow: var(--glass-inner-highlight), var(--glass-shadow-md);
+  transform: translateY(-3px);
+}
+
+.glass-pill-container {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-full);
+  padding: 4px;
+}
+
+/* Section Container Defaults */
+.section-wrapper {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 100px 24px 60px;
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 768px) {
+  .section-wrapper {
+    padding: 70px 16px 40px;
+  }
+}
+
+/* Section Header Typography */
+.section-kicker {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--cyan-primary);
+  margin-bottom: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.section-kicker::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--cyan-primary), transparent);
+  border-radius: 1px;
+}
+
+.section-title {
+  font-size: clamp(26px, 4vw, 42px);
+  font-weight: 700;
+  color: var(--text-head);
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+  margin-bottom: 14px;
+}
+
+.section-subtitle {
+  font-size: clamp(14px, 1.8vw, 16.5px);
+  color: var(--text-muted);
+  max-width: 680px;
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+/* Buttons System */
+.glass-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 26px;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  background: linear-gradient(135deg, rgba(0, 242, 254, 0.9) 0%, rgba(99, 102, 241, 0.9) 100%);
+  color: #060913;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 4px 20px rgba(0, 242, 254, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  white-space: nowrap;
+}
+
+.glass-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0, 242, 254, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  color: #000;
+}
+
+.glass-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 24px;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  background: var(--glass-panel);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: var(--text-head);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-inner-subtle), var(--glass-shadow-sm);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  white-space: nowrap;
+}
+
+.glass-btn-secondary:hover {
+  background: var(--glass-panel-hover);
+  border-color: var(--glass-border-hover);
+  color: var(--cyan-primary);
+  transform: translateY(-2px);
+}
+
+.glass-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+}
+
+.glass-btn-ghost:hover {
+  color: var(--text-head);
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--glass-border);
+}
+
+/* Reduced Motion Compliance */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+    transform: none !important;
+  }
+}

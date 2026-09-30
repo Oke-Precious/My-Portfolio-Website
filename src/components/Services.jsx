@@ -1,115 +1,96 @@
 import React from 'react';
+import GlassCard from './GlassCard';
+import { services } from '../data/portfolioData';
 
 export default function Services() {
   return (
-    <section id="services" className="sec5">
-      <div className="text-center">
-        <header className="secHeader" data-aos="fade-right">
-          SERVICES
-        </header>
-        <h3 className="secTitle my-3 mb-5" data-aos="fade-right" data-aos-delay="200">
-          How I Can Help You
-        </h3>
+    <section id="services" className="section-wrapper">
+      <div className="section-kicker" data-aos="fade-right">
+        Services & Solutions
+      </div>
+      <h2 className="section-title" data-aos="fade-right" data-aos-delay="100">
+        How I Deliver Value
+      </h2>
+      <p className="section-subtitle" data-aos="fade-right" data-aos-delay="200">
+        Engineered web solutions focused on speed, maintainability, clean architecture, and conversion.
+      </p>
+
+      <div
+        className="services-grid"
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))',
+          gap: '24px',
+        }}
+      >
+        {services.map((srv, idx) => (
+          <GlassCard
+            key={srv.id}
+            data-aos="fade-up"
+            data-aos-delay={(idx % 3) * 100}
+            enableTilt={true}
+            style={{
+              padding: '32px',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between',
+            }}
+          >
+            <div>
+              <div
+                style={{
+                  width: '46px',
+                  height: '46px',
+                  borderRadius: '12px',
+                  background: 'rgba(0, 242, 254, 0.1)',
+                  border: '1px solid rgba(0, 242, 254, 0.25)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: 'var(--cyan-primary)',
+                  fontSize: '18px',
+                  marginBottom: '20px',
+                }}
+              >
+                <i className={srv.icon}></i>
+              </div>
+
+              <h3 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--text-head)', margin: '0 0 12px' }}>
+                {srv.title}
+              </h3>
+
+              <p style={{ fontSize: '14px', color: 'var(--text-body)', lineHeight: 1.65, margin: 0 }}>
+                {srv.description}
+              </p>
+            </div>
+
+            <div
+              style={{
+                marginTop: '24px',
+                paddingTop: '16px',
+                borderTop: '1px solid var(--glass-border)',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px',
+                fontSize: '12px',
+                color: 'var(--cyan-muted)',
+                fontWeight: 600,
+              }}
+            >
+              <span>Production Ready</span>
+              <i className="fas fa-check-circle" style={{ fontSize: '12px' }}></i>
+            </div>
+          </GlassCard>
+        ))}
       </div>
 
-      <div className="servicesContainer">
-        <div className="eachService" data-aos="fade-up">
-          <button className="serviceIcon" aria-label="Full Stack Web Development">
-            <i className="fas fa-terminal"></i>
-          </button>
-          <h5>Full Stack Web Development</h5>
-          <p>
-            Scalable, secure, and lightning-fast web applications built with modern frameworks
-            and best practices.
-          </p>
-        </div>
-
-        <div className="eachService" data-aos="fade-up" data-aos-delay="200">
-          <button
-            className="serviceIcon"
-            style={{ backgroundColor: '#006A63' }}
-            aria-label="Responsive Web Design"
-          >
-            <i className="fa-solid fa-mobile-screen"></i>
-          </button>
-          <h5>Responsive Web Design</h5>
-          <p>
-            I ensure your website looks perfect and works seamlessly across all devices and
-            screen sizes.
-          </p>
-        </div>
-
-        <div className="eachService" data-aos="fade-up" data-aos-delay="400">
-          <button
-            className="serviceIcon bg-secondary"
-            aria-label="Backend Development"
-          >
-            <i className="fa-solid fa-server"></i>
-          </button>
-          <h5>Backend Development</h5>
-          <p>
-            I develop secure and scalable server-side systems to handle data,
-            authentication, and application logic.
-          </p>
-        </div>
-
-        <div className="eachService" data-aos="fade-up" data-aos-delay="600">
-          <button
-            className="serviceIcon bg-danger"
-            aria-label="API Development & Integration"
-          >
-            <i className="fa-solid fa-plug"></i>
-          </button>
-          <h5>API Development & Integration</h5>
-          <p>
-            I create and integrate APIs that enable seamless communication between
-            different systems and services.
-          </p>
-        </div>
-
-        <div className="eachService" data-aos="fade-up" data-aos-delay="800">
-          <button
-            className="serviceIcon text-black"
-            style={{ backgroundColor: '#F2F4F6' }}
-            aria-label="E-commerce Website"
-          >
-            <i className="fa-solid fa-cart-shopping"></i>
-          </button>
-          <h5>E-commerce Website</h5>
-          <p>
-            I develop online stores with smooth navigation and optimized user experience for
-            better sales
-          </p>
-        </div>
-
-        <div className="eachService" data-aos="fade-up" data-aos-delay="1000">
-          <button
-            className="serviceIcon bg-warning text-black"
-            aria-label="Website Redesign"
-          >
-            <i className="fa-solid fa-arrows-rotate"></i>
-          </button>
-          <h5>Website Redesign</h5>
-          <p>
-            I transform outdated websites into modern, visually appealing, and
-            high-performing platforms.
-          </p>
-        </div>
-
-        <div className="eachService" data-aos="fade-up" data-aos-delay="1200">
-          <button
-            className="serviceIcon bg-info text-dark"
-            aria-label="Banking & Finance UI Design"
-          >
-            <i className="fa-solid fa-building-columns"></i>
-          </button>
-          <h5>Banking & Finance UI Design</h5>
-          <p>
-            I design secure, modern, and intuitive banking and financial interfaces for
-            seamless digital transactions.
-          </p>
-        </div>
-      </div>
+      <style>{`
+        @media (max-width: 600px) {
+          .services-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

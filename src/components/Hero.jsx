@@ -1,148 +1,536 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
+import { personalInfo } from '../data/portfolioData';
 
-const PHRASES = ['Full Stack Developer', 'Graphics Designer', 'Freelancer'];
+const ROLES = [
+  'Full-Stack Web Developer',
+  'MERN Stack Engineer',
+  'Frontend Architect',
+  'UI/UX Creative Developer',
+];
 
-export default function Hero({ onDownloadCV, onOpenCVModal }) {
-  const [typedText, setTypedText] = useState('');
-  const cursorElementsRef = useRef([]);
+export default function Hero({ onDownloadCV }) {
+  const [roleText, setRoleText] = useState('');
 
-  // Typing animation effect
+  // Typing animation for roles
   useEffect(() => {
-    let phraseIndex = 0;
-    let charIndex = 0;
+    let roleIdx = 0;
+    let charIdx = 0;
     let isDeleting = false;
     let timeoutId;
 
-    const type = () => {
-      const currentPhrase = PHRASES[phraseIndex];
+    const tick = () => {
+      const currentRole = ROLES[roleIdx];
 
       if (isDeleting) {
-        setTypedText(currentPhrase.substring(0, charIndex - 1));
-        charIndex--;
+        setRoleText(currentRole.substring(0, charIdx - 1));
+        charIdx--;
       } else {
-        setTypedText(currentPhrase.substring(0, charIndex + 1));
-        charIndex++;
+        setRoleText(currentRole.substring(0, charIdx + 1));
+        charIdx++;
       }
 
-      let typeSpeed = isDeleting ? 50 : 100;
+      let speed = isDeleting ? 40 : 80;
 
-      if (!isDeleting && charIndex === currentPhrase.length) {
-        typeSpeed = 2000;
+      if (!isDeleting && charIdx === currentRole.length) {
+        speed = 2200;
         isDeleting = true;
-      } else if (isDeleting && charIndex === 0) {
+      } else if (isDeleting && charIdx === 0) {
         isDeleting = false;
-        phraseIndex = (phraseIndex + 1) % PHRASES.length;
-        typeSpeed = 200;
+        roleIdx = (roleIdx + 1) % ROLES.length;
+        speed = 300;
       }
 
-      timeoutId = setTimeout(type, typeSpeed);
+      timeoutId = setTimeout(tick, speed);
     };
 
-    timeoutId = setTimeout(type, 100);
+    timeoutId = setTimeout(tick, 150);
     return () => clearTimeout(timeoutId);
   }, []);
 
-  // Cursor following animation effect
-  useEffect(() => {
-    if (window.matchMedia && window.matchMedia('(hover: none)').matches) return;
-    const cursorElements = document.querySelectorAll('.cursor-star, .code-symbol');
-    if (!cursorElements.length) return;
-
-    const positions = Array(cursorElements.length)
-      .fill(null)
-      .map(() => ({ x: 0, y: 0 }));
-
-    const handleMouseMove = (e) => {
-      positions[0].x = e.clientX;
-      positions[0].y = e.clientY;
-
-      for (let i = 1; i < positions.length; i++) {
-        positions[i].x += (positions[i - 1].x - positions[i].x) * 0.1;
-        positions[i].y += (positions[i - 1].y - positions[i].y) * 0.1;
-      }
-
-      cursorElements.forEach((el, i) => {
-        el.style.left = positions[i].x - 6 + 'px';
-        el.style.top = positions[i].y - 7 + 'px';
+  const scrollTo = (id) => {
+    const el = document.getElementById(id);
+    if (el) {
+      const topOffset = 85;
+      const elementPosition = el.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - topOffset;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth',
       });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
+    }
+  };
 
   return (
-    <section className="sec1" id="hero">
-      <div className="bgStars" id="stars"></div>
-      <div className="bgStars" id="stars2"></div>
-      <div className="bgStars" id="stars3"></div>
+    <section
+      id="hero"
+      className="section-wrapper"
+      style={{
+        minHeight: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        paddingTop: '130px',
+        paddingBottom: '80px',
+      }}
+    >
+      <div
+        className="hero-grid"
+        style={{
+          display: 'grid',
+          gridTemplateColumns: '1.2fr 0.9fr',
+          gap: '48px',
+          alignItems: 'center',
+          width: '100%',
+        }}
+      >
+        {/* Left Column: Narrative & Call to Actions */}
+        <div data-aos="fade-up" data-aos-duration="700">
+          {/* Live Availability Indicator */}
+          <div
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '10px',
+              padding: '6px 14px',
+              borderRadius: '9999px',
+              background: 'rgba(16, 185, 129, 0.08)',
+              border: '1px solid rgba(16, 185, 129, 0.25)',
+              marginBottom: '24px',
+              fontSize: '12.5px',
+              fontWeight: 500,
+              color: 'var(--text-head)',
+            }}
+          >
+            <span
+              style={{
+                width: '8px',
+                height: '8px',
+                borderRadius: '50%',
+                backgroundColor: '#10B981',
+                boxShadow: '0 0 10px #10B981',
+                display: 'inline-block',
+                animation: 'pulseGlow 2s infinite',
+              }}
+            />
+            <span>Available for new projects & full-time roles</span>
+          </div>
 
-      <div className="cursor-star" id="star-0"></div>
-      <div className="cursor-star" id="star-1"></div>
-      <div className="cursor-star" id="star-2"></div>
-      <div className="code-symbol" id="code-3"></div>
-      <div className="cursor-star" id="star-3"></div>
-      <div className="cursor-star" id="star-4"></div>
-      <div className="code-symbol" id="code-4"></div>
-      <div className="cursor-star" id="star-5"></div>
-      <div className="cursor-star" id="star-6"></div>
-      <div className="code-symbol" id="code-0"></div>
-      <div className="code-symbol" id="code-1"></div>
-      <div className="code-symbol" id="code-2"></div>
-      <div className="cursor-star" id="star-7"></div>
-      <div className="code-symbol" id="code-5"></div>
-      <div className="cursor-star" id="star-8"></div>
-      <div className="code-symbol" id="code-6"></div>
-      <div className="cursor-star" id="star-9"></div>
-
-      <div className="subsec1">
-        <div className="available" data-aos="fade-up">
-          AVAILABLE FOR PROJECTS
-        </div>
-        <div className="myName">
-          <h1 data-aos="zoom-in">
-            <span className="fullName">Oke Precious.</span>
-            <br />
-            <span className="profession">
-              <span id="typedText" style={{ display: 'inline-block', minHeight: '1.2em' }}>
-                {typedText || '\u00A0'}
-              </span>
+          {/* Heading */}
+          <h1
+            style={{
+              fontSize: 'clamp(34px, 5.2vw, 58px)',
+              fontWeight: 800,
+              lineHeight: 1.15,
+              color: 'var(--text-head)',
+              letterSpacing: '-1px',
+              margin: '0 0 16px',
+            }}
+          >
+            Hello, I'm <br />
+            <span
+              style={{
+                background: 'linear-gradient(135deg, #F8FAFC 0%, var(--cyan-primary) 50%, var(--indigo-primary) 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+              }}
+            >
+              {personalInfo.shortName}.
             </span>
           </h1>
-        </div>
-        <p className="aboutMe" data-aos="fade-up" data-aos-delay="400">
-          I design digital experiences that blend high-performance code with clean,
-          polished visuals making complex ideas feel simple, engaging, and easy to
-          understand.
-        </p>
-        <div data-aos="fade-up" data-aos-delay="600" className="sec1BtnCon d-flex gap-3 flex-wrap align-items-center">
-          <button className="downloadBtn" onClick={onDownloadCV}>
-            <i className="fas fa-download me-2"></i> Download CV
-          </button>
-          {onOpenCVModal && (
-            <button
-              onClick={onOpenCVModal}
-              className="hireMeBtn"
-              style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}
-              title="Preview and update resume"
-            >
-              <i className="fas fa-eye"></i> View Resume
-            </button>
-          )}
-          <a href="https://wa.me/+2348101238416" target="_blank" rel="noopener noreferrer">
-            <button className="hireMeBtn">Hire Me</button>
-          </a>
-        </div>
-      </div>
 
-      <div className="subsec1">
-        <div className="myProfile" data-aos="zoom-in" data-aos-delay="300">
-          <div className="expYears" data-aos="zoom-in" data-aos-delay="700">
-            <h3>1+ Years</h3>
-            <p>Experience</p>
+          {/* Typing Animated Subtitle */}
+          <div
+            style={{
+              fontSize: 'clamp(18px, 2.5vw, 24px)',
+              fontWeight: 600,
+              color: 'var(--cyan-muted)',
+              marginBottom: '20px',
+              minHeight: '36px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '4px',
+            }}
+          >
+            <span>{roleText}</span>
+            <span
+              style={{
+                display: 'inline-block',
+                width: '2px',
+                height: '1.1em',
+                backgroundColor: 'var(--cyan-primary)',
+                animation: 'blink 1s infinite',
+              }}
+            />
+          </div>
+
+          {/* Description */}
+          <p
+            style={{
+              fontSize: 'clamp(15px, 1.8vw, 17px)',
+              color: 'var(--text-body)',
+              lineHeight: 1.7,
+              maxWidth: '580px',
+              marginBottom: '32px',
+            }}
+          >
+            {personalInfo.bio}
+          </p>
+
+          {/* Primary Action Row */}
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '14px',
+              flexWrap: 'wrap',
+              marginBottom: '36px',
+            }}
+          >
+            <button
+              onClick={() => scrollTo('projects')}
+              className="glass-btn-primary"
+            >
+              <span>Explore Selected Works</span>
+              <i className="fas fa-arrow-right" style={{ fontSize: '12px' }}></i>
+            </button>
+
+            <button
+              onClick={onDownloadCV}
+              className="glass-btn-secondary"
+            >
+              <i className="fas fa-file-arrow-down"></i>
+              <span>Download CV</span>
+            </button>
+
+            <button
+              onClick={() => scrollTo('contact')}
+              className="glass-btn-ghost"
+              style={{ padding: '12px 18px' }}
+            >
+              <span>Contact Me</span>
+            </button>
+          </div>
+
+          {/* Social Proof Links */}
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '12px',
+              paddingTop: '16px',
+              borderTop: '1px solid var(--glass-border)',
+            }}
+          >
+            <span style={{ fontSize: '13px', color: 'var(--text-muted)' }}>Find me on:</span>
+            <div style={{ display: 'flex', gap: '8px' }}>
+              <a
+                href={personalInfo.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub Profile"
+                style={{
+                  width: '36px',
+                  height: '36px',
+                  borderRadius: '50%',
+                  background: 'rgba(255, 255, 255, 0.04)',
+                  border: '1px solid var(--glass-border)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: 'var(--text-head)',
+                  textDecoration: 'none',
+                  transition: 'all 0.2s ease',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = 'var(--cyan-primary)';
+                  e.currentTarget.style.color = 'var(--cyan-primary)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = 'var(--glass-border)';
+                  e.currentTarget.style.color = 'var(--text-head)';
+                }}
+              >
+                <i className="fab fa-github"></i>
+              </a>
+
+              <a
+                href={personalInfo.linkedinUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn Profile"
+                style={{
+                  width: '36px',
+                  height: '36px',
+                  borderRadius: '50%',
+                  background: 'rgba(255, 255, 255, 0.04)',
+                  border: '1px solid var(--glass-border)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: 'var(--text-head)',
+                  textDecoration: 'none',
+                  transition: 'all 0.2s ease',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = '#0a66c2';
+                  e.currentTarget.style.color = '#0a66c2';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = 'var(--glass-border)';
+                  e.currentTarget.style.color = 'var(--text-head)';
+                }}
+              >
+                <i className="fab fa-linkedin-in"></i>
+              </a>
+
+              <a
+                href={personalInfo.twitterUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="X Twitter Profile"
+                style={{
+                  width: '36px',
+                  height: '36px',
+                  borderRadius: '50%',
+                  background: 'rgba(255, 255, 255, 0.04)',
+                  border: '1px solid var(--glass-border)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: 'var(--text-head)',
+                  textDecoration: 'none',
+                  transition: 'all 0.2s ease',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = 'var(--cyan-primary)';
+                  e.currentTarget.style.color = 'var(--cyan-primary)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = 'var(--glass-border)';
+                  e.currentTarget.style.color = 'var(--text-head)';
+                }}
+              >
+                <i className="fab fa-x-twitter"></i>
+              </a>
+
+              <a
+                href={personalInfo.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp"
+                style={{
+                  width: '36px',
+                  height: '36px',
+                  borderRadius: '50%',
+                  background: 'rgba(255, 255, 255, 0.04)',
+                  border: '1px solid var(--glass-border)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: 'var(--text-head)',
+                  textDecoration: 'none',
+                  transition: 'all 0.2s ease',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = '#25D366';
+                  e.currentTarget.style.color = '#25D366';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = 'var(--glass-border)';
+                  e.currentTarget.style.color = 'var(--text-head)';
+                }}
+              >
+                <i className="fab fa-whatsapp"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Right Column: High-Tech Glass Portrait Composition */}
+        <div
+          data-aos="zoom-in"
+          data-aos-duration="800"
+          style={{
+            position: 'relative',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          {/* Ambient Glow behind the frame */}
+          <div
+            style={{
+              position: 'absolute',
+              width: '90%',
+              height: '90%',
+              borderRadius: '28px',
+              background: 'linear-gradient(135deg, rgba(0, 242, 254, 0.25) 0%, rgba(99, 102, 241, 0.25) 100%)',
+              filter: 'blur(35px)',
+              zIndex: 0,
+            }}
+          />
+
+          {/* Main Futuristic Glass Frame */}
+          <div
+            className="glass-panel"
+            style={{
+              position: 'relative',
+              zIndex: 1,
+              width: '100%',
+              maxWidth: '440px',
+              borderRadius: '28px',
+              overflow: 'hidden',
+              border: '1px solid rgba(255, 255, 255, 0.15)',
+              boxShadow: 'inset 0 1px 0 0 rgba(255, 255, 255, 0.2), 0 25px 50px -12px rgba(0, 0, 0, 0.7)',
+            }}
+          >
+            <div
+              style={{
+                position: 'relative',
+                height: '480px',
+                backgroundImage: `url(${personalInfo.profileImage})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center 15%',
+              }}
+            >
+              {/* Contrast Gradient Scrim */}
+              <div
+                style={{
+                  position: 'absolute',
+                  inset: 0,
+                  background: 'linear-gradient(to top, rgba(6, 9, 19, 0.95) 0%, rgba(6, 9, 19, 0.2) 50%, transparent 100%)',
+                }}
+              />
+
+              {/* Bottom Card Identity Details */}
+              <div
+                style={{
+                  position: 'absolute',
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  padding: '24px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '4px',
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <span style={{ fontSize: '13px', fontWeight: 600, color: 'var(--cyan-primary)' }}>
+                    Computer Science @ LAUTECH
+                  </span>
+                </div>
+                <h3 style={{ fontSize: '20px', fontWeight: 700, color: '#fff', margin: 0 }}>
+                  {personalInfo.name}
+                </h3>
+                <p style={{ fontSize: '13px', color: 'var(--text-muted)', margin: 0 }}>
+                  MERN Stack · REST APIs · UI/UX Design
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Floating Glass Badge 1 (Top Left): React & MERN */}
+          <div
+            className="glass-card"
+            style={{
+              position: 'absolute',
+              top: '8%',
+              left: '-5%',
+              zIndex: 2,
+              padding: '10px 16px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '10px',
+              borderRadius: '16px',
+              boxShadow: '0 12px 28px rgba(0, 0, 0, 0.4)',
+              border: '1px solid rgba(0, 242, 254, 0.3)',
+              background: 'rgba(13, 20, 38, 0.85)',
+            }}
+          >
+            <div
+              style={{
+                width: '32px',
+                height: '32px',
+                borderRadius: '8px',
+                background: 'rgba(97, 218, 251, 0.12)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: '#61DAFB',
+              }}
+            >
+              <i className="fab fa-react" style={{ fontSize: '18px' }}></i>
+            </div>
+            <div>
+              <div style={{ fontSize: '11px', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                Framework
+              </div>
+              <div style={{ fontSize: '13px', fontWeight: 600, color: 'var(--text-head)' }}>
+                React & Node.js
+              </div>
+            </div>
+          </div>
+
+          {/* Floating Glass Badge 2 (Bottom Right): Real Experience */}
+          <div
+            className="glass-card"
+            style={{
+              position: 'absolute',
+              bottom: '8%',
+              right: '-6%',
+              zIndex: 2,
+              padding: '12px 18px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '12px',
+              borderRadius: '16px',
+              boxShadow: '0 12px 28px rgba(0, 0, 0, 0.4)',
+              border: '1px solid rgba(99, 102, 241, 0.3)',
+              background: 'rgba(13, 20, 38, 0.85)',
+            }}
+          >
+            <div
+              style={{
+                width: '36px',
+                height: '36px',
+                borderRadius: '10px',
+                background: 'rgba(99, 102, 241, 0.15)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: 'var(--indigo-primary)',
+              }}
+            >
+              <i className="fas fa-code-branch" style={{ fontSize: '18px' }}></i>
+            </div>
+            <div>
+              <div style={{ fontSize: '18px', fontWeight: 700, color: 'var(--text-head)', lineHeight: 1.1 }}>
+                10+ Projects
+              </div>
+              <div style={{ fontSize: '11.5px', color: 'var(--text-muted)' }}>
+                Shipped & Deployed
+              </div>
+            </div>
           </div>
         </div>
       </div>
+
+      <style>{`
+        @keyframes blink {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0; }
+        }
+        @keyframes pulseGlow {
+          0%, 100% { transform: scale(1); opacity: 1; }
+          50% { transform: scale(1.2); opacity: 0.7; }
+        }
+        @media (max-width: 960px) {
+          .hero-grid {
+            grid-template-columns: 1fr !important;
+            gap: 56px !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

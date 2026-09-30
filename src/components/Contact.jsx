@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
+import GlassCard from './GlassCard';
+import { personalInfo } from '../data/portfolioData';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
     subject: '',
-    aboutProject: 'Hello Oke Precious...',
+    aboutProject: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [status, setStatus] = useState(null); // { type: 'success' | 'error', message: string }
+  const [status, setStatus] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,7 +23,7 @@ export default function Contact() {
     setStatus(null);
 
     const data = new FormData();
-    data.append('_subject', 'New Portfolio Contact');
+    data.append('_subject', `New Portfolio Inquiry: ${formData.subject || 'Collaboration'}`);
     data.append('_captcha', 'false');
     data.append('fullName', formData.fullName);
     data.append('email', formData.email);
@@ -29,7 +31,7 @@ export default function Contact() {
     data.append('aboutProject', formData.aboutProject);
 
     try {
-      await fetch('https://formsubmit.co/okeprecido@gmail.com', {
+      const response = await fetch(`https://formsubmit.co/${personalInfo.email}`, {
         method: 'POST',
         body: data,
         headers: {
@@ -37,254 +39,410 @@ export default function Contact() {
         },
       });
 
-      setStatus({
-        type: 'success',
-        message: '✓ Sent! Thank you for your message.',
-      });
-      setFormData({
-        fullName: '',
-        email: '',
-        subject: '',
-        aboutProject: '',
-      });
-
-      setTimeout(() => {
-        setStatus(null);
-      }, 5000);
+      if (response.ok) {
+        setStatus({
+          type: 'success',
+          message: '✓ Message received! Thank you for reaching out. I will respond within 24 hours.',
+        });
+        setFormData({
+          fullName: '',
+          email: '',
+          subject: '',
+          aboutProject: '',
+        });
+      } else {
+        throw new Error('Submission failed');
+      }
     } catch (err) {
       setStatus({
         type: 'error',
-        message: 'Something went wrong. Please try again.',
+        message: 'Something went wrong. Please connect with me directly on WhatsApp or Email.',
       });
-      setTimeout(() => {
-        setStatus(null);
-      }, 5000);
     } finally {
       setIsSubmitting(false);
+      setTimeout(() => {
+        setStatus(null);
+      }, 7000);
     }
   };
 
   return (
-    <section className="sec6" id="contact">
-      <div className="getinTouch">
-        <div>
-          <header className="secHeader" data-aos="fade-right">
-            GET IN TOUCH
-          </header>
-          <h2 className="my-3" data-aos="fade-right" data-aos-delay="200">
-            Let's create something <br />
-            <i>legendary.</i>
-          </h2>
-          <p className="my-3 currently" data-aos="fade-right" data-aos-delay="300">
-            Currently accepting new projects and creative collaborations. <br />
-            I'd love to hear about your vision.
-          </p>
-        </div>
-
-        <div className="my-5">
-          <div
-            className="d-flex gap-3 my-2 align-items-center"
-            data-aos="fade-right"
-            data-aos-delay="400"
-          >
-            <div className="contact-icon">
-              <i className="fa far fa-envelope"></i>
-            </div>
-            <div>
-              <p className="emailMe">EMAIL ME</p>
-              <p className="fw-semibold currently">okeprecido@gmail.com</p>
-            </div>
-          </div>
-
-          <div
-            className="d-flex gap-3 my-4 align-items-center"
-            data-aos="fade-right"
-            data-aos-delay="500"
-          >
-            <div className="contact-icon">
-              <i className="fa far fa-envelope"></i>
-            </div>
-            <div>
-              <p className="emailMe">LOCATION</p>
-              <p className="fw-semibold currently">Oyo State, Nigeria (GMT+1)</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="d-flex gap-3 flex-wrap socialMedia">
-          <a
-            href="mailto:okeprecido@gmail.com"
-            data-aos="zoom-in"
-            aria-label="Send email"
-          >
-            <i className="fas fa-envelope"></i>
-          </a>
-          <a
-            href="https://www.linkedin.com/in/oke-precious-581ba5402/"
-            target="_blank"
-            rel="noopener noreferrer"
-            data-aos="zoom-in"
-            data-aos-delay="200"
-            style={{ backgroundColor: '#0a66c2' }}
-            aria-label="LinkedIn profile"
-          >
-            <i className="fab fa-linkedin-in"></i>
-          </a>
-          <a
-            href="https://x.com/specrpt"
-            target="_blank"
-            rel="noopener noreferrer"
-            data-aos="zoom-in"
-            data-aos-delay="300"
-            style={{ backgroundColor: '#000000' }}
-            aria-label="X Twitter profile"
-          >
-            <i className="fab fa-x-twitter"></i>
-          </a>
-          <a
-            href="https://wa.me/+2348101238416"
-            target="_blank"
-            rel="noopener noreferrer"
-            data-aos="zoom-in"
-            data-aos-delay="400"
-            style={{ backgroundColor: '#25d366' }}
-            aria-label="WhatsApp chat"
-          >
-            <i className="fab fa-whatsapp"></i>
-          </a>
-          <a
-            href="https://www.instagram.com/iam_spec1al"
-            target="_blank"
-            rel="noopener noreferrer"
-            data-aos="zoom-in"
-            data-aos-delay="500"
-            style={{ backgroundColor: '#e1306c' }}
-            aria-label="Instagram profile"
-          >
-            <i className="fab fa-instagram"></i>
-          </a>
-          <a
-            href="https://www.facebook.com/psspecial"
-            target="_blank"
-            rel="noopener noreferrer"
-            data-aos="zoom-in"
-            data-aos-delay="600"
-            style={{ backgroundColor: '#1877f2' }}
-            aria-label="Facebook profile"
-          >
-            <i className="fab fa-facebook-f"></i>
-          </a>
-          <a
-            href="https://github.com/Oke-Precious"
-            target="_blank"
-            rel="noopener noreferrer"
-            data-aos="zoom-in"
-            data-aos-delay="700"
-            style={{ backgroundColor: '#333333' }}
-            aria-label="GitHub profile"
-          >
-            <i className="fab fa-github"></i>
-          </a>
-        </div>
+    <section id="contact" className="section-wrapper">
+      <div className="section-kicker" data-aos="fade-right">
+        Get in Touch
       </div>
+      <h2 className="section-title" data-aos="fade-right" data-aos-delay="100">
+        Let's Build Something Great Together
+      </h2>
+      <p className="section-subtitle" data-aos="fade-right" data-aos-delay="200">
+        Currently open to developer roles, software internships, and high-impact engineering contracts.
+      </p>
 
-      <div className="sendMessageCon" data-aos="fade-left" data-aos-delay="600">
-        <div className="form-container">
-          <div className="heading">Contact Me</div>
-          <form id="contactForm" className="form" onSubmit={handleSubmit}>
-            <input type="hidden" name="_subject" value="New Portfolio Contact" />
-            <input type="text" name="_honey" style={{ display: 'none' }} />
-            <input type="hidden" name="_captcha" value="false" />
+      <div
+        className="contact-grid"
+        style={{
+          display: 'grid',
+          gridTemplateColumns: '1fr 1.3fr',
+          gap: '36px',
+          alignItems: 'start',
+        }}
+      >
+        {/* Contact Coordinates & Social Cards */}
+        <div data-aos="fade-up" data-aos-delay="300">
+          <GlassCard style={{ padding: '32px', marginBottom: '24px' }}>
+            <h3 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--text-head)', marginBottom: '20px' }}>
+              Direct Channels
+            </h3>
 
-            <div className="d-flex flex-md-wrap flex-lg-nowrap gap-3">
-              <div className="w-100">
-                <label htmlFor="fullName" className="emailMe">
-                  FULL NAME
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+              {/* Email */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                <div
+                  style={{
+                    width: '42px',
+                    height: '42px',
+                    borderRadius: '10px',
+                    background: 'rgba(0, 242, 254, 0.1)',
+                    border: '1px solid rgba(0, 242, 254, 0.25)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: 'var(--cyan-primary)',
+                    fontSize: '16px',
+                    flexShrink: 0,
+                  }}
+                >
+                  <i className="fas fa-envelope"></i>
+                </div>
+                <div>
+                  <div style={{ fontSize: '11.5px', textTransform: 'uppercase', letterSpacing: '1px', color: 'var(--text-muted)' }}>
+                    Email
+                  </div>
+                  <a
+                    href={`mailto:${personalInfo.email}`}
+                    style={{ fontSize: '14.5px', fontWeight: 600, color: 'var(--text-head)', textDecoration: 'none' }}
+                  >
+                    {personalInfo.email}
+                  </a>
+                </div>
+              </div>
+
+              {/* Location & Timezone */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                <div
+                  style={{
+                    width: '42px',
+                    height: '42px',
+                    borderRadius: '10px',
+                    background: 'rgba(99, 102, 241, 0.1)',
+                    border: '1px solid rgba(99, 102, 241, 0.25)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: 'var(--indigo-primary)',
+                    fontSize: '16px',
+                    flexShrink: 0,
+                  }}
+                >
+                  <i className="fas fa-location-dot"></i>
+                </div>
+                <div>
+                  <div style={{ fontSize: '11.5px', textTransform: 'uppercase', letterSpacing: '1px', color: 'var(--text-muted)' }}>
+                    Location & Timezone
+                  </div>
+                  <div style={{ fontSize: '14.5px', fontWeight: 600, color: 'var(--text-head)' }}>
+                    {personalInfo.location} ({personalInfo.timezone})
+                  </div>
+                </div>
+              </div>
+
+              {/* WhatsApp Quick Link */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                <div
+                  style={{
+                    width: '42px',
+                    height: '42px',
+                    borderRadius: '10px',
+                    background: 'rgba(37, 211, 102, 0.1)',
+                    border: '1px solid rgba(37, 211, 102, 0.25)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: '#25D366',
+                    fontSize: '18px',
+                    flexShrink: 0,
+                  }}
+                >
+                  <i className="fab fa-whatsapp"></i>
+                </div>
+                <div>
+                  <div style={{ fontSize: '11.5px', textTransform: 'uppercase', letterSpacing: '1px', color: 'var(--text-muted)' }}>
+                    Instant Chat
+                  </div>
+                  <a
+                    href={personalInfo.whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ fontSize: '14.5px', fontWeight: 600, color: '#25D366', textDecoration: 'none' }}
+                  >
+                    {personalInfo.phone}
+                  </a>
+                </div>
+              </div>
+            </div>
+          </GlassCard>
+
+          {/* Social Profiles Glass Card */}
+          <GlassCard style={{ padding: '24px' }}>
+            <div style={{ fontSize: '13px', fontWeight: 600, color: 'var(--text-head)', marginBottom: '14px' }}>
+              Connect Across Platforms
+            </div>
+
+            <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+              {[
+                { name: 'GitHub', icon: 'fab fa-github', url: personalInfo.githubUrl, color: '#fff' },
+                { name: 'LinkedIn', icon: 'fab fa-linkedin-in', url: personalInfo.linkedinUrl, color: '#0a66c2' },
+                { name: 'X / Twitter', icon: 'fab fa-x-twitter', url: personalInfo.twitterUrl, color: '#38BDF8' },
+                { name: 'WhatsApp', icon: 'fab fa-whatsapp', url: personalInfo.whatsappUrl, color: '#25d366' },
+                { name: 'Instagram', icon: 'fab fa-instagram', url: personalInfo.instagramUrl, color: '#e1306c' },
+                { name: 'Facebook', icon: 'fab fa-facebook-f', url: personalInfo.facebookUrl, color: '#1877f2' },
+              ].map((s, idx) => (
+                <a
+                  key={idx}
+                  href={s.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={s.name}
+                  style={{
+                    padding: '8px 14px',
+                    borderRadius: '8px',
+                    background: 'rgba(255, 255, 255, 0.04)',
+                    border: '1px solid var(--glass-border)',
+                    color: 'var(--text-head)',
+                    textDecoration: 'none',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    fontSize: '12.5px',
+                    transition: 'all 0.2s ease',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.borderColor = s.color;
+                    e.currentTarget.style.color = s.color;
+                    e.currentTarget.style.transform = 'translateY(-2px)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.borderColor = 'var(--glass-border)';
+                    e.currentTarget.style.color = 'var(--text-head)';
+                    e.currentTarget.style.transform = 'translateY(0)';
+                  }}
+                >
+                  <i className={s.icon} style={{ color: s.color }}></i>
+                  <span>{s.name}</span>
+                </a>
+              ))}
+            </div>
+          </GlassCard>
+        </div>
+
+        {/* Contact Form Card */}
+        <GlassCard data-aos="fade-up" data-aos-delay="400" style={{ padding: '36px' }}>
+          <h3 style={{ fontSize: '20px', fontWeight: 700, color: 'var(--text-head)', marginBottom: '8px' }}>
+            Send a Direct Message
+          </h3>
+          <p style={{ fontSize: '13.5px', color: 'var(--text-muted)', marginBottom: '24px' }}>
+            Fill out the details below and I will get back to you promptly.
+          </p>
+
+          <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }} className="form-row-2">
+              <div>
+                <label
+                  htmlFor="fullName"
+                  style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: 'var(--text-muted)', marginBottom: '6px' }}
+                >
+                  YOUR NAME *
                 </label>
                 <input
-                  required
-                  className="input"
                   type="text"
-                  name="fullName"
                   id="fullName"
-                  placeholder="Oke Precious"
+                  name="fullName"
+                  required
+                  placeholder="e.g. Alex Morgan"
                   value={formData.fullName}
                   onChange={handleChange}
+                  style={{
+                    width: '100%',
+                    padding: '12px 14px',
+                    borderRadius: '8px',
+                    background: 'rgba(6, 9, 19, 0.7)',
+                    border: '1px solid var(--glass-border)',
+                    color: 'var(--text-head)',
+                    fontSize: '14px',
+                    outline: 'none',
+                    boxSizing: 'border-box',
+                    transition: 'border-color 0.2s ease',
+                  }}
+                  onFocus={(e) => (e.target.style.borderColor = 'var(--cyan-primary)')}
+                  onBlur={(e) => (e.target.style.borderColor = 'var(--glass-border)')}
                 />
               </div>
-              <div className="w-100">
-                <label htmlFor="email" className="emailMe">
-                  EMAIL
+
+              <div>
+                <label
+                  htmlFor="email"
+                  style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: 'var(--text-muted)', marginBottom: '6px' }}
+                >
+                  EMAIL ADDRESS *
                 </label>
                 <input
-                  required
-                  className="input"
                   type="email"
-                  name="email"
                   id="email"
-                  placeholder="okeprecido@gmail.com"
+                  name="email"
+                  required
+                  placeholder="alex@company.com"
                   value={formData.email}
                   onChange={handleChange}
+                  style={{
+                    width: '100%',
+                    padding: '12px 14px',
+                    borderRadius: '8px',
+                    background: 'rgba(6, 9, 19, 0.7)',
+                    border: '1px solid var(--glass-border)',
+                    color: 'var(--text-head)',
+                    fontSize: '14px',
+                    outline: 'none',
+                    boxSizing: 'border-box',
+                    transition: 'border-color 0.2s ease',
+                  }}
+                  onFocus={(e) => (e.target.style.borderColor = 'var(--cyan-primary)')}
+                  onBlur={(e) => (e.target.style.borderColor = 'var(--glass-border)')}
                 />
               </div>
             </div>
 
-            <div className="w-100 my-3">
-              <label htmlFor="subject" className="emailMe">
-                SUBJECT
+            <div>
+              <label
+                htmlFor="subject"
+                style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: 'var(--text-muted)', marginBottom: '6px' }}
+              >
+                SUBJECT *
               </label>
               <input
-                required
-                className="input"
                 type="text"
-                name="subject"
                 id="subject"
-                placeholder="Project Inquiry"
+                name="subject"
+                required
+                placeholder="Full-Stack Role / Project Inquiry"
                 value={formData.subject}
                 onChange={handleChange}
+                style={{
+                  width: '100%',
+                  padding: '12px 14px',
+                  borderRadius: '8px',
+                  background: 'rgba(6, 9, 19, 0.7)',
+                  border: '1px solid var(--glass-border)',
+                  color: 'var(--text-head)',
+                  fontSize: '14px',
+                  outline: 'none',
+                  boxSizing: 'border-box',
+                  transition: 'border-color 0.2s ease',
+                }}
+                onFocus={(e) => (e.target.style.borderColor = 'var(--cyan-primary)')}
+                onBlur={(e) => (e.target.style.borderColor = 'var(--glass-border)')}
               />
             </div>
 
-            <div className="w-100 my-3">
-              <label htmlFor="aboutProject" className="emailMe">
-                ABOUT YOUR PROJECT
+            <div>
+              <label
+                htmlFor="aboutProject"
+                style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: 'var(--text-muted)', marginBottom: '6px' }}
+              >
+                PROJECT DETAILS / MESSAGE *
               </label>
               <textarea
-                required
-                className="input aboutProject"
-                name="aboutProject"
                 id="aboutProject"
-                placeholder="Tell me about your project..."
+                name="aboutProject"
+                required
+                rows="5"
+                placeholder="Tell me about your application goals, scope, and timeline..."
                 value={formData.aboutProject}
                 onChange={handleChange}
+                style={{
+                  width: '100%',
+                  padding: '12px 14px',
+                  borderRadius: '8px',
+                  background: 'rgba(6, 9, 19, 0.7)',
+                  border: '1px solid var(--glass-border)',
+                  color: 'var(--text-head)',
+                  fontSize: '14px',
+                  outline: 'none',
+                  resize: 'vertical',
+                  boxSizing: 'border-box',
+                  transition: 'border-color 0.2s ease',
+                }}
+                onFocus={(e) => (e.target.style.borderColor = 'var(--cyan-primary)')}
+                onBlur={(e) => (e.target.style.borderColor = 'var(--glass-border)')}
               />
             </div>
 
-            <input
-              id="submitBtn"
-              className="login-button"
+            <button
               type="submit"
-              value={isSubmitting ? 'Sending...' : 'Send Message'}
               disabled={isSubmitting}
-            />
+              className="glass-btn-primary"
+              style={{
+                width: '100%',
+                padding: '14px',
+                fontSize: '14.5px',
+                opacity: isSubmitting ? 0.7 : 1,
+                cursor: isSubmitting ? 'not-allowed' : 'pointer',
+              }}
+            >
+              {isSubmitting ? (
+                <>
+                  <i className="fas fa-spinner fa-spin"></i>
+                  <span>Transmitting Message...</span>
+                </>
+              ) : (
+                <>
+                  <i className="fas fa-paper-plane"></i>
+                  <span>Send Message</span>
+                </>
+              )}
+            </button>
 
             {status && (
               <div
-                className={status.type === 'success' ? 'success-message' : 'error-message'}
                 style={{
+                  padding: '12px 16px',
+                  borderRadius: '8px',
+                  background: status.type === 'success' ? 'rgba(16, 185, 129, 0.15)' : 'rgba(239, 68, 68, 0.15)',
+                  border: `1px solid ${status.type === 'success' ? '#10B981' : '#EF4444'}`,
+                  color: status.type === 'success' ? '#10B981' : '#EF4444',
+                  fontSize: '13.5px',
+                  fontWeight: 500,
                   textAlign: 'center',
-                  color: status.type === 'success' ? '#0D9488' : '#ef4444',
-                  fontWeight: 600,
-                  marginTop: '15px',
-                  fontSize: '18px',
                 }}
               >
                 {status.message}
               </div>
             )}
           </form>
-        </div>
+        </GlassCard>
       </div>
+
+      <style>{`
+        @media (max-width: 900px) {
+          .contact-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+        @media (max-width: 600px) {
+          .form-row-2 {
+            grid-template-columns: 1fr !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }
