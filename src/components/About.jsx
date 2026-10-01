@@ -9,10 +9,10 @@ export default function About() {
         About Me
       </div>
       <h2 className="section-title" data-aos="fade-right" data-aos-delay="100">
-        The Digital Curator & Full-Stack Engineer
+        The Full-Stack Software Engineer & Frontend Developer
       </h2>
       <p className="section-subtitle" data-aos="fade-right" data-aos-delay="200">
-        Bridging the discipline of design composition with scalable, robust software engineering.
+        Translating Figma and UI/UX design specifications into robust, responsive, and scalable web applications.
       </p>
 
       <div
@@ -170,7 +170,7 @@ export default function About() {
               ],
             </div>
             <div style={{ paddingLeft: '18px' }}>
-              <span style={{ color: '#94A3B8' }}>methodology:</span> <span style={{ color: '#A5D6A7' }}>"Design-Driven Engineering"</span>,
+              <span style={{ color: '#94A3B8' }}>methodology:</span> <span style={{ color: '#A5D6A7' }}>"Figma-to-Code & Clean Architecture"</span>,
             </div>
             <div style={{ paddingLeft: '18px' }}>
               <span style={{ color: '#94A3B8' }}>status:</span> <span style={{ color: '#4ADE80' }}>"Ready to collaborate"</span>

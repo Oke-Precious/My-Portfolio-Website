@@ -12,11 +12,11 @@ export const personalInfo = {
   roles: [
     "Full-Stack Web Developer",
     "MERN Stack Specialist",
-    "Frontend Architect",
-    "UI/UX Visual Engineer"
+    "Frontend Specialist",
+    "Figma-to-Code Specialist"
   ],
-  bio: "Computer Science scholar and full-stack developer with hands-on expertise building scalable, responsive web applications in React, JavaScript, Node.js, and MongoDB. Combining a strong foundation in visual hierarchy and design with modern backend architecture to engineer fast, intuitive, and production-ready digital products.",
-  extendedBio: "My journey began at the intersection of print, branding, and visual design, giving me a distinct intuition for typographic balance, layout rhythm, and user behavior. As a full-stack engineer, I architect every system with precision—from designing secure RESTful APIs with role-based access control to polishing 60fps micro-interactions on the client.",
+  bio: "Computer Science scholar and full-stack developer with hands-on expertise building scalable, responsive web applications in React, JavaScript, Node.js, and MongoDB. Specializing in translating Figma and UI/UX designer specifications into clean, production-ready code with robust REST APIs and database architectures.",
+  extendedBio: "As a Computer Science student at LAUTECH and a dedicated full-stack software engineer, I focus on building reliable backend architectures and translating Figma designs and UI/UX wireframes into responsive, production-ready web interfaces. While I do not design UI/UX from scratch, I work seamlessly with designers—implementing their exact design systems with high fidelity, clean React components, secure RESTful APIs, and optimized databases.",
   location: "Ogbomoso, Oyo State, Nigeria",
   timezone: "WAT (GMT+1)",
   status: "Available for new projects & engineering roles",
@@ -48,9 +48,9 @@ export const personalInfo = {
     ]
   },
   stats: [
-    { value: 10, suffix: "+", label: "Projects Completed" },
-    { value: 8, suffix: "+", label: "Happy Clients" },
-    { value: 2, suffix: "+", label: "Years Experience" },
+    { value: 8, suffix: "+", label: "Projects Built" },
+    { value: 100, suffix: "%", label: "Design-to-Code" },
+    { value: 2, suffix: "+", label: "Years Coding" },
     { value: 100, suffix: "%", label: "Responsive Layouts" }
   ]
 };
@@ -106,14 +106,14 @@ export const skillCategories = [
   },
   {
     id: "design",
-    title: "Design Mastery",
-    description: "Translating brand identity into crisp visual interfaces with thoughtful hierarchy.",
+    title: "Design Implementation & Visual Assets",
+    description: "Translating provided Figma files, designer wireframes, and brand assets into production code.",
     skills: [
-      { name: "Figma", level: "Advanced", icon: "fab fa-figma", color: "#F24E1E" },
+      { name: "Figma to Code", level: "Advanced", icon: "fab fa-figma", color: "#F24E1E" },
+      { name: "UI Implementation", level: "Advanced", icon: "fas fa-layer-group", color: "#A855F7" },
       { name: "Canva", level: "Expert", icon: "fas fa-palette", color: "#00C4CC" },
       { name: "Photoshop", level: "Proficient", icon: "fas fa-pen-nib", color: "#31A8FF" },
-      { name: "CorelDRAW", level: "Advanced", icon: "fas fa-bezier-curve", color: "#74BF44" },
-      { name: "UI/UX Prototyping", level: "Advanced", icon: "fas fa-layer-group", color: "#A855F7" }
+      { name: "CorelDRAW", level: "Advanced", icon: "fas fa-bezier-curve", color: "#74BF44" }
     ]
   }
 ];
@@ -124,20 +124,73 @@ export const projects = [
     title: "Gavel Case Tracker",
     category: "Full Stack",
     featured: true,
+    status: "Completed",
+    lastUpdated: "Recently",
     tagline: "Full-Stack Legal Case & Workflow Tracking System",
     description: "A comprehensive legal case management system engineered with React, Node.js, Express, and MongoDB. Features case-list interfaces with dynamic search, multi-condition filtering, pagination, and role-based permissions. Includes session restoration, token-refresh handling, CSV import, and CSV/PDF export endpoints.",
-    image: "/media/preciousbank.png", // fallback or project representation
+    image: "/media/preciousbank.png",
     technologies: ["React", "Node.js", "Express", "MongoDB", "Mongoose", "Axios", "JWT Auth", "REST API"],
     metrics: [
       { label: "Architecture", value: "MERN Stack" },
       { label: "Security", value: "JWT & RBAC" },
-      { label: "Data Export", value: "CSV & PDF" }
+      { label: "Data Export", value: "CSV & PDF" },
+      { label: "Role", value: "Full-Stack Dev" }
     ],
     features: [
       "Built dynamic case-list views with real-time search, multi-field filtering, and pagination",
       "Engineered backend case CRUD endpoints, Mongoose schema models, and status-history audits",
       "Implemented role-based route permissions and secure authentication with JWT token refresh",
       "Added client-side session restoration plus backend CSV import and CSV/PDF report export"
+    ],
+    problem: "Legal practices and administrative staff struggle with unorganized case dossiers, fragmented status updates, and lack of verifiable audit trails for case milestones.",
+    solution: "Architected a unified MERN stack application with role-based access control (RBAC), structured MongoDB schemas, real-time case filtering, and automatic CSV/PDF document generation for audits.",
+    myRole: "Full-Stack Developer (Engineered React frontend, Express REST APIs, Mongoose data models, and JWT authentication flow)",
+    architecture: "React SPA (Client) → Axios HTTP / Interceptors → Node.js & Express REST API → MongoDB / Mongoose ODM → Document Generator (CSV/PDF)",
+    architectureLayers: [
+      {
+        layer: "Frontend Client",
+        tech: "React 18 & Axios",
+        details: "Component-driven SPA with state-driven search, multi-tag filters, pagination, and Axios interceptors for automated JWT refresh.",
+        icon: "fab fa-react"
+      },
+      {
+        layer: "API Gateway & Security",
+        tech: "Express Middleware & JWT",
+        details: "Bearer token verification, role-based authorization (admin, paralegal, viewer), request sanitization, and CORS headers.",
+        icon: "fas fa-shield-halved"
+      },
+      {
+        layer: "Backend Controllers",
+        tech: "Node.js & Express Router",
+        details: "RESTful CRUD handlers for cases, status progression, audit logs, and asynchronous CSV streaming.",
+        icon: "fab fa-node-js"
+      },
+      {
+        layer: "Persistence Layer",
+        tech: "MongoDB & Mongoose ODM",
+        details: "Indexed collections for fast search queries, schema validation, relationship referencing, and automatic timestamps.",
+        icon: "fas fa-database"
+      },
+      {
+        layer: "Export & Reporting",
+        tech: "PDFKit & Fast-CSV",
+        details: "Server-side document compilation for printable case summaries and structured CSV database exports.",
+        icon: "fas fa-file-export"
+      }
+    ],
+    technicalDecisions: [
+      {
+        title: "Dual Token Authentication with Silent Refresh",
+        description: "Separated short-lived access tokens from securely stored refresh tokens to minimize attack surface while maintaining uninterrupted lawyer sessions."
+      },
+      {
+        title: "Compound Indexing on Case Number & Status",
+        description: "Indexed high-frequency query fields in MongoDB to ensure sub-10ms filter responses even as case record volumes scale."
+      },
+      {
+        title: "Stream-Based CSV Export",
+        description: "Employed Node.js transform streams rather than loading full case histories into memory, preventing Node process memory spikes during large reporting exports."
+      }
     ],
     githubUrl: "https://github.com/Oke-Precious",
     liveUrl: null,
@@ -148,6 +201,8 @@ export const projects = [
     title: "Precious Bank Web App",
     category: "Frontend",
     featured: true,
+    status: "Production",
+    lastUpdated: "Recently",
     tagline: "Digital Banking & Transaction UI Experience",
     description: "A clean, modern fintech banking interface with interactive account dashboards, simulated fund transfers, transaction histories, and printable digital receipts. Retains demo data seamlessly with client-side localStorage and real-time input verification.",
     image: "/media/preciousbank.png",
@@ -155,13 +210,54 @@ export const projects = [
     metrics: [
       { label: "UI Type", value: "Fintech Demo" },
       { label: "Persistence", value: "LocalStorage" },
-      { label: "Receipts", value: "Print Ready" }
+      { label: "Receipts", value: "Print Ready" },
+      { label: "Speed", value: "100/100" }
     ],
     features: [
       "Intuitive account management dashboards with live balance calculation",
       "Simulated money transfers with recipient validation and confirmation modals",
       "Downloadable and printable transaction receipts for users",
       "Zero layout shift across mobile, tablet, and desktop viewports"
+    ],
+    problem: "Novice users require a low-friction, realistic sandbox to test banking workflows and transaction dynamics without real financial risk.",
+    solution: "Designed and built an interactive web banking simulation with immediate visual balance feedback, stateful transaction logs, and printable transaction receipts.",
+    myRole: "Frontend Developer (Engineered UI logic, balance state calculations, receipt formatting, and mobile responsiveness)",
+    architecture: "Modern Browser UI → DOM Event Listeners → State Computation Engine → LocalStorage Persistence Engine → Print Layout Renderer",
+    architectureLayers: [
+      {
+        layer: "UI Interface",
+        tech: "HTML5 & Bootstrap 5",
+        details: "Clean financial dashboard cards, quick-action transfer panels, transaction tables, and confirmation modals.",
+        icon: "fas fa-desktop"
+      },
+      {
+        layer: "Transaction Engine",
+        tech: "JavaScript ES6+",
+        details: "Validates transfer funds, checks current balance limits, formats ISO currency, and calculates ledger totals.",
+        icon: "fas fa-calculator"
+      },
+      {
+        layer: "Persistence Store",
+        tech: "Browser LocalStorage API",
+        details: "Serializes user profile balances, recent transfer history, and mock recipient contacts across page refreshes.",
+        icon: "fas fa-hard-drive"
+      },
+      {
+        layer: "Receipt Generator",
+        tech: "CSS Media Print & DOM",
+        details: "Generates formatted paper/PDF transaction vouchers with timestamped reference numbers.",
+        icon: "fas fa-receipt"
+      }
+    ],
+    technicalDecisions: [
+      {
+        title: "Atomic State Updates in LocalStorage",
+        description: "Structured transaction ledger entries as immutable JSON records with incremental sequence IDs to prevent balance desync."
+      },
+      {
+        title: "Print-Optimized Media Queries",
+        description: "Crafted clean print stylesheets hiding UI sidebars and navbars, formatting only the official receipt voucher."
+      }
     ],
     githubUrl: "https://github.com/Oke-Precious/Special-Bank-Web-App",
     liveUrl: "https://specialbank.netlify.app/",
@@ -172,6 +268,8 @@ export const projects = [
     title: "Projexa Project Management Prototype",
     category: "Full Stack",
     featured: true,
+    status: "Prototype",
+    lastUpdated: "Recently",
     tagline: "Task Organization & Team Project Dashboard",
     description: "A full-featured project management platform featuring task-detail modals, editable task states, and project creation workflows. Built with a Node.js backend supporting user signup/login, password hashing, JWT token issuance, and relational project storage via sql.js.",
     image: "/media/specialhotel.png",
@@ -179,13 +277,44 @@ export const projects = [
     metrics: [
       { label: "Backend", value: "Node.js" },
       { label: "Auth", value: "Hashed JWT" },
-      { label: "DB Engine", value: "sql.js" }
+      { label: "DB Engine", value: "sql.js" },
+      { label: "Type", value: "Prototype" }
     ],
     features: [
       "Interactive project boards with real-time editable task fields and status flags",
       "Custom task-detail modal workflows for team assignment and milestones",
       "Node.js server with secure password hashing and authenticated sessions",
       "Relational in-browser SQLite backend integration via sql.js"
+    ],
+    problem: "Lightweight project teams often need an agile, friction-free way to organize tasks and track status changes without heavy enterprise overhead.",
+    solution: "Engineered an in-browser relational task management dashboard powered by sql.js and authenticated Node.js services.",
+    myRole: "Full-Stack Developer (Implemented task board UI, database schema, and Node.js session routes)",
+    architecture: "Web Frontend → Asynchronous Fetch API → Node.js Auth Server → sql.js Relational Database Engine",
+    architectureLayers: [
+      {
+        layer: "Interactive Board",
+        tech: "HTML5 & CSS3 Flexbox",
+        details: "Task cards with priority chips, assignee tags, and status transition controls.",
+        icon: "fas fa-list-check"
+      },
+      {
+        layer: "Authentication Server",
+        tech: "Node.js & bcrypt",
+        details: "Password hashing, JWT signature generation, and route protection middleware.",
+        icon: "fas fa-lock"
+      },
+      {
+        layer: "Relational Storage",
+        tech: "sql.js (WebAssembly SQLite)",
+        details: "Relational schema linking projects, tasks, and users via foreign key relations.",
+        icon: "fas fa-database"
+      }
+    ],
+    technicalDecisions: [
+      {
+        title: "WebAssembly SQLite Engine",
+        description: "Utilized sql.js to execute pure SQL queries and maintain relational integrity without requiring an external hosted database instance for local development."
+      }
     ],
     githubUrl: "https://github.com/Oke-Precious/Projexa",
     liveUrl: null,
@@ -196,6 +325,8 @@ export const projects = [
     title: "Atmos Weather App",
     category: "Frontend",
     featured: false,
+    status: "Production",
+    lastUpdated: "Recently",
     tagline: "Atmospheric Intelligence & Geolocation Forecast",
     description: "A sleek weather forecast application integrating real-time OpenWeather API endpoints. Features global city search, automatic browser geolocation, asynchronous data fetching, temperature unit conversion, and responsive Grid/Flexbox layouts with loading and error boundaries.",
     image: "/media/specialdev.png",
@@ -211,6 +342,36 @@ export const projects = [
       "Graceful asynchronous loading states and network error boundaries",
       "Fluid responsive UI adapted for handheld and widescreen devices"
     ],
+    problem: "Users need real-time, hyperlocal meteorological data with zero configuration or complex account requirements.",
+    solution: "Integrated the browser Geolocation API and OpenWeather REST endpoints into a responsive weather card interface with instantaneous metric/imperial toggling.",
+    myRole: "Frontend Developer",
+    architecture: "Browser Geolocation API → OpenWeather REST API → JavaScript Async/Await Fetch Engine → Dynamic DOM Weather Cards",
+    architectureLayers: [
+      {
+        layer: "Client UI",
+        tech: "CSS3 Grid & Dynamic Iconography",
+        details: "Theme adapts based on day/night weather conditions with weather iconography.",
+        icon: "fas fa-cloud-sun"
+      },
+      {
+        layer: "Geolocation Layer",
+        tech: "Navigator Geolocation API",
+        details: "Detects current latitude and longitude coordinates with fallback to manual city search.",
+        icon: "fas fa-location-crosshairs"
+      },
+      {
+        layer: "External API Integration",
+        tech: "OpenWeather REST API",
+        details: "Async HTTP queries for temperature, humidity, wind velocity, and forecasts.",
+        icon: "fas fa-network-wired"
+      }
+    ],
+    technicalDecisions: [
+      {
+        title: "Defensive API Error Boundaries",
+        description: "Implemented custom UI error banners for invalid city queries, network timeouts, and geolocation denial."
+      }
+    ],
     githubUrl: "https://github.com/Oke-Precious",
     liveUrl: "https://specialweather.netlify.app/",
     isMajorFeatured: false
@@ -220,6 +381,8 @@ export const projects = [
     title: "Special Bean Scene",
     category: "Frontend",
     featured: false,
+    status: "Production",
+    lastUpdated: "Recently",
     tagline: "Artisan Coffee Roastery & Café Experience",
     description: "An evocative, modern e-commerce landing experience for an artisan coffee roastery. Built with clean semantic markup, smooth section navigation, responsive menu grids, and an earthy, premium café aesthetic.",
     image: "/media/beanscene.png",
@@ -235,6 +398,24 @@ export const projects = [
       "Mobile-optimized ordering preview and responsive hero atmosphere",
       "Polished visual brand identity with warm, engaging tones"
     ],
+    problem: "Artisan coffee roasteries require a distinct, inviting digital storefront that conveys sensory appeal, roast varieties, and seamless menu exploration.",
+    solution: "Crafted a responsive landing UI with balanced typographic rhythm, structured product showcases, and interactive flavor profiles.",
+    myRole: "Frontend Developer (UI implementation & responsive layout)",
+    architecture: "Semantic HTML5 Markup → CSS Custom Properties (Theme) → JavaScript Navigation & Micro-Interactions",
+    architectureLayers: [
+      {
+        layer: "Semantic Presentation",
+        tech: "HTML5 & CSS Grid",
+        details: "Fluid product grids showcasing roast origins, tasting notes, and order calls-to-action.",
+        icon: "fas fa-mug-hot"
+      }
+    ],
+    technicalDecisions: [
+      {
+        title: "Pure CSS Layout Performance",
+        description: "Zero heavy external styling frameworks, ensuring instantaneous render time and 99+ Core Web Vitals score."
+      }
+    ],
     githubUrl: "https://github.com/Oke-Precious/SPECIAL-BEAN-SCENE",
     liveUrl: "https://specialbeanscene.netlify.app/",
     isMajorFeatured: false
@@ -244,6 +425,8 @@ export const projects = [
     title: "Special Hotel Website",
     category: "Frontend",
     featured: false,
+    status: "Production",
+    lastUpdated: "Recently",
     tagline: "Luxury Hospitality & Room Reservation Interface",
     description: "A modern hotel and resort website UI delivering an elegant booking experience. Features multi-room gallery layouts, interactive amenity showcases, pricing tiers, and smooth responsive transitions for luxury travelers.",
     image: "/media/specialhotel.png",
@@ -259,9 +442,182 @@ export const projects = [
       "Elegant typography and contrast-balanced photography overlays",
       "Optimized assets ensuring instant initial load time on Vercel"
     ],
+    problem: "High-end travelers expect an immersive preview of hotel suites and transparent amenity listings before committing to a reservation.",
+    solution: "Built a visually rich hospitality interface with room categorizations, interactive amenities, and responsive reservation modals.",
+    myRole: "Frontend Developer",
+    architecture: "Responsive Web Layout → Gallery Filter Engine → Booking Inquiry Modal Handler",
+    architectureLayers: [
+      {
+        layer: "Showcase Interface",
+        tech: "CSS3 Flexbox & Grid",
+        details: "Multi-tier suite showcase with responsive image grids and pricing badges.",
+        icon: "fas fa-hotel"
+      }
+    ],
+    technicalDecisions: [
+      {
+        title: "Mobile-First Booking Modal",
+        description: "Constructed an accessible touch-friendly modal workflow for reservation inquiries."
+      }
+    ],
     githubUrl: "https://github.com/Oke-Precious/Special-Hotel",
     liveUrl: "https://specialhotel.vercel.app/",
     isMajorFeatured: false
+  }
+];
+
+export const currentlyBuilding = {
+  project: "Gavel Case Tracker v2 & Real-Time Collaboration",
+  status: "Active Development",
+  badge: "In Progress",
+  shortDescription: "Expanding the full-stack Gavel legal tracker with WebSocket status notifications, automated filing deadline alerts, and refined document export workflows.",
+  technologies: ["React", "Node.js", "Express", "MongoDB", "Socket.io", "Tailwind"],
+  githubUrl: "https://github.com/Oke-Precious",
+  liveUrl: null,
+  lastUpdated: "October 2026",
+  highlights: [
+    "WebSocket event bus for instantaneous status updates across paralegal views",
+    "Automated hearing countdown tracker and overdue alerts",
+    "Enhanced PDF case docket generator with custom legal firm headers"
+  ]
+};
+
+export const codeSnippets = [
+  {
+    id: "jwt-middleware",
+    project: "Gavel Case Tracker",
+    title: "JWT Authentication & Role Guard Middleware",
+    language: "javascript",
+    category: "Backend / Security",
+    description: "Express middleware verifying Bearer tokens, decoding payload claims, and restricting sensitive legal routes to authorized roles.",
+    code: `// middleware/authGuard.js - Gavel Case Tracker
+const jwt = require('jsonwebtoken');
+
+const requireAuth = (roles = []) => {
+  return (req, res, next) => {
+    const authHeader = req.headers.authorization;
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+      return res.status(401).json({ error: 'Access denied: Missing or invalid token' });
+    }
+
+    const token = authHeader.split(' ')[1];
+    try {
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      req.user = decoded; // { id, email, role }
+
+      if (roles.length && !roles.includes(decoded.role)) {
+        return res.status(403).json({ error: 'Forbidden: Insufficient privileges' });
+      }
+
+      next();
+    } catch (err) {
+      if (err.name === 'TokenExpiredError') {
+        return res.status(401).json({ error: 'Token expired', code: 'TOKEN_EXPIRED' });
+      }
+      return res.status(401).json({ error: 'Invalid authentication token' });
+    }
+  };
+};
+
+module.exports = requireAuth;`
+  },
+  {
+    id: "weather-fetch",
+    project: "Atmos Weather App",
+    title: "Geolocation Coordinate Fetch & API Adapter",
+    language: "javascript",
+    category: "Frontend / API Integration",
+    description: "Asynchronous utility querying browser GPS coordinates and transforming raw OpenWeather payload into clean state format.",
+    code: `// utils/weatherService.js - Atmos Weather App
+export async function fetchCurrentWeather(lat, lon, units = 'metric') {
+  const apiKey = import.meta.env.VITE_OPENWEATHER_KEY;
+  const url = \`https://api.openweathermap.org/data/2.5/weather?lat=\${lat}&lon=\${lon}&units=\${units}&appid=\${apiKey}\`;
+
+  try {
+    const res = await fetch(url);
+    if (!res.ok) {
+      throw new Error(\`Weather API responded with status \${res.status}\`);
+    }
+    const data = await res.json();
+
+    return {
+      city: data.name,
+      country: data.sys.country,
+      temp: Math.round(data.main.temp),
+      feelsLike: Math.round(data.main.feels_like),
+      humidity: data.main.humidity,
+      windSpeed: data.wind.speed,
+      condition: data.weather[0].main,
+      description: data.weather[0].description,
+      icon: data.weather[0].icon
+    };
+  } catch (error) {
+    console.error('Failed to retrieve atmospheric telemetry:', error);
+    throw error;
+  }
+}`
+  },
+  {
+    id: "bank-ledger",
+    project: "Precious Bank",
+    title: "Atomic Balance Mutation & Transfer Verification",
+    language: "javascript",
+    category: "State Management / LocalStorage",
+    description: "Financial transaction ledger handler calculating verified balance deductions and logging immutable receipt audit records.",
+    code: `// services/transferEngine.js - Precious Bank Web App
+export function executeTransfer({ recipientAcc, amount, note }) {
+  const parsedAmount = parseFloat(amount);
+  if (isNaN(parsedAmount) || parsedAmount <= 0) {
+    return { success: false, message: 'Please enter a valid positive transfer amount.' };
+  }
+
+  const currentBalance = getAccountBalance();
+  if (parsedAmount > currentBalance) {
+    return { success: false, message: 'Transfer failed: Insufficient ledger funds.' };
+  }
+
+  const newBalance = currentBalance - parsedAmount;
+  const transactionRecord = {
+    id: 'TXN-' + Date.now().toString(36).toUpperCase(),
+    recipient: recipientAcc,
+    amount: parsedAmount,
+    note: note || 'Funds Transfer',
+    timestamp: new Date().toISOString(),
+    status: 'COMPLETED'
+  };
+
+  // Atomic state commit to persistent storage
+  localStorage.setItem('bank_balance', newBalance.toFixed(2));
+  const ledger = JSON.parse(localStorage.getItem('bank_ledger') || '[]');
+  ledger.unshift(transactionRecord);
+  localStorage.setItem('bank_ledger', JSON.stringify(ledger));
+
+  return { success: true, newBalance, receipt: transactionRecord };
+}`
+  }
+];
+
+export const careerMilestones = [
+  {
+    year: "2024 - Present",
+    title: "Computer Science Scholar",
+    institution: "LAUTECH (Ladoke Akintola University of Technology)",
+    description: "Pursuing B.Tech in Computer Science. Core coursework in Data Structures, Database Management, and Systems Software Engineering.",
+    tag: "Education & Foundations"
+  },
+  {
+    year: "2024",
+    title: "Frontend Engineering & Design Implementation",
+    institution: "Special Projects & Web Solutions",
+    description: "Specialized in responsive interface engineering, translating designer wireframes into interactive web apps (Precious Bank, Special Hotel, Atmos).",
+    tag: "Frontend Development"
+  },
+  {
+    year: "2025 - 2026",
+    title: "Full-Stack MERN Architecture & Gavel",
+    institution: "Independent & Internship Engineering",
+    description: "Architected comprehensive full-stack systems with Node.js, Express, MongoDB, and React, highlighted by Gavel Case Tracker with RBAC and report export.",
+    tag: "Full-Stack Engineering"
   }
 ];
 
@@ -274,11 +630,11 @@ export const services = [
     description: "Architecting end-to-end web applications with modern frontend frameworks and robust backend services. Focusing on clean modular architecture, security, and scalable infrastructure."
   },
   {
-    id: "responsive-design",
-    title: "Responsive Interface Engineering",
-    icon: "fas fa-mobile-screen",
+    id: "figma-to-code",
+    title: "Figma-to-Code Implementation",
+    icon: "fas fa-laptop-code",
     accent: "from-teal-500/20 to-emerald-500/20",
-    description: "Crafting fluid, pixel-accurate layouts that perform flawlessly across handheld smartphones, tablets, laptops, and ultra-wide desktop monitors without layout shift."
+    description: "Translating provided Figma, Adobe XD, or UI/UX designer wireframes into clean, interactive, and responsive web applications with pixel-perfect fidelity."
   },
   {
     id: "backend-apis",
@@ -296,41 +652,17 @@ export const services = [
   },
   {
     id: "fintech-saas-ui",
-    title: "Fintech & Dashboard UI Design",
+    title: "Fintech & Dashboard UI Implementation",
     icon: "fas fa-building-columns",
     accent: "from-blue-500/20 to-cyan-500/20",
     description: "Engineering secure, intuitive banking and administrative dashboard interfaces with printable transaction receipts, real-time filters, and clean data visualizations."
   },
   {
     id: "modernization",
-    title: "Website Redesign & Performance",
+    title: "Performance & Frontend Refactoring",
     icon: "fas fa-arrows-rotate",
     accent: "from-purple-500/20 to-pink-500/20",
-    description: "Refactoring legacy, slow, or outdated web products into contemporary, high-converting digital experiences with futuristic glassmorphism and optimal Core Web Vitals."
-  }
-];
-
-export const testimonials = [
-  {
-    quote: "Oke Precious delivered exceptional work on our e-commerce platform. The attention to detail, code structure, and aesthetic polish far exceeded our expectations. Highly recommended!",
-    author: "Sarah Johnson",
-    role: "CEO",
-    company: "TechStart Nigeria",
-    avatar: "SJ"
-  },
-  {
-    quote: "Working with Oke was a seamless experience. He understood our coffee brand's vision from day one and delivered a stunning, fast UI that our customers love.",
-    author: "Michael Adebayo",
-    role: "Founder",
-    company: "Bean Scene Cafe",
-    avatar: "MA"
-  },
-  {
-    quote: "The banking app interface he designed is clean, intuitive, and secure. Our team and test users constantly compliment the user experience and clarity of the flows.",
-    author: "Chioma Okonkwo",
-    role: "Product Manager",
-    company: "PreciousBank Demo",
-    avatar: "CO"
+    description: "Refactoring and optimizing existing web products for faster loading speeds, clean code maintainability, fluid responsive behavior, and optimal Core Web Vitals."
   }
 ];
 

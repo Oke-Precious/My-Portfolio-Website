@@ -4,8 +4,8 @@ import { personalInfo } from '../data/portfolioData';
 const ROLES = [
   'Full-Stack Web Developer',
   'MERN Stack Engineer',
-  'Frontend Architect',
-  'UI/UX Creative Developer',
+  'Frontend Specialist',
+  'Figma-to-Code Specialist',
 ];
 
 export default function Hero({ onDownloadCV }) {
@@ -393,7 +393,7 @@ export default function Hero({ onDownloadCV }) {
                 height: '480px',
                 backgroundImage: `url(${personalInfo.profileImage})`,
                 backgroundSize: 'cover',
-                backgroundPosition: 'center 15%',
+                backgroundPosition: 'center 20%',
               }}
             >
               {/* Contrast Gradient Scrim */}
@@ -427,7 +427,7 @@ export default function Hero({ onDownloadCV }) {
                   {personalInfo.name}
                 </h3>
                 <p style={{ fontSize: '13px', color: 'var(--text-muted)', margin: 0 }}>
-                  MERN Stack · REST APIs · UI/UX Design
+                  MERN Stack · REST APIs · UI Implementation
                 </p>
               </div>
             </div>

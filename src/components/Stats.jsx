@@ -5,7 +5,7 @@ import { personalInfo } from '../data/portfolioData';
 export default function Stats() {
   const [counts, setCounts] = useState({
     projects: 0,
-    clients: 0,
+    fidelity: 0,
     experience: 0,
     responsive: 0,
   });
@@ -19,7 +19,7 @@ export default function Stats() {
           if (entry.isIntersecting && !animatedRef.current) {
             animatedRef.current = true;
 
-            const targets = { projects: 10, clients: 8, experience: 2, responsive: 100 };
+            const targets = { projects: 8, fidelity: 100, experience: 2, responsive: 100 };
             const duration = 1800;
             const startTime = performance.now();
 
@@ -31,7 +31,7 @@ export default function Stats() {
 
               setCounts({
                 projects: Math.floor(ease * targets.projects),
-                clients: Math.floor(ease * targets.clients),
+                fidelity: Math.floor(ease * targets.fidelity),
                 experience: Math.floor(ease * targets.experience),
                 responsive: Math.floor(ease * targets.responsive),
               });
@@ -58,10 +58,10 @@ export default function Stats() {
   }, []);
 
   const statItems = [
-    { number: counts.projects, suffix: '+', label: 'Projects Completed', caption: 'Full-stack & client builds' },
-    { number: counts.clients, suffix: '+', label: 'Happy Clients', caption: 'Across startups & businesses' },
-    { number: counts.experience, suffix: '+', label: 'Years Experience', caption: 'Modern web engineering' },
-    { number: counts.responsive, suffix: '%', label: 'Mobile Optimized', caption: 'Zero layout shift' },
+    { number: counts.projects, suffix: '+', label: 'Projects Built', caption: 'Full-stack & internship builds' },
+    { number: counts.fidelity, suffix: '%', label: 'Design-to-Code', caption: 'Pixel-perfect UI implementation' },
+    { number: counts.experience, suffix: '+', label: 'Years Coding', caption: 'CS @ LAUTECH & software dev' },
+    { number: counts.responsive, suffix: '%', label: 'Mobile Optimized', caption: 'Fluid across all screen sizes' },
   ];
 
   return (

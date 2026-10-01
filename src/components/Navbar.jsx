@@ -7,14 +7,23 @@ const NAV_ITEMS = [
   { id: 'skills', label: 'Skills' },
   { id: 'projects', label: 'Projects' },
   { id: 'github', label: 'GitHub' },
+  { id: 'terminal', label: 'Terminal' },
   { id: 'services', label: 'Services' },
   { id: 'contact', label: 'Contact' },
 ];
 
-export default function Navbar({ onDownloadCV }) {
+export default function Navbar({
+  onDownloadCV,
+  onOpenResume,
+  currentMode = 'normal',
+  onModeChange,
+  onOpenCommandPalette,
+  onTriggerEasterEgg,
+}) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
   const [hasScrolled, setHasScrolled] = useState(false);
+  const [logoClicks, setLogoClicks] = useState(0);
 
   // Scroll listener for sticky state and active section
   useEffect(() => {
@@ -60,50 +69,67 @@ export default function Navbar({ onDownloadCV }) {
     };
   }, [isMenuOpen]);
 
-  const handleNavClick = (e, targetId) => {
+  const handleNavClick = (e, id) => {
     e.preventDefault();
     setIsMenuOpen(false);
-    const target = document.getElementById(targetId);
+
+    if (id === 'hero') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.history.pushState(null, '', '#hero');
+      return;
+    }
+
+    const target = document.getElementById(id);
     if (target) {
-      const topOffset = 85;
+      const headerOffset = 90;
       const elementPosition = target.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - topOffset;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
       window.scrollTo({
         top: offsetPosition,
         behavior: 'smooth',
       });
+      window.history.pushState(null, '', `#${id}`);
+    }
+  };
+
+  const handleLogoClick = (e) => {
+    e.preventDefault();
+    const nextClicks = logoClicks + 1;
+    setLogoClicks(nextClicks);
+    if (nextClicks >= 5) {
+      if (onTriggerEasterEgg) onTriggerEasterEgg();
+      setLogoClicks(0);
+    } else {
+      handleNavClick(e, 'hero');
     }
   };
 
   return (
     <>
       <header
-        className={`floating-nav-container ${hasScrolled ? 'nav-scrolled' : ''}`}
         style={{
           position: 'fixed',
-          top: hasScrolled ? '12px' : '20px',
+          top: 0,
           left: 0,
           right: 0,
           zIndex: 1000,
-          display: 'flex',
-          justifyContent: 'center',
-          padding: '0 16px',
           transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
+          padding: hasScrolled ? '12px 20px' : '20px 24px',
         }}
       >
         <nav
-          className="glass-panel"
           style={{
-            width: '100%',
-            maxWidth: '1180px',
-            padding: '10px 24px',
+            maxWidth: '1280px',
+            margin: '0 auto',
+            padding: '8px 16px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
             borderRadius: '9999px',
             background: hasScrolled
-              ? 'rgba(9, 14, 28, 0.85)'
-              : 'rgba(11, 18, 36, 0.72)',
+              ? 'rgba(9, 14, 28, 0.88)'
+              : 'rgba(11, 18, 36, 0.78)',
             backdropFilter: 'blur(18px)',
             WebkitBackdropFilter: 'blur(18px)',
             border: '1px solid var(--glass-border)',
@@ -111,10 +137,10 @@ export default function Navbar({ onDownloadCV }) {
           }}
           aria-label="Main Navigation"
         >
-          {/* Zone 1: Single text element Brand */}
+          {/* Zone 1: Brand & Logo */}
           <a
             href="#hero"
-            onClick={(e) => handleNavClick(e, 'hero')}
+            onClick={handleLogoClick}
             style={{
               textDecoration: 'none',
               display: 'flex',
@@ -124,7 +150,9 @@ export default function Navbar({ onDownloadCV }) {
               fontWeight: 700,
               fontSize: '17px',
               letterSpacing: '-0.3px',
+              cursor: 'pointer',
             }}
+            title={logoClicks > 0 ? `Easter egg progress: ${logoClicks}/5 clicks` : personalInfo.name}
           >
             <span
               style={{
@@ -145,7 +173,7 @@ export default function Navbar({ onDownloadCV }) {
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: '4px',
+              gap: '2px',
             }}
           >
             {NAV_ITEMS.map((item) => {
@@ -157,10 +185,10 @@ export default function Navbar({ onDownloadCV }) {
                   onClick={(e) => handleNavClick(e, item.id)}
                   style={{
                     textDecoration: 'none',
-                    fontSize: '13.5px',
+                    fontSize: '13px',
                     fontWeight: isActive ? 600 : 500,
                     color: isActive ? 'var(--cyan-primary)' : 'var(--text-muted)',
-                    padding: '8px 14px',
+                    padding: '6px 12px',
                     borderRadius: '9999px',
                     transition: 'all 0.2s ease',
                     position: 'relative',
@@ -179,24 +207,95 @@ export default function Navbar({ onDownloadCV }) {
             })}
           </div>
 
-          {/* Zone 3: Actions (CTA & Mobile Menu) */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-            <a
-              href={personalInfo.cvDownloadUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+          {/* Zone 3: Interactive View Mode Switcher, Command Palette & CV */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            {/* View Mode Switcher (Normal | Recruiter | Developer) */}
+            <div
+              className="view-mode-pill-desktop"
+              style={{
+                display: 'flex',
+                background: 'rgba(255, 255, 255, 0.04)',
+                border: '1px solid var(--glass-border)',
+                borderRadius: '9999px',
+                padding: '2px',
+              }}
+            >
+              {[
+                { id: 'normal', label: 'Normal' },
+                { id: 'recruiter', label: 'Recruiter' },
+                { id: 'developer', label: 'Developer' },
+              ].map((m) => {
+                const isSelected = currentMode === m.id;
+                return (
+                  <button
+                    key={m.id}
+                    onClick={() => onModeChange && onModeChange(m.id)}
+                    style={{
+                      border: 'none',
+                      background: isSelected ? 'rgba(0, 242, 254, 0.15)' : 'transparent',
+                      color: isSelected ? 'var(--cyan-primary)' : 'var(--text-dim)',
+                      fontWeight: isSelected ? 700 : 500,
+                      fontSize: '11px',
+                      padding: '4px 10px',
+                      borderRadius: '9999px',
+                      cursor: 'pointer',
+                      transition: 'all 0.2s ease',
+                    }}
+                    title={`Switch to ${m.label} View`}
+                  >
+                    {m.label}
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Command Palette Trigger Badge */}
+            <button
+              onClick={onOpenCommandPalette}
+              aria-label="Open Command Palette (Ctrl+K)"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px',
+                background: 'rgba(255, 255, 255, 0.04)',
+                border: '1px solid var(--glass-border)',
+                borderRadius: '9999px',
+                padding: '6px 12px',
+                color: 'var(--text-muted)',
+                cursor: 'pointer',
+                fontSize: '12px',
+                transition: 'all 0.2s ease',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = 'var(--cyan-primary)';
+                e.currentTarget.style.borderColor = 'rgba(0, 242, 254, 0.3)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = 'var(--text-muted)';
+                e.currentTarget.style.borderColor = 'var(--glass-border)';
+              }}
+              title="Command Palette (Ctrl + K / Cmd + K)"
+            >
+              <i className="fas fa-terminal" style={{ fontSize: '11px' }} />
+              <kbd style={{ fontFamily: 'monospace', fontSize: '11px', color: 'var(--cyan-muted)' }}>⌘K</kbd>
+            </button>
+
+            {/* CV Download / Web Resume */}
+            <button
+              onClick={onOpenResume}
               className="glass-btn-primary nav-cv-btn"
               style={{
-                padding: '8px 18px',
-                fontSize: '13px',
+                padding: '7px 16px',
+                fontSize: '12.5px',
                 borderRadius: '9999px',
-                textDecoration: 'none',
+                cursor: 'pointer',
+                border: 'none',
               }}
-              title="Download CV as PDF (Live from Google Docs)"
+              title="Open Interactive Web Resume & Download PDF"
             >
-              <i className="fas fa-file-arrow-down" style={{ fontSize: '12px' }}></i>
-              <span>CV</span>
-            </a>
+              <i className="fas fa-id-card" style={{ fontSize: '11px' }}></i>
+              <span>Resume</span>
+            </button>
 
             {/* Mobile Hamburger Button */}
             <button
@@ -231,12 +330,11 @@ export default function Navbar({ onDownloadCV }) {
           style={{
             position: 'fixed',
             inset: 0,
-            zIndex: 998,
-            backgroundColor: 'rgba(0, 0, 0, 0.65)',
+            backgroundColor: 'rgba(3, 6, 15, 0.7)',
             backdropFilter: 'blur(8px)',
             WebkitBackdropFilter: 'blur(8px)',
+            zIndex: 1001,
           }}
-          aria-hidden="true"
         />
       )}
 
@@ -248,12 +346,12 @@ export default function Navbar({ onDownloadCV }) {
           top: 0,
           right: 0,
           bottom: 0,
-          width: '80%',
-          maxWidth: '320px',
-          zIndex: 999,
-          backgroundColor: 'var(--glass-bg-base)',
+          width: 'min(320px, 85vw)',
+          backgroundColor: 'rgba(9, 14, 28, 0.96)',
+          backdropFilter: 'blur(24px)',
+          WebkitBackdropFilter: 'blur(24px)',
           borderLeft: '1px solid var(--glass-border)',
-          boxShadow: 'var(--glass-shadow-lg)',
+          zIndex: 1002,
           padding: '24px',
           display: 'flex',
           flexDirection: 'column',
@@ -261,37 +359,85 @@ export default function Navbar({ onDownloadCV }) {
           transform: isMenuOpen ? 'translateX(0)' : 'translateX(100%)',
           transition: 'transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
         }}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Mobile Navigation Menu"
       >
         <div>
+          {/* Drawer Header */}
           <div
             style={{
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
-              marginBottom: '32px',
-              paddingBottom: '16px',
-              borderBottom: '1px solid var(--glass-border)',
+              paddingBottom: '20px',
+              borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+              marginBottom: '20px',
             }}
           >
-            <span style={{ fontWeight: 700, fontSize: '18px', color: 'var(--text-head)' }}>
-              {personalInfo.shortName}
-            </span>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <span
+                style={{
+                  width: '8px',
+                  height: '8px',
+                  borderRadius: '50%',
+                  backgroundColor: 'var(--cyan-primary)',
+                  boxShadow: '0 0 10px var(--cyan-primary)',
+                }}
+              />
+              <span style={{ fontWeight: 700, fontSize: '16px', color: 'var(--text-head)' }}>
+                {personalInfo.name}
+              </span>
+            </div>
             <button
               onClick={() => setIsMenuOpen(false)}
+              aria-label="Close menu"
               style={{
-                background: 'none',
+                background: 'transparent',
                 border: 'none',
                 color: 'var(--text-muted)',
-                fontSize: '20px',
+                fontSize: '18px',
                 cursor: 'pointer',
+                padding: '4px',
               }}
-              aria-label="Close menu"
             >
               <i className="fas fa-times"></i>
             </button>
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+          {/* Mobile View Mode Switcher */}
+          <div style={{ marginBottom: '20px' }}>
+            <span style={{ fontSize: '11px', textTransform: 'uppercase', color: 'var(--text-dim)', letterSpacing: '1px' }}>
+              Experience Mode:
+            </span>
+            <div style={{ display: 'flex', gap: '6px', marginTop: '6px' }}>
+              {['normal', 'recruiter', 'developer'].map((m) => (
+                <button
+                  key={m}
+                  onClick={() => {
+                    if (onModeChange) onModeChange(m);
+                    setIsMenuOpen(false);
+                  }}
+                  style={{
+                    flex: 1,
+                    padding: '6px 4px',
+                    borderRadius: '6px',
+                    border: `1px solid ${currentMode === m ? 'var(--cyan-primary)' : 'var(--glass-border)'}`,
+                    background: currentMode === m ? 'rgba(0, 242, 254, 0.15)' : 'transparent',
+                    color: currentMode === m ? 'var(--cyan-primary)' : 'var(--text-muted)',
+                    fontSize: '11px',
+                    fontWeight: 600,
+                    textTransform: 'capitalize',
+                  }}
+                >
+                  {m}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Drawer Links */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
             {NAV_ITEMS.map((item) => {
               const isActive = activeSection === item.id;
               return (
@@ -304,8 +450,9 @@ export default function Navbar({ onDownloadCV }) {
                     fontSize: '15px',
                     fontWeight: isActive ? 600 : 500,
                     color: isActive ? 'var(--cyan-primary)' : 'var(--text-body)',
-                    padding: '12px 16px',
-                    borderRadius: '8px',
+                    padding: '12px 14px',
+                    borderRadius: '10px',
+                    transition: 'all 0.15s ease',
                     background: isActive ? 'rgba(0, 242, 254, 0.08)' : 'transparent',
                     display: 'flex',
                     alignItems: 'center',
@@ -313,50 +460,39 @@ export default function Navbar({ onDownloadCV }) {
                   }}
                 >
                   <span>{item.label}</span>
-                  {isActive && <i className="fas fa-chevron-right" style={{ fontSize: '12px' }}></i>}
+                  {isActive && <i className="fas fa-chevron-right" style={{ fontSize: '11px' }}></i>}
                 </a>
               );
             })}
           </div>
         </div>
 
-        <div style={{ paddingTop: '20px', borderTop: '1px solid var(--glass-border)' }}>
-          <a
-            href={personalInfo.cvDownloadUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+        {/* Drawer Footer Actions */}
+        <div style={{ paddingTop: '20px', borderTop: '1px solid rgba(255, 255, 255, 0.08)', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+          <button
+            onClick={() => {
+              setIsMenuOpen(false);
+              if (onOpenResume) onOpenResume();
+            }}
             className="glass-btn-primary"
-            style={{ width: '100%', marginBottom: '12px', textDecoration: 'none' }}
-            onClick={() => setIsMenuOpen(false)}
-            title="Download CV as PDF (Live from Google Docs)"
+            style={{ width: '100%', justifyContent: 'center', padding: '12px' }}
           >
-            <i className="fas fa-file-arrow-down"></i>
-            <span>Download CV (Live PDF)</span>
-          </a>
-
-          <a
-            href={personalInfo.whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+            <i className="fas fa-id-card"></i>
+            <span>Open Web Resume</span>
+          </button>
+          <button
+            onClick={() => {
+              setIsMenuOpen(false);
+              if (onOpenCommandPalette) onOpenCommandPalette();
+            }}
             className="glass-btn-secondary"
-            style={{ width: '100%', boxSizing: 'border-box' }}
+            style={{ width: '100%', justifyContent: 'center', padding: '10px', fontSize: '13px' }}
           >
-            <i className="fab fa-whatsapp"></i>
-            <span>Chat on WhatsApp</span>
-          </a>
+            <i className="fas fa-terminal"></i>
+            <span>Command Palette (⌘K)</span>
+          </button>
         </div>
       </div>
-
-      <style>{`
-        @media (max-width: 900px) {
-          .desktop-nav-links {
-            display: none !important;
-          }
-          .mobile-hamburger {
-            display: flex !important;
-          }
-        }
-      `}</style>
     </>
   );
 }

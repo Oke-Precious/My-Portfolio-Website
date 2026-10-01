@@ -2,18 +2,33 @@ import React, { useState } from 'react';
 import GlassCard from './GlassCard';
 import { projects } from '../data/portfolioData';
 
-export default function Projects() {
+export default function Projects({ onOpenCaseStudy }) {
   const [filter, setFilter] = useState('All');
+  const [searchQuery, setSearchQuery] = useState('');
 
-  const categories = ['All', 'Full Stack', 'Frontend'];
+  const categories = ['All', 'Full Stack', 'Frontend', 'React', 'Node.js'];
 
-  const filteredProjects =
-    filter === 'All'
-      ? projects
-      : projects.filter((p) => p.category === filter);
+  const filteredProjects = projects.filter((p) => {
+    const matchesCategory =
+      filter === 'All'
+        ? true
+        : filter === 'Full Stack' || filter === 'Frontend'
+        ? p.category === filter
+        : p.technologies.some((t) => t.toLowerCase().includes(filter.toLowerCase()));
+
+    const matchesSearch =
+      searchQuery.trim() === ''
+        ? true
+        : p.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          p.tagline.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          p.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          p.technologies.some((t) => t.toLowerCase().includes(searchQuery.toLowerCase()));
+
+    return matchesCategory && matchesSearch;
+  });
 
   // The major featured project is Gavel Case Tracker
-  const gavelProject = projects.find((p) => p.id === 'gavel-case-tracker');
+  const gavelProject = filteredProjects.find((p) => p.id === 'gavel-case-tracker');
   const otherProjects = filteredProjects.filter((p) => p.id !== 'gavel-case-tracker');
 
   return (
@@ -21,6 +36,7 @@ export default function Projects() {
       <div className="section-kicker" data-aos="fade-right">
         Portfolio Showcase
       </div>
+
       <div
         style={{
           display: 'flex',
@@ -28,7 +44,7 @@ export default function Projects() {
           alignItems: 'flex-end',
           flexWrap: 'wrap',
           gap: '20px',
-          marginBottom: '36px',
+          marginBottom: '32px',
         }}
       >
         <div>
@@ -40,42 +56,114 @@ export default function Projects() {
           </p>
         </div>
 
-        {/* Category Filters */}
-        <div
-          className="glass-pill-container"
-          data-aos="fade-left"
-          data-aos-delay="200"
-        >
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setFilter(cat)}
+        {/* Filter Controls & Search */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', alignItems: 'flex-end' }}>
+          {/* Search Box */}
+          <div
+            style={{
+              position: 'relative',
+              width: '100%',
+              maxWidth: '300px',
+            }}
+          >
+            <i
+              className="fas fa-search"
               style={{
-                border: 'none',
-                background: filter === cat ? 'rgba(0, 242, 254, 0.15)' : 'transparent',
-                color: filter === cat ? 'var(--cyan-primary)' : 'var(--text-muted)',
-                fontWeight: filter === cat ? 600 : 500,
-                fontSize: '13px',
-                padding: '8px 16px',
-                borderRadius: '9999px',
-                cursor: 'pointer',
-                transition: 'all 0.2s ease',
+                position: 'absolute',
+                left: '12px',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                color: 'var(--text-dim)',
+                fontSize: '12px',
               }}
-            >
-              {cat}
-            </button>
-          ))}
+            />
+            <input
+              type="text"
+              placeholder="Search by name, tech..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              aria-label="Search projects by technology or title"
+              style={{
+                width: '100%',
+                padding: '8px 12px 8px 34px',
+                borderRadius: '9999px',
+                background: 'rgba(255, 255, 255, 0.04)',
+                border: '1px solid var(--glass-border)',
+                color: '#fff',
+                fontSize: '12.5px',
+                outline: 'none',
+              }}
+            />
+            {searchQuery && (
+              <button
+                onClick={() => setSearchQuery('')}
+                style={{
+                  position: 'absolute',
+                  right: '10px',
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  background: 'transparent',
+                  border: 'none',
+                  color: 'var(--text-muted)',
+                  cursor: 'pointer',
+                  fontSize: '12px',
+                }}
+              >
+                <i className="fas fa-xmark" />
+              </button>
+            )}
+          </div>
+
+          {/* Category Pills */}
+          <div className="glass-pill-container" data-aos="fade-left" data-aos-delay="200">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setFilter(cat)}
+                style={{
+                  border: 'none',
+                  background: filter === cat ? 'rgba(0, 242, 254, 0.15)' : 'transparent',
+                  color: filter === cat ? 'var(--cyan-primary)' : 'var(--text-muted)',
+                  fontWeight: filter === cat ? 600 : 500,
+                  fontSize: '12.5px',
+                  padding: '6px 14px',
+                  borderRadius: '9999px',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s ease',
+                }}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* MAJOR FEATURED PROJECT: GAVEL CASE TRACKER (when Filter is All or Full Stack) */}
-      {(filter === 'All' || filter === 'Full Stack') && gavelProject && (
+      {filteredProjects.length === 0 && (
+        <div
+          style={{
+            padding: '40px',
+            textAlign: 'center',
+            background: 'rgba(255, 255, 255, 0.02)',
+            borderRadius: '16px',
+            border: '1px solid var(--glass-border)',
+            color: 'var(--text-muted)',
+          }}
+        >
+          No projects match your filter "{searchQuery || filter}". Try selecting "All".
+        </div>
+      )}
+
+      {/* MAJOR FEATURED PROJECT: GAVEL CASE TRACKER (when present in filtered list) */}
+      {gavelProject && (
         <div data-aos="fade-up" style={{ marginBottom: '40px' }}>
           <GlassCard
             enableTilt={false}
+            enableSpotlight={true}
             style={{
               padding: '0',
               overflow: 'hidden',
+              borderRadius: '24px',
               border: '1px solid rgba(0, 242, 254, 0.35)',
               background: 'linear-gradient(135deg, rgba(13, 20, 38, 0.95) 0%, rgba(8, 12, 24, 0.95) 100%)',
               boxShadow: '0 20px 40px -10px rgba(0, 242, 254, 0.15), var(--glass-inner-highlight)',
@@ -91,13 +179,13 @@ export default function Projects() {
             >
               {/* Left Side: Rich Project Details */}
               <div style={{ padding: '40px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '14px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '14px', flexWrap: 'wrap' }}>
                   <span
                     style={{
-                      fontSize: '11.5px',
+                      fontSize: '11px',
                       fontWeight: 700,
                       textTransform: 'uppercase',
-                      letterSpacing: '1.5px',
+                      letterSpacing: '1px',
                       color: 'var(--cyan-primary)',
                       background: 'rgba(0, 242, 254, 0.1)',
                       padding: '4px 10px',
@@ -105,10 +193,11 @@ export default function Projects() {
                       border: '1px solid rgba(0, 242, 254, 0.25)',
                     }}
                   >
-                    ★ Flagship Project
+                    ★ Flagship MERN Case Study
                   </span>
-                  <span style={{ fontSize: '13px', color: 'var(--text-muted)' }}>
-                    MERN Stack · Full Stack
+                  <span style={{ fontSize: '11.5px', color: '#10B981', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#10B981' }} />
+                    {gavelProject.status}
                   </span>
                 </div>
 
@@ -144,10 +233,10 @@ export default function Projects() {
                       key={tIdx}
                       style={{
                         fontSize: '12px',
-                        padding: '4px 10px',
+                        padding: '5px 12px',
                         borderRadius: '6px',
-                        background: 'rgba(255, 255, 255, 0.05)',
-                        border: '1px solid var(--glass-border)',
+                        background: 'rgba(255, 255, 255, 0.04)',
+                        border: '1px solid rgba(255, 255, 255, 0.08)',
                         color: 'var(--text-head)',
                       }}
                     >
@@ -156,27 +245,35 @@ export default function Projects() {
                   ))}
                 </div>
 
-                {/* Links */}
-                <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
+                {/* Primary Action Buttons */}
+                <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+                  <button
+                    onClick={() => onOpenCaseStudy(gavelProject)}
+                    className="glass-btn-primary"
+                    style={{ padding: '10px 20px', fontSize: '13.5px' }}
+                  >
+                    <i className="fas fa-layer-group"></i>
+                    <span>Deep-Dive Case Study</span>
+                  </button>
                   <a
                     href={gavelProject.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="glass-btn-primary"
-                    style={{ fontSize: '13px', padding: '10px 20px' }}
+                    className="glass-btn-secondary"
+                    style={{ padding: '10px 18px', fontSize: '13.5px', textDecoration: 'none' }}
                   >
                     <i className="fab fa-github"></i>
-                    <span>View Repository on GitHub</span>
+                    <span>Inspect Repository</span>
                   </a>
                 </div>
               </div>
 
-              {/* Right Side: Architecture Metrics Spec Card */}
+              {/* Right Side: Architecture & Data Flow Preview */}
               <div
                 style={{
-                  background: 'rgba(6, 9, 19, 0.7)',
-                  borderLeft: '1px solid var(--glass-border)',
-                  padding: '36px',
+                  background: 'rgba(5, 8, 18, 0.7)',
+                  borderLeft: '1px solid rgba(255, 255, 255, 0.08)',
+                  padding: '40px',
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'space-between',
@@ -184,33 +281,37 @@ export default function Projects() {
               >
                 <div>
                   <div style={{ fontSize: '12px', fontWeight: 600, color: 'var(--cyan-primary)', letterSpacing: '1px', textTransform: 'uppercase', marginBottom: '16px' }}>
-                    System Architecture
+                    System Architecture Layers
                   </div>
 
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
                     <div style={{ padding: '14px', background: 'rgba(255, 255, 255, 0.03)', borderRadius: '10px', border: '1px solid var(--glass-border)' }}>
                       <div style={{ fontSize: '11px', color: 'var(--text-dim)', textTransform: 'uppercase' }}>Frontend Layer</div>
-                      <div style={{ fontSize: '14px', fontWeight: 600, color: 'var(--text-head)' }}>React · Axios · Responsive Filters</div>
-                      <div style={{ fontSize: '12px', color: 'var(--text-muted)', marginTop: '2px' }}>Session restore & token-refresh interceptors</div>
+                      <div style={{ fontSize: '14px', fontWeight: 600, color: 'var(--text-head)' }}>React · Axios · Filter Controls</div>
+                      <div style={{ fontSize: '12px', color: 'var(--text-muted)', marginTop: '2px' }}>Session restore & automated token refresh</div>
                     </div>
 
                     <div style={{ padding: '14px', background: 'rgba(255, 255, 255, 0.03)', borderRadius: '10px', border: '1px solid var(--glass-border)' }}>
-                      <div style={{ fontSize: '11px', color: 'var(--text-dim)', textTransform: 'uppercase' }}>Backend & Auth</div>
+                      <div style={{ fontSize: '11px', color: 'var(--text-dim)', textTransform: 'uppercase' }}>Backend API & Security</div>
                       <div style={{ fontSize: '14px', fontWeight: 600, color: 'var(--text-head)' }}>Node.js · Express · JWT & RBAC</div>
-                      <div style={{ fontSize: '12px', color: 'var(--text-muted)', marginTop: '2px' }}>Role-based route permissions & audits</div>
+                      <div style={{ fontSize: '12px', color: 'var(--text-muted)', marginTop: '2px' }}>Role-based route authorization & audit trail</div>
                     </div>
 
                     <div style={{ padding: '14px', background: 'rgba(255, 255, 255, 0.03)', borderRadius: '10px', border: '1px solid var(--glass-border)' }}>
-                      <div style={{ fontSize: '11px', color: 'var(--text-dim)', textTransform: 'uppercase' }}>Database & Reports</div>
+                      <div style={{ fontSize: '11px', color: 'var(--text-dim)', textTransform: 'uppercase' }}>Persistence & Reports</div>
                       <div style={{ fontSize: '14px', fontWeight: 600, color: 'var(--text-head)' }}>MongoDB · Mongoose · CSV & PDF</div>
-                      <div style={{ fontSize: '12px', color: 'var(--text-muted)', marginTop: '2px' }}>Bulk CSV imports & customized PDF reports</div>
+                      <div style={{ fontSize: '12px', color: 'var(--text-muted)', marginTop: '2px' }}>Streamed CSV export & PDF case dockets</div>
                     </div>
                   </div>
                 </div>
 
-                <div style={{ marginTop: '20px', paddingTop: '16px', borderTop: '1px solid var(--glass-border)', fontSize: '12px', color: 'var(--text-dim)' }}>
-                  Status: Complete & verified full-stack architecture
-                </div>
+                <button
+                  onClick={() => onOpenCaseStudy(gavelProject)}
+                  className="glass-btn-ghost"
+                  style={{ marginTop: '20px', padding: '8px 0', color: 'var(--cyan-primary)', fontSize: '13px' }}
+                >
+                  <span>Explore Interactive Architecture Diagram →</span>
+                </button>
               </div>
             </div>
           </GlassCard>
@@ -222,7 +323,7 @@ export default function Projects() {
         className="projects-grid"
         style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))',
           gap: '28px',
         }}
       >
@@ -232,137 +333,134 @@ export default function Projects() {
             data-aos="fade-up"
             data-aos-delay={(idx % 3) * 100}
             enableTilt={true}
+            enableSpotlight={true}
             style={{
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'space-between',
               height: '100%',
               borderRadius: '20px',
+              padding: '24px',
             }}
           >
-            {/* Project Image Banner */}
-            <div
-              style={{
-                position: 'relative',
-                height: '210px',
-                overflow: 'hidden',
-                backgroundColor: 'rgba(6, 9, 19, 0.8)',
-              }}
-            >
-              <img
-                src={proj.image}
-                alt={proj.title}
-                loading="lazy"
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
-                  transition: 'transform 0.4s ease',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'scale(1.05)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'scale(1)';
-                }}
-              />
-              <div
-                style={{
-                  position: 'absolute',
-                  inset: 0,
-                  background: 'linear-gradient(to top, rgba(13, 20, 38, 0.95) 0%, rgba(13, 20, 38, 0.2) 60%, transparent 100%)',
-                }}
-              />
-              <div
-                style={{
-                  position: 'absolute',
-                  top: '14px',
-                  right: '14px',
-                  fontSize: '11px',
-                  fontWeight: 600,
-                  background: 'rgba(6, 9, 19, 0.75)',
-                  backdropFilter: 'blur(8px)',
-                  color: 'var(--cyan-primary)',
-                  padding: '4px 10px',
-                  borderRadius: '9999px',
-                  border: '1px solid var(--glass-border)',
-                }}
-              >
-                {proj.category}
+            <div>
+              {/* Card Header */}
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px' }}>
+                <span
+                  style={{
+                    fontSize: '11px',
+                    fontWeight: 700,
+                    textTransform: 'uppercase',
+                    letterSpacing: '1px',
+                    color: 'var(--cyan-primary)',
+                    background: 'rgba(0, 242, 254, 0.08)',
+                    padding: '3px 8px',
+                    borderRadius: '4px',
+                    border: '1px solid rgba(0, 242, 254, 0.2)',
+                  }}
+                >
+                  {proj.category}
+                </span>
+
+                {proj.status && (
+                  <span
+                    style={{
+                      fontSize: '11px',
+                      color: proj.status === 'Production' ? '#10B981' : '#60A5FA',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '5px',
+                    }}
+                  >
+                    <span
+                      style={{
+                        width: '5px',
+                        height: '5px',
+                        borderRadius: '50%',
+                        backgroundColor: proj.status === 'Production' ? '#10B981' : '#60A5FA',
+                      }}
+                    />
+                    {proj.status}
+                  </span>
+                )}
+              </div>
+
+              {/* Title & Tagline */}
+              <h3 style={{ fontSize: '19px', fontWeight: 700, color: 'var(--text-head)', margin: '0 0 6px' }}>
+                {proj.title}
+              </h3>
+              <p style={{ fontSize: '13px', color: 'var(--cyan-muted)', margin: '0 0 14px', fontWeight: 500 }}>
+                {proj.tagline}
+              </p>
+
+              <p style={{ fontSize: '13.5px', color: 'var(--text-body)', lineHeight: 1.6, marginBottom: '18px' }}>
+                {proj.description}
+              </p>
+
+              {/* Tech Tags */}
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '20px' }}>
+                {proj.technologies.slice(0, 4).map((tech, tIdx) => (
+                  <span
+                    key={tIdx}
+                    style={{
+                      fontSize: '11px',
+                      padding: '3px 8px',
+                      borderRadius: '4px',
+                      background: 'rgba(255, 255, 255, 0.04)',
+                      border: '1px solid rgba(255, 255, 255, 0.06)',
+                      color: 'var(--text-muted)',
+                    }}
+                  >
+                    {tech}
+                  </span>
+                ))}
               </div>
             </div>
 
-            {/* Content Body */}
-            <div style={{ padding: '24px', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-              <div>
-                <h4 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--text-head)', margin: '0 0 6px' }}>
-                  {proj.title}
-                </h4>
-                <div style={{ fontSize: '12.5px', color: 'var(--cyan-muted)', marginBottom: '12px' }}>
-                  {proj.tagline}
-                </div>
-                <p style={{ fontSize: '13.5px', color: 'var(--text-body)', lineHeight: 1.6, marginBottom: '18px' }}>
-                  {proj.description}
-                </p>
-
-                {/* Tech Pills */}
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '20px' }}>
-                  {proj.technologies.map((tech, tIdx) => (
-                    <span
-                      key={tIdx}
-                      style={{
-                        fontSize: '11px',
-                        padding: '3px 8px',
-                        borderRadius: '6px',
-                        background: 'rgba(255, 255, 255, 0.04)',
-                        border: '1px solid var(--glass-border)',
-                        color: 'var(--text-muted)',
-                      }}
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Action Links */}
-              <div
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  paddingTop: '16px',
-                  borderTop: '1px solid var(--glass-border)',
-                  marginTop: 'auto',
-                }}
+            {/* Card Action Buttons */}
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                paddingTop: '16px',
+                borderTop: '1px solid rgba(255, 255, 255, 0.06)',
+                gap: '8px',
+                flexWrap: 'wrap',
+              }}
+            >
+              <button
+                onClick={() => onOpenCaseStudy(proj)}
+                className="glass-btn-primary"
+                style={{ padding: '7px 14px', fontSize: '12.5px' }}
               >
-                {proj.liveUrl ? (
+                <span>Case Study</span>
+                <i className="fas fa-arrow-right" style={{ fontSize: '10px' }} />
+              </button>
+
+              <div style={{ display: 'flex', gap: '8px' }}>
+                {proj.liveUrl && (
                   <a
                     href={proj.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="glass-btn-primary"
-                    style={{ fontSize: '12px', padding: '8px 14px', borderRadius: '8px' }}
+                    className="glass-btn-ghost"
+                    style={{ padding: '6px 10px', fontSize: '12px' }}
+                    title="Open Live Deployment"
                   >
-                    <span>Live Demo</span>
-                    <i className="fas fa-external-link-alt" style={{ fontSize: '10px' }}></i>
+                    <i className="fas fa-arrow-up-right-from-square"></i>
                   </a>
-                ) : (
-                  <span style={{ fontSize: '12px', color: 'var(--text-dim)' }}>
-                    Architecture Complete
-                  </span>
                 )}
-
                 {proj.githubUrl && (
                   <a
                     href={proj.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="glass-btn-ghost"
-                    style={{ fontSize: '12.5px', padding: '6px 10px' }}
+                    style={{ padding: '6px 10px', fontSize: '12px' }}
+                    title="View GitHub Repository"
                   >
                     <i className="fab fa-github"></i>
-                    <span>Code</span>
                   </a>
                 )}
               </div>
@@ -370,19 +468,6 @@ export default function Projects() {
           </GlassCard>
         ))}
       </div>
-
-      <style>{`
-        @media (max-width: 900px) {
-          .featured-gavel-grid {
-            grid-template-columns: 1fr !important;
-          }
-        }
-        @media (max-width: 600px) {
-          .projects-grid {
-            grid-template-columns: 1fr !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }
