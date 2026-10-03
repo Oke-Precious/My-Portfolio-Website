@@ -154,11 +154,13 @@ body {
 .glass-pill-container {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 6px;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--glass-border);
-  border-radius: var(--radius-full);
-  padding: 4px;
+  border-radius: var(--radius-md);
+  padding: 6px;
+  max-width: 100%;
 }
 
 /* Section Container Defaults */
@@ -366,6 +368,41 @@ body {
   .arch-connector {
     transform: rotate(90deg) !important;
     margin: 6px 0 !important;
+  }
+  .hero-badge-1 {
+    left: 4px !important;
+    top: 6px !important;
+  }
+  .hero-badge-2 {
+    right: 4px !important;
+    bottom: 6px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .nav-cmdk-btn {
+    display: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .ai-assistant-fab {
+    width: 44px !important;
+    height: 44px !important;
+    bottom: 14px !important;
+    right: 14px !important;
+  }
+  .ai-assistant-fab i {
+    font-size: 17px !important;
+  }
+  .ai-assistant-panel {
+    bottom: 66px !important;
+    right: 10px !important;
+    left: 10px !important;
+    width: auto !important;
+    max-width: none !important;
+    max-height: calc(100vh - 80px) !important;
+    border-radius: 16px !important;
   }
 }
 

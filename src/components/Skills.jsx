@@ -44,7 +44,19 @@ export default function Skills() {
         </div>
 
         {/* Segmented Filter Control */}
-        <div className="glass-pill-container" data-aos="fade-left" data-aos-delay="200">
+        <div
+          className="glass-pill-container"
+          data-aos="fade-left"
+          data-aos-delay="200"
+          style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: '6px',
+            maxWidth: '100%',
+            borderRadius: '16px',
+            padding: '6px',
+          }}
+        >
           <button
             onClick={() => setActiveTab('all')}
             style={{
@@ -52,11 +64,12 @@ export default function Skills() {
               background: activeTab === 'all' ? 'rgba(0, 242, 254, 0.15)' : 'transparent',
               color: activeTab === 'all' ? 'var(--cyan-primary)' : 'var(--text-muted)',
               fontWeight: activeTab === 'all' ? 600 : 500,
-              fontSize: '12.5px',
-              padding: '6px 14px',
+              fontSize: '12px',
+              padding: '6px 12px',
               borderRadius: '9999px',
               cursor: 'pointer',
               transition: 'all 0.2s ease',
+              whiteSpace: 'nowrap',
             }}
           >
             All Ecosystems
@@ -70,14 +83,15 @@ export default function Skills() {
                 background: activeTab === cat.id ? 'rgba(0, 242, 254, 0.15)' : 'transparent',
                 color: activeTab === cat.id ? 'var(--cyan-primary)' : 'var(--text-muted)',
                 fontWeight: activeTab === cat.id ? 600 : 500,
-                fontSize: '12.5px',
-                padding: '6px 14px',
+                fontSize: '12px',
+                padding: '6px 12px',
                 borderRadius: '9999px',
                 cursor: 'pointer',
                 transition: 'all 0.2s ease',
+                whiteSpace: 'nowrap',
               }}
             >
-              {cat.title}
+              {cat.id === 'design' ? 'Design Implementation' : cat.title}
             </button>
           ))}
         </div>

@@ -253,6 +253,7 @@ export default function Navbar({
             <button
               onClick={onOpenCommandPalette}
               aria-label="Open Command Palette (Ctrl+K)"
+              className="nav-cmdk-btn"
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',

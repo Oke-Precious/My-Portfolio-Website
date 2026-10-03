@@ -99,51 +99,64 @@ He is currently available for full-stack engineering roles, frontend projects, a
 
   return (
     <>
-      {/* Floating Trigger Button */}
+      {/* Floating Trigger Button - Responsive Circular Bot FAB */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        aria-label="Toggle AI Portfolio Assistant"
-        className="glass-card"
+        aria-label={isOpen ? "Close AI Portfolio Assistant" : "Open AI Portfolio Assistant"}
+        title={isOpen ? "Close AI Assistant" : "AI Portfolio Assistant (Ask About Me)"}
+        className="glass-card ai-assistant-fab"
         style={{
           position: 'fixed',
-          bottom: '24px',
-          right: '24px',
+          bottom: '22px',
+          right: '22px',
           zIndex: 9990,
           display: 'flex',
           alignItems: 'center',
-          gap: '10px',
-          padding: '12px 20px',
-          borderRadius: '9999px',
-          border: '1px solid rgba(0, 242, 254, 0.4)',
+          justifyContent: 'center',
+          width: '52px',
+          height: '52px',
+          borderRadius: '50%',
+          padding: 0,
+          border: '1px solid rgba(0, 242, 254, 0.45)',
           background: 'linear-gradient(135deg, rgba(13, 20, 38, 0.95) 0%, rgba(9, 14, 28, 0.95) 100%)',
-          boxShadow: '0 10px 30px -5px rgba(0, 242, 254, 0.3), var(--glass-inner-highlight)',
+          boxShadow: '0 8px 24px -4px rgba(0, 242, 254, 0.35), var(--glass-inner-highlight)',
           color: '#fff',
           cursor: 'pointer',
-          transition: 'all 0.25s ease',
+          transition: 'all 0.25s cubic-bezier(0.16, 1, 0.3, 1)',
         }}
         onMouseEnter={(e) => {
-          e.currentTarget.style.transform = 'translateY(-3px)';
+          e.currentTarget.style.transform = 'scale(1.08)';
           e.currentTarget.style.borderColor = 'var(--cyan-primary)';
+          e.currentTarget.style.boxShadow = '0 12px 30px -4px rgba(0, 242, 254, 0.5), var(--glass-inner-highlight)';
         }}
         onMouseLeave={(e) => {
-          e.currentTarget.style.transform = 'translateY(0)';
-          e.currentTarget.style.borderColor = 'rgba(0, 242, 254, 0.4)';
+          e.currentTarget.style.transform = 'scale(1)';
+          e.currentTarget.style.borderColor = 'rgba(0, 242, 254, 0.45)';
+          e.currentTarget.style.boxShadow = '0 8px 24px -4px rgba(0, 242, 254, 0.35), var(--glass-inner-highlight)';
         }}
       >
         <span
+          className="ai-fab-status-dot"
           style={{
+            position: 'absolute',
+            top: '4px',
+            right: '4px',
             width: '8px',
             height: '8px',
             borderRadius: '50%',
             backgroundColor: '#10B981',
-            boxShadow: '0 0 10px #10B981',
+            boxShadow: '0 0 8px #10B981',
             display: 'inline-block',
           }}
         />
-        <i className="fas fa-robot" style={{ color: 'var(--cyan-primary)', fontSize: '15px' }} />
-        <span style={{ fontSize: '13.5px', fontWeight: 600, letterSpacing: '0.2px' }}>
-          {isOpen ? 'Close Assistant' : 'Ask About Me'}
-        </span>
+        <i
+          className={isOpen ? "fas fa-xmark" : "fas fa-robot"}
+          style={{
+            color: 'var(--cyan-primary)',
+            fontSize: isOpen ? '18px' : '21px',
+            transition: 'transform 0.2s ease',
+          }}
+        />
       </button>
 
       {/* Slide-Up Chat Panel */}
@@ -151,15 +164,15 @@ He is currently available for full-stack engineering roles, frontend projects, a
         <div
           role="dialog"
           aria-label="AI Portfolio Assistant Chat"
-          className="glass-card"
+          className="glass-card ai-assistant-panel"
           style={{
             position: 'fixed',
             bottom: '84px',
-            right: '24px',
-            width: 'calc(100vw - 48px)',
+            right: '22px',
+            width: 'calc(100vw - 44px)',
             maxWidth: '380px',
             height: '520px',
-            maxHeight: 'calc(100vh - 120px)',
+            maxHeight: 'calc(100vh - 110px)',
             zIndex: 9991,
             borderRadius: '20px',
             border: '1px solid rgba(0, 242, 254, 0.35)',

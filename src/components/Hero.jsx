@@ -435,7 +435,7 @@ export default function Hero({ onDownloadCV }) {
 
           {/* Floating Glass Badge 1 (Top Left): React & MERN */}
           <div
-            className="glass-card"
+            className="glass-card hero-badge-1"
             style={{
               position: 'absolute',
               top: '8%',
@@ -477,7 +477,7 @@ export default function Hero({ onDownloadCV }) {
 
           {/* Floating Glass Badge 2 (Bottom Right): Real Experience */}
           <div
-            className="glass-card"
+            className="glass-card hero-badge-2"
             style={{
               position: 'absolute',
               bottom: '8%',
